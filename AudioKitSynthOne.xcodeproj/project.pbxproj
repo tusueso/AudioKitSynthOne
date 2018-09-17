@@ -162,11 +162,221 @@
 		C4D193C81F1187B500FF4FE4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D193C71F1187B500FF4FE4 /* AppDelegate.swift */; };
 		C4D193CD1F1187B500FF4FE4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4D193CB1F1187B500FF4FE4 /* Main.storyboard */; };
 		C4D193CF1F1187B500FF4FE4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4D193CE1F1187B500FF4FE4 /* Assets.xcassets */; };
+		C4E67AEF214F5B0C006B2948 /* AudioUnitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E67AEE214F5B0C006B2948 /* AudioUnitViewController.swift */; };
+		C4E67AF2214F5B0C006B2948 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4E67AF0214F5B0C006B2948 /* MainInterface.storyboard */; };
+		C4E67AF7214F5B0C006B2948 /* SynthOneAUv3.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C4E67AE9214F5B0C006B2948 /* SynthOneAUv3.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		C4E67AFC214F5C2F006B2948 /* SynthOneAUv3AudioUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E67AFB214F5C2E006B2948 /* SynthOneAUv3AudioUnit.swift */; };
+		C4E67B01214F5DD0006B2948 /* AKSynthOne.swift in Sources */ = {isa = PBXBuildFile; fileRef = C435C55420C530C900DAECCD /* AKSynthOne.swift */; };
+		C4E67B02214F5DD0006B2948 /* Conductor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C435C55120C530C900DAECCD /* Conductor.swift */; };
+		C4E67B03214F5DD0006B2948 /* SDSustainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C435C55620C530C900DAECCD /* SDSustainer.swift */; };
+		C4E67B04214F5DE4006B2948 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C435C50220C5286B00DAECCD /* Helpers.swift */; };
+		C4E67B05214F5DE8006B2948 /* Private.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA090E4320F74B0A0012A8F7 /* Private.swift */; };
+		C4E67B06214F5E1F006B2948 /* S1DSPKernel.mm in Sources */ = {isa = PBXBuildFile; fileRef = C435C57620C530C900DAECCD /* S1DSPKernel.mm */; };
+		C4E67B07214F5E1F006B2948 /* S1DSPKernel+destroy.mm in Sources */ = {isa = PBXBuildFile; fileRef = C4B490E520C649D900FD565A /* S1DSPKernel+destroy.mm */; };
+		C4E67B08214F5E1F006B2948 /* S1DSPKernel+didChanges.mm in Sources */ = {isa = PBXBuildFile; fileRef = C4B490EE20C64E5600FD565A /* S1DSPKernel+didChanges.mm */; };
+		C4E67B09214F5E1F006B2948 /* S1DSPKernel+getSetDependentParameters.mm in Sources */ = {isa = PBXBuildFile; fileRef = C4B490EC20C64D8C00FD565A /* S1DSPKernel+getSetDependentParameters.mm */; };
+		C4E67B0A214F5E1F006B2948 /* S1DSPKernel+getSetSynthParameters.mm in Sources */ = {isa = PBXBuildFile; fileRef = C4B490EA20C64C8E00FD565A /* S1DSPKernel+getSetSynthParameters.mm */; };
+		C4E67B0B214F5E1F006B2948 /* S1DSPKernel+MIDI.mm in Sources */ = {isa = PBXBuildFile; fileRef = C4B490E820C64AC600FD565A /* S1DSPKernel+MIDI.mm */; };
+		C4E67B0C214F5E1F006B2948 /* S1DSPKernel+parameters.mm in Sources */ = {isa = PBXBuildFile; fileRef = C4B490F420C6542500FD565A /* S1DSPKernel+parameters.mm */; };
+		C4E67B0D214F5E1F006B2948 /* S1DSPKernel+process.mm in Sources */ = {isa = PBXBuildFile; fileRef = C4B490F220C6539200FD565A /* S1DSPKernel+process.mm */; };
+		C4E67B0E214F5E1F006B2948 /* S1DSPKernel+reset.mm in Sources */ = {isa = PBXBuildFile; fileRef = C4B490F620C654E600FD565A /* S1DSPKernel+reset.mm */; };
+		C4E67B0F214F5E1F006B2948 /* S1DSPKernel+setup.mm in Sources */ = {isa = PBXBuildFile; fileRef = C4B490F820C655AF00FD565A /* S1DSPKernel+setup.mm */; };
+		C4E67B10214F5E1F006B2948 /* S1DSPKernel+startStopNotes.mm in Sources */ = {isa = PBXBuildFile; fileRef = C4B490FA20C6560000FD565A /* S1DSPKernel+startStopNotes.mm */; };
+		C4E67B11214F5E1F006B2948 /* S1DSPKernel+tapers.mm in Sources */ = {isa = PBXBuildFile; fileRef = C4B490F020C64ED200FD565A /* S1DSPKernel+tapers.mm */; };
+		C4E67B12214F5E1F006B2948 /* S1DSPKernel+toggleKeys.mm in Sources */ = {isa = PBXBuildFile; fileRef = C4B490FC20C6564D00FD565A /* S1DSPKernel+toggleKeys.mm */; };
+		C4E67B13214F5E22006B2948 /* S1AudioUnit.mm in Sources */ = {isa = PBXBuildFile; fileRef = C435C57020C530C900DAECCD /* S1AudioUnit.mm */; };
+		C4E67B14214F5E26006B2948 /* S1NoteState.mm in Sources */ = {isa = PBXBuildFile; fileRef = C435C56D20C530C900DAECCD /* S1NoteState.mm */; };
+		C4E67B15214F5E2A006B2948 /* AEWeakRetainingProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = C435C55820C530C900DAECCD /* AEWeakRetainingProxy.m */; };
+		C4E67B16214F5E2A006B2948 /* AEMessageQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = C435C55920C530C900DAECCD /* AEMessageQueue.m */; };
+		C4E67B17214F5E2A006B2948 /* AEManagedValue.m in Sources */ = {isa = PBXBuildFile; fileRef = C435C55A20C530C900DAECCD /* AEManagedValue.m */; };
+		C4E67B18214F5E2A006B2948 /* AEArray.m in Sources */ = {isa = PBXBuildFile; fileRef = C435C55D20C530C900DAECCD /* AEArray.m */; };
+		C4E67B19214F5E2A006B2948 /* AEUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = C435C55F20C530C900DAECCD /* AEUtilities.m */; };
+		C4E67B1A214F5E2A006B2948 /* AETime.m in Sources */ = {isa = PBXBuildFile; fileRef = C435C56420C530C900DAECCD /* AETime.m */; };
+		C4E67B1B214F5E2A006B2948 /* AETypes.m in Sources */ = {isa = PBXBuildFile; fileRef = C435C56620C530C900DAECCD /* AETypes.m */; };
+		C4E67B1C214F5E2A006B2948 /* AEMainThreadEndpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = C435C56720C530C900DAECCD /* AEMainThreadEndpoint.m */; };
+		C4E67B1D214F5E2A006B2948 /* AEAudioThreadEndpoint.m in Sources */ = {isa = PBXBuildFile; fileRef = C435C56920C530C900DAECCD /* AEAudioThreadEndpoint.m */; };
+		C4E67B1E214F5E3E006B2948 /* Bank.swift in Sources */ = {isa = PBXBuildFile; fileRef = C435C51420C52D1700DAECCD /* Bank.swift */; };
+		C4E67B1F214F5E4B006B2948 /* UpdatableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B4916020C7C72900FD565A /* UpdatableViewController.swift */; };
+		C4E67B20214F5E5A006B2948 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B4916520C7C72900FD565A /* Manager.swift */; };
+		C4E67B21214F5E71006B2948 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B4916220C7C72900FD565A /* AboutViewController.swift */; };
+		C4E67B22214F5E71006B2948 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B4916120C7C72900FD565A /* InfoViewController.swift */; };
+		C4E67B23214F5E74006B2948 /* Manager+MailingListDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B4919620C7C81200FD565A /* Manager+MailingListDelegate.swift */; };
+		C4E67B24214F5E74006B2948 /* MailingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B4919720C7C81200FD565A /* MailingListViewController.swift */; };
+		C4E67B25214F5E77006B2948 /* Audiobus.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B4914420C7C6E300FD565A /* Audiobus.swift */; };
+		C4E67B26214F5E77006B2948 /* Audiobus+MIDI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B4914620C7C6E300FD565A /* Audiobus+MIDI.swift */; };
+		C4E67B27214F5E77006B2948 /* Manager+Audiobus.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B4914520C7C6E300FD565A /* Manager+Audiobus.swift */; };
+		C4E67B28214F5E7B006B2948 /* CallbackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F694C51F683D5D0061DA5E /* CallbackButton.swift */; };
+		C4E67B29214F5E7B006B2948 /* SynthButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948C54C21F3A57C600DA6081 /* SynthButton.swift */; };
+		C4E67B2A214F5E7B006B2948 /* ToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F7ECAB1F2446960011B119 /* ToggleButton.swift */; };
+		C4E67B2B214F5E7B006B2948 /* ToggleButtonStyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F7ECA61F2446960011B119 /* ToggleButtonStyleKit.swift */; };
+		C4E67B2C214F5E7B006B2948 /* ToggleSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947956B51F32A72400FE5D9B /* ToggleSwitch.swift */; };
+		C4E67B2D214F5E7B006B2948 /* ToggleSwitchStyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947956B21F32A70300FE5D9B /* ToggleSwitchStyleKit.swift */; };
+		C4E67B2E214F5E7F006B2948 /* KnobStyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F7ECAA1F2446960011B119 /* KnobStyleKit.swift */; };
+		C4E67B2F214F5E7F006B2948 /* Knob+Touches.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F7ECA81F2446960011B119 /* Knob+Touches.swift */; };
+		C4E67B30214F5E7F006B2948 /* Knob.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F7ECA91F2446960011B119 /* Knob.swift */; };
+		C4E67B31214F5E84006B2948 /* Stepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947956A81F329AB100FE5D9B /* Stepper.swift */; };
+		C4E67B32214F5E84006B2948 /* StepperStyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947956A51F329AB100FE5D9B /* StepperStyleKit.swift */; };
+		C4E67B33214F5E88006B2948 /* DevViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B4917220C7C73A00FD565A /* DevViewController.swift */; };
+		C4E67B34214F5E88006B2948 /* Manager+DevView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B4917120C7C73A00FD565A /* Manager+DevView.swift */; };
+		C4E67B35214F5E8E006B2948 /* EffectsPanelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B491A320C7C94E00FD565A /* EffectsPanelController.swift */; };
+		C4E67B36214F5E91006B2948 /* LFOWavePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B491AB20C7D10200FD565A /* LFOWavePicker.swift */; };
+		C4E67B37214F5E91006B2948 /* LFOButtonStyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949D93B61F2C188B007E657B /* LFOButtonStyleKit.swift */; };
+		C4E67B38214F5E91006B2948 /* LFOToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 949D93B51F2C188B007E657B /* LFOToggle.swift */; };
+		C4E67B39214F5E96006B2948 /* EnvelopesPanelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B491A020C7C91900FD565A /* EnvelopesPanelController.swift */; };
+		C4E67B3A214F5E99006B2948 /* GeneratorsPanelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B491A620C7C95900FD565A /* GeneratorsPanelController.swift */; };
+		C4E67B3B214F5E9D006B2948 /* FilterTypeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 948D33A81F4DFC08006E8276 /* FilterTypeButton.swift */; };
+		C4E67B3C214F5E9D006B2948 /* FlatToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D917AE1F550D28006ACB4E /* FlatToggleButton.swift */; };
+		C4E67B3D214F5E9D006B2948 /* MorphSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B491A820C7D10200FD565A /* MorphSelector.swift */; };
+		C4E67B3E214F5EA1006B2948 /* FlatToggleButtonStyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D917AB1F550D0D006ACB4E /* FlatToggleButtonStyleKit.swift */; };
+		C4E67B3F214F5EA1006B2948 /* MorphSelectorStyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B491C020C7DF2A00FD565A /* MorphSelectorStyleKit.swift */; };
+		C4E67B40214F5EA1006B2948 /* LFOPickerStyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B491C120C7DF2A00FD565A /* LFOPickerStyleKit.swift */; };
+		C4E67B41214F5EA5006B2948 /* HeaderNavButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B4917720C7C75500FD565A /* HeaderNavButton.swift */; };
+		C4E67B42214F5EA5006B2948 /* HeaderViewContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B4917820C7C75500FD565A /* HeaderViewContoller.swift */; };
+		C4E67B43214F5EA5006B2948 /* Manager+HeaderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B4917620C7C75500FD565A /* Manager+HeaderDelegate.swift */; };
+		C4E67B44214F5EA8006B2948 /* KeyboardSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B4911A20C7C62A00FD565A /* KeyboardSettingsViewController.swift */; };
+		C4E67B45214F5EA8006B2948 /* Manager+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B4911720C7C62A00FD565A /* Manager+Keyboard.swift */; };
+		C4E67B46214F5EA8006B2948 /* Manager+ModWheelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B4919A20C7C8C800FD565A /* Manager+ModWheelDelegate.swift */; };
+		C4E67B47214F5EA8006B2948 /* WheelSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B4911B20C7C62A00FD565A /* WheelSettingsViewController.swift */; };
+		C4E67B48214F5EAC006B2948 /* BlackKeyStyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B4911920C7C62A00FD565A /* BlackKeyStyleKit.swift */; };
+		C4E67B49214F5EAC006B2948 /* KeyboardShowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94656AEC205F410900634B2C /* KeyboardShowButton.swift */; };
+		C4E67B4A214F5EAC006B2948 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B4911820C7C62A00FD565A /* KeyboardView.swift */; };
+		C4E67B4B214F5EAC006B2948 /* ModWheelStyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B4912120C7C65000FD565A /* ModWheelStyleKit.swift */; };
+		C4E67B4C214F5EAF006B2948 /* ABLLinkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A13AD20FC4C7C009E2B30 /* ABLLinkManager.swift */; };
+		C4E67B4D214F5EAF006B2948 /* LinkExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45DF29B21016A0E000AB3FD /* LinkExtensions.swift */; };
+		C4E67B4E214F5EB8006B2948 /* ChannelStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A5039C1FF2F6E30097D37C /* ChannelStepper.swift */; };
+		C4E67B4F214F5EB8006B2948 /* MIDICell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C435C4F520C5234900DAECCD /* MIDICell.swift */; };
+		C4E67B50214F5EB8006B2948 /* MIDIInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = C435C52720C52D2E00DAECCD /* MIDIInput.swift */; };
+		C4E67B51214F5EB8006B2948 /* MIDIKnob.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B491B020C7D11500FD565A /* MIDIKnob.swift */; };
+		C4E67B52214F5EB8006B2948 /* MIDILearnable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C435C52820C52D2E00DAECCD /* MIDILearnable.swift */; };
+		C4E67B53214F5EB8006B2948 /* MIDISettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B4914D20C7C6FC00FD565A /* MIDISettingsViewController.swift */; };
+		C4E67B54214F5EB8006B2948 /* Manager+MIDIListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B4914C20C7C6FC00FD565A /* Manager+MIDIListener.swift */; };
+		C4E67B55214F5EB8006B2948 /* Manager+MIDISettingsPopOverDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B4914E20C7C6FC00FD565A /* Manager+MIDISettingsPopOverDelegate.swift */; };
+		C4E67B56214F5EBB006B2948 /* Manager+callbacks.swift in Sources */ = {isa = PBXBuildFile; fileRef = C432979420CB2D620063F795 /* Manager+callbacks.swift */; };
+		C4E67B57214F5EBB006B2948 /* Manager+EmbeddedViewsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B4916420C7C72900FD565A /* Manager+EmbeddedViewsDelegate.swift */; };
+		C4E67B58214F5EBB006B2948 /* Manager+PushNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B4916620C7C72900FD565A /* Manager+PushNotification.swift */; };
+		C4E67B59214F5EBB006B2948 /* UIViewController+DisplayAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B4915E20C7C72900FD565A /* UIViewController+DisplayAlert.swift */; };
+		C4E67B5A214F5EC1006B2948 /* ChildPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B4915F20C7C72900FD565A /* ChildPanel.swift */; };
+		C4E67B5B214F5EC1006B2948 /* NavButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB18D11F37D879008368AE /* NavButton.swift */; };
+		C4E67B5C214F5EC1006B2948 /* NavButtonStyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB18CE1F37D7ED008368AE /* NavButtonStyleKit.swift */; };
+		C4E67B5D214F5EC1006B2948 /* PanelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B4915D20C7C72900FD565A /* PanelController.swift */; };
+		C4E67B5E214F5EC1006B2948 /* Manager+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C432979620CB2E090063F795 /* Manager+Navigation.swift */; };
+		C4E67B5F214F5EC4006B2948 /* BankEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B4918F20C7C7B200FD565A /* BankEditorViewController.swift */; };
+		C4E67B60214F5EC4006B2948 /* Manager+PresetsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B4918D20C7C7A400FD565A /* Manager+PresetsDelegate.swift */; };
+		C4E67B61214F5EC4006B2948 /* Preset.swift in Sources */ = {isa = PBXBuildFile; fileRef = C435C51C20C52D1700DAECCD /* Preset.swift */; };
+		C4E67B62214F5EC4006B2948 /* PresetDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C435C51320C52D1700DAECCD /* PresetDataManager.swift */; };
+		C4E67B63214F5EC4006B2948 /* PresetEditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B4919220C7C7C500FD565A /* PresetEditorViewController.swift */; };
+		C4E67B64214F5EC4006B2948 /* PresetsCategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B4919120C7C7C500FD565A /* PresetsCategoriesViewController.swift */; };
+		C4E67B65214F5EC9006B2948 /* Presets+BankPopOverDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B4918320C7C79C00FD565A /* Presets+BankPopOverDelegate.swift */; };
+		C4E67B66214F5EC9006B2948 /* Presets+CategoryDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B4917F20C7C79C00FD565A /* Presets+CategoryDelegate.swift */; };
+		C4E67B67214F5EC9006B2948 /* Presets+PresetCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B4917E20C7C79C00FD565A /* Presets+PresetCellDelegate.swift */; };
+		C4E67B68214F5EC9006B2948 /* Presets+PresetPopOverDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B4918020C7C79C00FD565A /* Presets+PresetPopOverDelegate.swift */; };
+		C4E67B69214F5EC9006B2948 /* Presets+UIDocumentPickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B4918220C7C79C00FD565A /* Presets+UIDocumentPickerDelegate.swift */; };
+		C4E67B6A214F5EC9006B2948 /* Presets+UITableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B4918120C7C79C00FD565A /* Presets+UITableViewDataSource.swift */; };
+		C4E67B6B214F5EC9006B2948 /* Presets+UITableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B4918420C7C79C00FD565A /* Presets+UITableViewDelegate.swift */; };
+		C4E67B6C214F5EC9006B2948 /* Presets+UITextViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C432979020CB2AA00063F795 /* Presets+UITextViewDelegate.swift */; };
+		C4E67B6D214F5EC9006B2948 /* Presets+LoadSaveManipulate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C432979220CB2BB20063F795 /* Presets+LoadSaveManipulate.swift */; };
+		C4E67B6E214F5ECA006B2948 /* PresetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B4917D20C7C79C00FD565A /* PresetsViewController.swift */; };
+		C4E67B6F214F5ECD006B2948 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C435C4F420C5234900DAECCD /* CategoryCell.swift */; };
+		C4E67B70214F5ECD006B2948 /* PresetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C435C4F720C5234900DAECCD /* PresetCell.swift */; };
+		C4E67B71214F5ECD006B2948 /* PresetUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB3FDF1FC8C0EA007F8081 /* PresetUIButton.swift */; };
+		C4E67B72214F5ED0006B2948 /* Rate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E951341F3644E5009A8B00 /* Rate.swift */; };
+		C4E67B73214F5ED0006B2948 /* SequencerPanelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B4910420C7C5C500FD565A /* SequencerPanelController.swift */; };
+		C4E67B74214F5ED5006B2948 /* ArpButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B4910220C7C5C500FD565A /* ArpButton.swift */; };
+		C4E67B75214F5ED5006B2948 /* ArpDirectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B4910020C7C5C500FD565A /* ArpDirectionButton.swift */; };
+		C4E67B76214F5ED5006B2948 /* RateKnob.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47FB3C21F36694300EF2F01 /* RateKnob.swift */; };
+		C4E67B77214F5ED5006B2948 /* SliderTransposeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94FEFEC71F3150D00064EC09 /* SliderTransposeButton.swift */; };
+		C4E67B78214F5EDA006B2948 /* TempoStyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B491B720C7DEB100FD565A /* TempoStyleKit.swift */; };
+		C4E67B79214F5EDA006B2948 /* ArpButtonStyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B491B820C7DEB100FD565A /* ArpButtonStyleKit.swift */; };
+		C4E67B7A214F5EDA006B2948 /* SliderStyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B491B920C7DEB100FD565A /* SliderStyleKit.swift */; };
+		C4E67B7B214F5EDA006B2948 /* ArpDirectionStyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B491BA20C7DEB100FD565A /* ArpDirectionStyleKit.swift */; };
+		C4E67B7C214F5EDD006B2948 /* TempoStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B491B320C7D19F00FD565A /* TempoStepper.swift */; };
+		C4E67B7D214F5EDD006B2948 /* VerticalSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 945C3A0E1F31428B0086D58B /* VerticalSlider.swift */; };
+		C4E67B7E214F5EE3006B2948 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B4910B20C7C5E400FD565A /* AppSettings.swift */; };
+		C4E67B7F214F5EE3006B2948 /* Manager+AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B4910C20C7C5E400FD565A /* Manager+AppSettings.swift */; };
+		C4E67B80214F5EE5006B2948 /* TouchPadPanelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B4913920C7C69D00FD565A /* TouchPadPanelController.swift */; };
+		C4E67B81214F5EE9006B2948 /* AKTouchPadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B4913620C7C69D00FD565A /* AKTouchPadView.swift */; };
+		C4E67B82214F5EE9006B2948 /* AKVerticalPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B4913720C7C69D00FD565A /* AKVerticalPad.swift */; };
+		C4E67B83214F5EE9006B2948 /* TouchPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B4913B20C7C69D00FD565A /* TouchPoint.swift */; };
+		C4E67B84214F5EE9006B2948 /* TouchPointStyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B4913A20C7C69D00FD565A /* TouchPointStyleKit.swift */; };
+		C4E67B85214F5EEC006B2948 /* Tuning.swift in Sources */ = {isa = PBXBuildFile; fileRef = C435C52C20C52D4B00DAECCD /* Tuning.swift */; };
+		C4E67B86214F5EEC006B2948 /* Tunings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C435C52E20C52D4B00DAECCD /* Tunings.swift */; };
+		C4E67B87214F5EEC006B2948 /* Tunings+Harmonic.swift in Sources */ = {isa = PBXBuildFile; fileRef = C435C52F20C52D4B00DAECCD /* Tunings+Harmonic.swift */; };
+		C4E67B88214F5EEC006B2948 /* Tunings+Math.swift in Sources */ = {isa = PBXBuildFile; fileRef = C435C52D20C52D4B00DAECCD /* Tunings+Math.swift */; };
+		C4E67B89214F5EF3006B2948 /* TuningsPanelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B4915720C7C70D00FD565A /* TuningsPanelController.swift */; };
+		C4E67B8A214F5EF3006B2948 /* TuningsPanel+UITableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B4915620C7C70D00FD565A /* TuningsPanel+UITableViewDataSource.swift */; };
+		C4E67B8B214F5EF3006B2948 /* TuningsPanel+UITableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B4915520C7C70D00FD565A /* TuningsPanel+UITableViewDelegate.swift */; };
+		C4E67B8C214F5EF7006B2948 /* TuningCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C435C4F620C5234900DAECCD /* TuningCell.swift */; };
+		C4E67B8D214F5EF7006B2948 /* TuningsPitchWheelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B4915420C7C70D00FD565A /* TuningsPitchWheelView.swift */; };
+		C4E67B8E214F634D006B2948 /* triangle_0000.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC1D2123CDE70093ADC8 /* triangle_0000.json */; };
+		C4E67B8F214F634D006B2948 /* triangle_0001.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC162123CDE70093ADC8 /* triangle_0001.json */; };
+		C4E67B90214F634D006B2948 /* triangle_0002.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC0E2123CDE70093ADC8 /* triangle_0002.json */; };
+		C4E67B91214F634D006B2948 /* triangle_0005.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CBFB2123CDE70093ADC8 /* triangle_0005.json */; };
+		C4E67B92214F634D006B2948 /* triangle_0010.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC242123CDE70093ADC8 /* triangle_0010.json */; };
+		C4E67B93214F634D006B2948 /* triangle_0021.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC192123CDE70093ADC8 /* triangle_0021.json */; };
+		C4E67B94214F634D006B2948 /* triangle_0042.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC052123CDE70093ADC8 /* triangle_0042.json */; };
+		C4E67B95214F634D006B2948 /* triangle_0084.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC272123CDE70093ADC8 /* triangle_0084.json */; };
+		C4E67B96214F634D006B2948 /* triangle_0168.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC122123CDE70093ADC8 /* triangle_0168.json */; };
+		C4E67B97214F634D006B2948 /* triangle_0337.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC042123CDE70093ADC8 /* triangle_0337.json */; };
+		C4E67B98214F634D006B2948 /* triangle_0674.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CBF62123CDE70093ADC8 /* triangle_0674.json */; };
+		C4E67B99214F634D006B2948 /* triangle_1348.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC1B2123CDE70093ADC8 /* triangle_1348.json */; };
+		C4E67B9A214F634D006B2948 /* triangle_2696.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC072123CDE70093ADC8 /* triangle_2696.json */; };
+		C4E67B9B214F6351006B2948 /* bandlimitedWaveformFrequencies.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CBF72123CDE70093ADC8 /* bandlimitedWaveformFrequencies.json */; };
+		C4E67B9C214F6351006B2948 /* bandlimitedWaveforms.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC172123CDE70093ADC8 /* bandlimitedWaveforms.json */; };
+		C4E67B9D214F6355006B2948 /* pwm_0000.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CBF82123CDE70093ADC8 /* pwm_0000.json */; };
+		C4E67B9E214F6355006B2948 /* pwm_0001.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC022123CDE70093ADC8 /* pwm_0001.json */; };
+		C4E67B9F214F6355006B2948 /* pwm_0002.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC202123CDE70093ADC8 /* pwm_0002.json */; };
+		C4E67BA0214F6355006B2948 /* pwm_0005.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC1C2123CDE70093ADC8 /* pwm_0005.json */; };
+		C4E67BA1214F6355006B2948 /* pwm_0010.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC0B2123CDE70093ADC8 /* pwm_0010.json */; };
+		C4E67BA2214F6355006B2948 /* pwm_0021.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CBFF2123CDE70093ADC8 /* pwm_0021.json */; };
+		C4E67BA3214F6355006B2948 /* pwm_0042.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC2B2123CDE70093ADC8 /* pwm_0042.json */; };
+		C4E67BA4214F6355006B2948 /* pwm_0084.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC092123CDE70093ADC8 /* pwm_0084.json */; };
+		C4E67BA5214F6355006B2948 /* pwm_0168.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC032123CDE70093ADC8 /* pwm_0168.json */; };
+		C4E67BA6214F6355006B2948 /* pwm_0337.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC102123CDE70093ADC8 /* pwm_0337.json */; };
+		C4E67BA7214F6355006B2948 /* pwm_0674.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC1F2123CDE70093ADC8 /* pwm_0674.json */; };
+		C4E67BA8214F6355006B2948 /* pwm_1348.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CBFD2123CDE70093ADC8 /* pwm_1348.json */; };
+		C4E67BA9214F6355006B2948 /* pwm_2696.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC282123CDE70093ADC8 /* pwm_2696.json */; };
+		C4E67BAA214F635A006B2948 /* square_0000.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC1E2123CDE70093ADC8 /* square_0000.json */; };
+		C4E67BAB214F635A006B2948 /* square_0001.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC112123CDE70093ADC8 /* square_0001.json */; };
+		C4E67BAC214F635A006B2948 /* square_0002.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC0D2123CDE70093ADC8 /* square_0002.json */; };
+		C4E67BAD214F635A006B2948 /* square_0005.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CBFC2123CDE70093ADC8 /* square_0005.json */; };
+		C4E67BAE214F635A006B2948 /* square_0010.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC262123CDE70093ADC8 /* square_0010.json */; };
+		C4E67BAF214F635A006B2948 /* square_0021.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC1A2123CDE70093ADC8 /* square_0021.json */; };
+		C4E67BB0214F635A006B2948 /* square_0042.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC082123CDE70093ADC8 /* square_0042.json */; };
+		C4E67BB1214F635A006B2948 /* square_0084.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC232123CDE70093ADC8 /* square_0084.json */; };
+		C4E67BB2214F635A006B2948 /* square_0168.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC152123CDE70093ADC8 /* square_0168.json */; };
+		C4E67BB3214F635A006B2948 /* square_0337.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC012123CDE70093ADC8 /* square_0337.json */; };
+		C4E67BB4214F635A006B2948 /* square_0674.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CBF92123CDE70093ADC8 /* square_0674.json */; };
+		C4E67BB5214F635A006B2948 /* square_1348.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC182123CDE70093ADC8 /* square_1348.json */; };
+		C4E67BB6214F635A006B2948 /* square_2696.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC062123CDE70093ADC8 /* square_2696.json */; };
+		C4E67BB7214F635E006B2948 /* sawtooth_0000.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC212123CDE70093ADC8 /* sawtooth_0000.json */; };
+		C4E67BB8214F635E006B2948 /* sawtooth_0001.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC222123CDE70093ADC8 /* sawtooth_0001.json */; };
+		C4E67BB9214F635E006B2948 /* sawtooth_0002.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CBFA2123CDE70093ADC8 /* sawtooth_0002.json */; };
+		C4E67BBA214F635E006B2948 /* sawtooth_0005.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC0F2123CDE70093ADC8 /* sawtooth_0005.json */; };
+		C4E67BBB214F635E006B2948 /* sawtooth_0010.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC142123CDE70093ADC8 /* sawtooth_0010.json */; };
+		C4E67BBC214F635E006B2948 /* sawtooth_0021.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC2A2123CDE70093ADC8 /* sawtooth_0021.json */; };
+		C4E67BBD214F635E006B2948 /* sawtooth_0042.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC002123CDE70093ADC8 /* sawtooth_0042.json */; };
+		C4E67BBE214F635E006B2948 /* sawtooth_0084.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC132123CDE70093ADC8 /* sawtooth_0084.json */; };
+		C4E67BBF214F635E006B2948 /* sawtooth_0168.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC252123CDE70093ADC8 /* sawtooth_0168.json */; };
+		C4E67BC0214F635E006B2948 /* sawtooth_0337.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC0A2123CDE70093ADC8 /* sawtooth_0337.json */; };
+		C4E67BC1214F635E006B2948 /* sawtooth_0674.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC0C2123CDE70093ADC8 /* sawtooth_0674.json */; };
+		C4E67BC2214F635E006B2948 /* sawtooth_1348.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC292123CDE70093ADC8 /* sawtooth_1348.json */; };
+		C4E67BC3214F635E006B2948 /* sawtooth_2696.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CBFE2123CDE70093ADC8 /* sawtooth_2696.json */; };
+		C4E67BC4214F6364006B2948 /* BankA.json in Resources */ = {isa = PBXBuildFile; fileRef = C435C51B20C52D1700DAECCD /* BankA.json */; };
+		C4E67BC5214F6364006B2948 /* Brice Beasley.json in Resources */ = {isa = PBXBuildFile; fileRef = C435C51620C52D1700DAECCD /* Brice Beasley.json */; };
+		C4E67BC6214F6364006B2948 /* Bonus.json in Resources */ = {isa = PBXBuildFile; fileRef = C435C51820C52D1700DAECCD /* Bonus.json */; };
+		C4E67BC7214F6364006B2948 /* DJ Puzzle.json in Resources */ = {isa = PBXBuildFile; fileRef = C435C51720C52D1700DAECCD /* DJ Puzzle.json */; };
+		C4E67BC8214F6364006B2948 /* Electronisounds.json in Resources */ = {isa = PBXBuildFile; fileRef = 94985FF220D8899300D71239 /* Electronisounds.json */; };
+		C4E67BC9214F6364006B2948 /* JEC.json in Resources */ = {isa = PBXBuildFile; fileRef = 94985FF420D8908500D71239 /* JEC.json */; };
+		C4E67BCA214F6364006B2948 /* Red Sky Lullaby.json in Resources */ = {isa = PBXBuildFile; fileRef = C435C51A20C52D1700DAECCD /* Red Sky Lullaby.json */; };
+		C4E67BCB214F6364006B2948 /* Sound of Izrael.json in Resources */ = {isa = PBXBuildFile; fileRef = 94D37DD320E06641002008A4 /* Sound of Izrael.json */; };
+		C4E67BCC214F6364006B2948 /* Starter Bank.json in Resources */ = {isa = PBXBuildFile; fileRef = 941752B920E2BD2E0076D953 /* Starter Bank.json */; };
+		C4E67BCD214F6364006B2948 /* User.json in Resources */ = {isa = PBXBuildFile; fileRef = C435C51920C52D1700DAECCD /* User.json */; };
 		C4F7ECAF1F244A4B0011B119 /* ToggleButtonStyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F7ECA61F2446960011B119 /* ToggleButtonStyleKit.swift */; };
 		C4F7ECB51F244A510011B119 /* Knob+Touches.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F7ECA81F2446960011B119 /* Knob+Touches.swift */; };
 		C4F7ECB61F244A510011B119 /* Knob.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F7ECA91F2446960011B119 /* Knob.swift */; };
 		C4F7ECB71F244A510011B119 /* KnobStyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F7ECAA1F2446960011B119 /* KnobStyleKit.swift */; };
 		C4F7ECB81F244A510011B119 /* ToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F7ECAB1F2446960011B119 /* ToggleButton.swift */; };
+		D0B7BD44133DD306DED9EE50 /* Pods_SynthOneAUv3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D11887DA34D0B693B89B4716 /* Pods_SynthOneAUv3.framework */; };
 		EA090E4420F74B0A0012A8F7 /* Private.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA090E4320F74B0A0012A8F7 /* Private.swift */; };
 		EA388CDE210498AC0026C0C0 /* About.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA388CE0210498AC0026C0C0 /* About.storyboard */; };
 		EA388CE1210498DD0026C0C0 /* Header.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA388CE3210498DD0026C0C0 /* Header.storyboard */; };
@@ -245,6 +455,13 @@
 			remoteGlobalIDString = 941645C920B3597300D62851;
 			remoteInfo = OneSignalNotificationServiceExtension;
 		};
+		C4E67AF5214F5B0C006B2948 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C4D193BC1F1187B500FF4FE4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C4E67AE8214F5B0C006B2948;
+			remoteInfo = SynthOneAUv3;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -255,6 +472,7 @@
 			dstSubfolderSpec = 13;
 			files = (
 				941645D120B3597300D62851 /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */,
+				C4E67AF7214F5B0C006B2948 /* SynthOneAUv3.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -262,6 +480,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		057FCA819C9A57CA183D22C1 /* Pods-SynthOneAUv3.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SynthOneAUv3.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SynthOneAUv3/Pods-SynthOneAUv3.debug.xcconfig"; sourceTree = "<group>"; };
+		1978E84CD92FA110FF4DD954 /* Pods-SynthOneAUv3.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SynthOneAUv3.release.xcconfig"; path = "Pods/Target Support Files/Pods-SynthOneAUv3/Pods-SynthOneAUv3.release.xcconfig"; sourceTree = "<group>"; };
 		3A319653D44EC41DAFAEB963 /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		45E1A7C3C54D27427C4A71B1 /* Pods_AKS1Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AKS1Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		51EC225D22B5EE94B01AA474 /* Pods-AudioKitSynthOne.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudioKitSynthOne.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AudioKitSynthOne/Pods-AudioKitSynthOne.debug.xcconfig"; sourceTree = "<group>"; };
@@ -513,12 +733,19 @@
 		C4D193CC1F1187B500FF4FE4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C4D193CE1F1187B500FF4FE4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C4D193D31F1187B500FF4FE4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C4E67AE9214F5B0C006B2948 /* SynthOneAUv3.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SynthOneAUv3.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		C4E67AEE214F5B0C006B2948 /* AudioUnitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioUnitViewController.swift; sourceTree = "<group>"; };
+		C4E67AF1214F5B0C006B2948 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		C4E67AF3214F5B0C006B2948 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C4E67AF4214F5B0C006B2948 /* SynthOneAUv3-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SynthOneAUv3-Bridging-Header.h"; sourceTree = "<group>"; };
+		C4E67AFB214F5C2E006B2948 /* SynthOneAUv3AudioUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynthOneAUv3AudioUnit.swift; sourceTree = "<group>"; };
 		C4F7ECA61F2446960011B119 /* ToggleButtonStyleKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleButtonStyleKit.swift; sourceTree = "<group>"; };
 		C4F7ECA81F2446960011B119 /* Knob+Touches.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Knob+Touches.swift"; sourceTree = "<group>"; };
 		C4F7ECA91F2446960011B119 /* Knob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Knob.swift; sourceTree = "<group>"; };
 		C4F7ECAA1F2446960011B119 /* KnobStyleKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnobStyleKit.swift; sourceTree = "<group>"; };
 		C4F7ECAB1F2446960011B119 /* ToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleButton.swift; sourceTree = "<group>"; };
 		CB0076A913A8D9EB5B5A6C27 /* Pods_OneSignalNotificationServiceExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneSignalNotificationServiceExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D11887DA34D0B693B89B4716 /* Pods_SynthOneAUv3.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SynthOneAUv3.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D96BC33C5D07149EC2FAB8CE /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.release.xcconfig"; path = "Pods/Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.release.xcconfig"; sourceTree = "<group>"; };
 		E2883EE9358887836A57FE08 /* Pods-AudioKitSynthOne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AudioKitSynthOne.release.xcconfig"; path = "Pods/Target Support Files/Pods-AudioKitSynthOne/Pods-AudioKitSynthOne.release.xcconfig"; sourceTree = "<group>"; };
 		EA090E4320F74B0A0012A8F7 /* Private.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Private.swift; sourceTree = "<group>"; };
@@ -665,6 +892,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C4E67AE6214F5B0C006B2948 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D0B7BD44133DD306DED9EE50 /* Pods_SynthOneAUv3.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -677,6 +912,8 @@
 				D96BC33C5D07149EC2FAB8CE /* Pods-OneSignalNotificationServiceExtension.release.xcconfig */,
 				5FAA47B316A5F659F440DAC9 /* Pods-AKS1Extension.debug.xcconfig */,
 				90231BFB16779C7C2CD6CB3F /* Pods-AKS1Extension.release.xcconfig */,
+				057FCA819C9A57CA183D22C1 /* Pods-SynthOneAUv3.debug.xcconfig */,
+				1978E84CD92FA110FF4DD954 /* Pods-SynthOneAUv3.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -721,6 +958,7 @@
 				BA27CDAC229BF66A1C649B42 /* Pods_AudioKitSynthOne.framework */,
 				CB0076A913A8D9EB5B5A6C27 /* Pods_OneSignalNotificationServiceExtension.framework */,
 				45E1A7C3C54D27427C4A71B1 /* Pods_AKS1Extension.framework */,
+				D11887DA34D0B693B89B4716 /* Pods_SynthOneAUv3.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1215,6 +1453,7 @@
 				EA143DF8210A86DC00543E17 /* Dev.strings */,
 				C435C4D620C511DB00DAECCD /* README.md */,
 				C4D193C61F1187B500FF4FE4 /* AudioKitSynthOne */,
+				C4E67AEA214F5B0C006B2948 /* SynthOneAUv3 */,
 				9461F0371F5CAAE600EE226E /* Frameworks */,
 				941645CB20B3597300D62851 /* OneSignalNotificationServiceExtension */,
 				54056ADC83E937067BBBA387 /* Pods */,
@@ -1227,6 +1466,7 @@
 			children = (
 				C4D193C41F1187B500FF4FE4 /* AudioKitSynthOne.app */,
 				941645CA20B3597300D62851 /* OneSignalNotificationServiceExtension.appex */,
+				C4E67AE9214F5B0C006B2948 /* SynthOneAUv3.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1265,6 +1505,18 @@
 				C435C52B20C52D4B00DAECCD /* Tunings */,
 			);
 			path = AudioKitSynthOne;
+			sourceTree = "<group>";
+		};
+		C4E67AEA214F5B0C006B2948 /* SynthOneAUv3 */ = {
+			isa = PBXGroup;
+			children = (
+				C4E67AEE214F5B0C006B2948 /* AudioUnitViewController.swift */,
+				C4E67AF0214F5B0C006B2948 /* MainInterface.storyboard */,
+				C4E67AF3214F5B0C006B2948 /* Info.plist */,
+				C4E67AF4214F5B0C006B2948 /* SynthOneAUv3-Bridging-Header.h */,
+				C4E67AFB214F5C2E006B2948 /* SynthOneAUv3AudioUnit.swift */,
+			);
+			path = SynthOneAUv3;
 			sourceTree = "<group>";
 		};
 		C4F7ECA51F2446960011B119 /* Controls */ = {
@@ -1384,6 +1636,8 @@
 			);
 			buildRules = (
 			);
+			dependencies = (
+			);
 			name = OneSignalNotificationServiceExtension;
 			productName = OneSignalNotificationServiceExtension;
 			productReference = 941645CA20B3597300D62851 /* OneSignalNotificationServiceExtension.appex */;
@@ -1405,11 +1659,30 @@
 			);
 			dependencies = (
 				941645D020B3597300D62851 /* PBXTargetDependency */,
+				C4E67AF6214F5B0C006B2948 /* PBXTargetDependency */,
 			);
 			name = AudioKitSynthOne;
 			productName = AudioKitSynthOne;
 			productReference = C4D193C41F1187B500FF4FE4 /* AudioKitSynthOne.app */;
 			productType = "com.apple.product-type.application";
+		};
+		C4E67AE8214F5B0C006B2948 /* SynthOneAUv3 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C4E67AF8214F5B0C006B2948 /* Build configuration list for PBXNativeTarget "SynthOneAUv3" */;
+			buildPhases = (
+				8DC1F9722E11F802350943A8 /* [CP] Check Pods Manifest.lock */,
+				C4E67AE5214F5B0C006B2948 /* Sources */,
+				C4E67AE6214F5B0C006B2948 /* Frameworks */,
+				C4E67AE7214F5B0C006B2948 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SynthOneAUv3;
+			productName = SynthOneAUv3;
+			productReference = C4E67AE9214F5B0C006B2948 /* SynthOneAUv3.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -1417,7 +1690,7 @@
 		C4D193BC1F1187B500FF4FE4 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0940;
+				LastSwiftUpdateCheck = 1000;
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = AudioKit;
 				TargetAttributes = {
@@ -1446,6 +1719,11 @@
 							};
 						};
 					};
+					C4E67AE8214F5B0C006B2948 = {
+						CreatedOnToolsVersion = 10.0;
+						DevelopmentTeam = 9W69ZP8S5F;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = C4D193BF1F1187B500FF4FE4 /* Build configuration list for PBXProject "AudioKitSynthOne" */;
@@ -1469,6 +1747,7 @@
 			targets = (
 				C4D193C31F1187B500FF4FE4 /* AudioKitSynthOne */,
 				941645C920B3597300D62851 /* OneSignalNotificationServiceExtension */,
+				C4E67AE8214F5B0C006B2948 /* SynthOneAUv3 */,
 			);
 		};
 /* End PBXProject section */
@@ -1562,6 +1841,78 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C4E67AE7214F5B0C006B2948 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C4E67BB5214F635A006B2948 /* square_1348.json in Resources */,
+				C4E67BC1214F635E006B2948 /* sawtooth_0674.json in Resources */,
+				C4E67BCB214F6364006B2948 /* Sound of Izrael.json in Resources */,
+				C4E67B99214F634D006B2948 /* triangle_1348.json in Resources */,
+				C4E67BA2214F6355006B2948 /* pwm_0021.json in Resources */,
+				C4E67BB6214F635A006B2948 /* square_2696.json in Resources */,
+				C4E67B98214F634D006B2948 /* triangle_0674.json in Resources */,
+				C4E67BBC214F635E006B2948 /* sawtooth_0021.json in Resources */,
+				C4E67BAB214F635A006B2948 /* square_0001.json in Resources */,
+				C4E67BC3214F635E006B2948 /* sawtooth_2696.json in Resources */,
+				C4E67BB9214F635E006B2948 /* sawtooth_0002.json in Resources */,
+				C4E67BB1214F635A006B2948 /* square_0084.json in Resources */,
+				C4E67BB2214F635A006B2948 /* square_0168.json in Resources */,
+				C4E67BB3214F635A006B2948 /* square_0337.json in Resources */,
+				C4E67B9B214F6351006B2948 /* bandlimitedWaveformFrequencies.json in Resources */,
+				C4E67BA4214F6355006B2948 /* pwm_0084.json in Resources */,
+				C4E67BA3214F6355006B2948 /* pwm_0042.json in Resources */,
+				C4E67B8F214F634D006B2948 /* triangle_0001.json in Resources */,
+				C4E67BA6214F6355006B2948 /* pwm_0337.json in Resources */,
+				C4E67BA8214F6355006B2948 /* pwm_1348.json in Resources */,
+				C4E67BAC214F635A006B2948 /* square_0002.json in Resources */,
+				C4E67BA1214F6355006B2948 /* pwm_0010.json in Resources */,
+				C4E67BC2214F635E006B2948 /* sawtooth_1348.json in Resources */,
+				C4E67B93214F634D006B2948 /* triangle_0021.json in Resources */,
+				C4E67B95214F634D006B2948 /* triangle_0084.json in Resources */,
+				C4E67BAA214F635A006B2948 /* square_0000.json in Resources */,
+				C4E67BBD214F635E006B2948 /* sawtooth_0042.json in Resources */,
+				C4E67BC7214F6364006B2948 /* DJ Puzzle.json in Resources */,
+				C4E67B91214F634D006B2948 /* triangle_0005.json in Resources */,
+				C4E67B96214F634D006B2948 /* triangle_0168.json in Resources */,
+				C4E67BC9214F6364006B2948 /* JEC.json in Resources */,
+				C4E67B9C214F6351006B2948 /* bandlimitedWaveforms.json in Resources */,
+				C4E67BA0214F6355006B2948 /* pwm_0005.json in Resources */,
+				C4E67BBA214F635E006B2948 /* sawtooth_0005.json in Resources */,
+				C4E67B92214F634D006B2948 /* triangle_0010.json in Resources */,
+				C4E67B90214F634D006B2948 /* triangle_0002.json in Resources */,
+				C4E67BBE214F635E006B2948 /* sawtooth_0084.json in Resources */,
+				C4E67BA9214F6355006B2948 /* pwm_2696.json in Resources */,
+				C4E67B94214F634D006B2948 /* triangle_0042.json in Resources */,
+				C4E67BC5214F6364006B2948 /* Brice Beasley.json in Resources */,
+				C4E67B9D214F6355006B2948 /* pwm_0000.json in Resources */,
+				C4E67BCD214F6364006B2948 /* User.json in Resources */,
+				C4E67BBF214F635E006B2948 /* sawtooth_0168.json in Resources */,
+				C4E67BA7214F6355006B2948 /* pwm_0674.json in Resources */,
+				C4E67BC4214F6364006B2948 /* BankA.json in Resources */,
+				C4E67B9F214F6355006B2948 /* pwm_0002.json in Resources */,
+				C4E67BA5214F6355006B2948 /* pwm_0168.json in Resources */,
+				C4E67BAD214F635A006B2948 /* square_0005.json in Resources */,
+				C4E67B9E214F6355006B2948 /* pwm_0001.json in Resources */,
+				C4E67BB7214F635E006B2948 /* sawtooth_0000.json in Resources */,
+				C4E67BB8214F635E006B2948 /* sawtooth_0001.json in Resources */,
+				C4E67BCA214F6364006B2948 /* Red Sky Lullaby.json in Resources */,
+				C4E67B9A214F634D006B2948 /* triangle_2696.json in Resources */,
+				C4E67BB4214F635A006B2948 /* square_0674.json in Resources */,
+				C4E67BBB214F635E006B2948 /* sawtooth_0010.json in Resources */,
+				C4E67BB0214F635A006B2948 /* square_0042.json in Resources */,
+				C4E67AF2214F5B0C006B2948 /* MainInterface.storyboard in Resources */,
+				C4E67BC8214F6364006B2948 /* Electronisounds.json in Resources */,
+				C4E67BAE214F635A006B2948 /* square_0010.json in Resources */,
+				C4E67BCC214F6364006B2948 /* Starter Bank.json in Resources */,
+				C4E67BAF214F635A006B2948 /* square_0021.json in Resources */,
+				C4E67B97214F634D006B2948 /* triangle_0337.json in Resources */,
+				C4E67B8E214F634D006B2948 /* triangle_0000.json in Resources */,
+				C4E67BC0214F635E006B2948 /* sawtooth_0337.json in Resources */,
+				C4E67BC6214F6364006B2948 /* Bonus.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
@@ -1583,6 +1934,28 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		8DC1F9722E11F802350943A8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SynthOneAUv3-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		A02F99CB702A38B4BC2953CB /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1590,11 +1963,13 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-AudioKitSynthOne/Pods-AudioKitSynthOne-frameworks.sh",
+				"${PODS_ROOT}/AudioKit/iOS/AudioKitUI.framework",
 				"${BUILT_PRODUCTS_DIR}/ChimpKit/ChimpKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Disk/Disk.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AudioKitUI.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChimpKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Disk.framework",
 			);
@@ -1794,6 +2169,156 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C4E67AE5214F5B0C006B2948 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C4E67B1A214F5E2A006B2948 /* AETime.m in Sources */,
+				C4E67B6F214F5ECD006B2948 /* CategoryCell.swift in Sources */,
+				C4E67B83214F5EE9006B2948 /* TouchPoint.swift in Sources */,
+				C4E67B27214F5E77006B2948 /* Manager+Audiobus.swift in Sources */,
+				C4E67B3C214F5E9D006B2948 /* FlatToggleButton.swift in Sources */,
+				C4E67B60214F5EC4006B2948 /* Manager+PresetsDelegate.swift in Sources */,
+				C4E67B79214F5EDA006B2948 /* ArpButtonStyleKit.swift in Sources */,
+				C4E67B34214F5E88006B2948 /* Manager+DevView.swift in Sources */,
+				C4E67B35214F5E8E006B2948 /* EffectsPanelController.swift in Sources */,
+				C4E67B1E214F5E3E006B2948 /* Bank.swift in Sources */,
+				C4E67B5B214F5EC1006B2948 /* NavButton.swift in Sources */,
+				C4E67B84214F5EE9006B2948 /* TouchPointStyleKit.swift in Sources */,
+				C4E67B07214F5E1F006B2948 /* S1DSPKernel+destroy.mm in Sources */,
+				C4E67B21214F5E71006B2948 /* AboutViewController.swift in Sources */,
+				C4E67B13214F5E22006B2948 /* S1AudioUnit.mm in Sources */,
+				C4E67B3A214F5E99006B2948 /* GeneratorsPanelController.swift in Sources */,
+				C4E67B0A214F5E1F006B2948 /* S1DSPKernel+getSetSynthParameters.mm in Sources */,
+				C4E67B43214F5EA5006B2948 /* Manager+HeaderDelegate.swift in Sources */,
+				C4E67B1F214F5E4B006B2948 /* UpdatableViewController.swift in Sources */,
+				C4E67B3B214F5E9D006B2948 /* FilterTypeButton.swift in Sources */,
+				C4E67B12214F5E1F006B2948 /* S1DSPKernel+toggleKeys.mm in Sources */,
+				C4E67B7D214F5EDD006B2948 /* VerticalSlider.swift in Sources */,
+				C4E67B75214F5ED5006B2948 /* ArpDirectionButton.swift in Sources */,
+				C4E67B52214F5EB8006B2948 /* MIDILearnable.swift in Sources */,
+				C4E67B78214F5EDA006B2948 /* TempoStyleKit.swift in Sources */,
+				C4E67B63214F5EC4006B2948 /* PresetEditorViewController.swift in Sources */,
+				C4E67B56214F5EBB006B2948 /* Manager+callbacks.swift in Sources */,
+				C4E67B85214F5EEC006B2948 /* Tuning.swift in Sources */,
+				C4E67B26214F5E77006B2948 /* Audiobus+MIDI.swift in Sources */,
+				C4E67B76214F5ED5006B2948 /* RateKnob.swift in Sources */,
+				C4E67B28214F5E7B006B2948 /* CallbackButton.swift in Sources */,
+				C4E67B0C214F5E1F006B2948 /* S1DSPKernel+parameters.mm in Sources */,
+				C4E67B58214F5EBB006B2948 /* Manager+PushNotification.swift in Sources */,
+				C4E67B14214F5E26006B2948 /* S1NoteState.mm in Sources */,
+				C4E67AEF214F5B0C006B2948 /* AudioUnitViewController.swift in Sources */,
+				C4E67B6B214F5EC9006B2948 /* Presets+UITableViewDelegate.swift in Sources */,
+				C4E67B82214F5EE9006B2948 /* AKVerticalPad.swift in Sources */,
+				C4E67B70214F5ECD006B2948 /* PresetCell.swift in Sources */,
+				C4E67B19214F5E2A006B2948 /* AEUtilities.m in Sources */,
+				C4E67B1B214F5E2A006B2948 /* AETypes.m in Sources */,
+				C4E67B53214F5EB8006B2948 /* MIDISettingsViewController.swift in Sources */,
+				C4E67B2E214F5E7F006B2948 /* KnobStyleKit.swift in Sources */,
+				C4E67B04214F5DE4006B2948 /* Helpers.swift in Sources */,
+				C4E67B3E214F5EA1006B2948 /* FlatToggleButtonStyleKit.swift in Sources */,
+				C4E67B7F214F5EE3006B2948 /* Manager+AppSettings.swift in Sources */,
+				C4E67B3F214F5EA1006B2948 /* MorphSelectorStyleKit.swift in Sources */,
+				C4E67B7B214F5EDA006B2948 /* ArpDirectionStyleKit.swift in Sources */,
+				C4E67B47214F5EA8006B2948 /* WheelSettingsViewController.swift in Sources */,
+				C4E67B06214F5E1F006B2948 /* S1DSPKernel.mm in Sources */,
+				C4E67B55214F5EB8006B2948 /* Manager+MIDISettingsPopOverDelegate.swift in Sources */,
+				C4E67B7A214F5EDA006B2948 /* SliderStyleKit.swift in Sources */,
+				C4E67B0E214F5E1F006B2948 /* S1DSPKernel+reset.mm in Sources */,
+				C4E67B3D214F5E9D006B2948 /* MorphSelector.swift in Sources */,
+				C4E67B2A214F5E7B006B2948 /* ToggleButton.swift in Sources */,
+				C4E67B77214F5ED5006B2948 /* SliderTransposeButton.swift in Sources */,
+				C4E67B29214F5E7B006B2948 /* SynthButton.swift in Sources */,
+				C4E67B88214F5EEC006B2948 /* Tunings+Math.swift in Sources */,
+				C4E67B2F214F5E7F006B2948 /* Knob+Touches.swift in Sources */,
+				C4E67B81214F5EE9006B2948 /* AKTouchPadView.swift in Sources */,
+				C4E67B5F214F5EC4006B2948 /* BankEditorViewController.swift in Sources */,
+				C4E67B6E214F5ECA006B2948 /* PresetsViewController.swift in Sources */,
+				C4E67B2C214F5E7B006B2948 /* ToggleSwitch.swift in Sources */,
+				C4E67B8A214F5EF3006B2948 /* TuningsPanel+UITableViewDataSource.swift in Sources */,
+				C4E67B57214F5EBB006B2948 /* Manager+EmbeddedViewsDelegate.swift in Sources */,
+				C4E67B7C214F5EDD006B2948 /* TempoStepper.swift in Sources */,
+				C4E67B5E214F5EC1006B2948 /* Manager+Navigation.swift in Sources */,
+				C4E67B05214F5DE8006B2948 /* Private.swift in Sources */,
+				C4E67B73214F5ED0006B2948 /* SequencerPanelController.swift in Sources */,
+				C4E67B31214F5E84006B2948 /* Stepper.swift in Sources */,
+				C4E67B80214F5EE5006B2948 /* TouchPadPanelController.swift in Sources */,
+				C4E67B62214F5EC4006B2948 /* PresetDataManager.swift in Sources */,
+				C4E67B68214F5EC9006B2948 /* Presets+PresetPopOverDelegate.swift in Sources */,
+				C4E67B6C214F5EC9006B2948 /* Presets+UITextViewDelegate.swift in Sources */,
+				C4E67B16214F5E2A006B2948 /* AEMessageQueue.m in Sources */,
+				C4E67B8C214F5EF7006B2948 /* TuningCell.swift in Sources */,
+				C4E67B1C214F5E2A006B2948 /* AEMainThreadEndpoint.m in Sources */,
+				C4E67B2B214F5E7B006B2948 /* ToggleButtonStyleKit.swift in Sources */,
+				C4E67B5C214F5EC1006B2948 /* NavButtonStyleKit.swift in Sources */,
+				C4E67B41214F5EA5006B2948 /* HeaderNavButton.swift in Sources */,
+				C4E67B69214F5EC9006B2948 /* Presets+UIDocumentPickerDelegate.swift in Sources */,
+				C4E67B4B214F5EAC006B2948 /* ModWheelStyleKit.swift in Sources */,
+				C4E67B72214F5ED0006B2948 /* Rate.swift in Sources */,
+				C4E67B87214F5EEC006B2948 /* Tunings+Harmonic.swift in Sources */,
+				C4E67AFC214F5C2F006B2948 /* SynthOneAUv3AudioUnit.swift in Sources */,
+				C4E67B86214F5EEC006B2948 /* Tunings.swift in Sources */,
+				C4E67B59214F5EBB006B2948 /* UIViewController+DisplayAlert.swift in Sources */,
+				C4E67B65214F5EC9006B2948 /* Presets+BankPopOverDelegate.swift in Sources */,
+				C4E67B40214F5EA1006B2948 /* LFOPickerStyleKit.swift in Sources */,
+				C4E67B74214F5ED5006B2948 /* ArpButton.swift in Sources */,
+				C4E67B5D214F5EC1006B2948 /* PanelController.swift in Sources */,
+				C4E67B51214F5EB8006B2948 /* MIDIKnob.swift in Sources */,
+				C4E67B64214F5EC4006B2948 /* PresetsCategoriesViewController.swift in Sources */,
+				C4E67B24214F5E74006B2948 /* MailingListViewController.swift in Sources */,
+				C4E67B8D214F5EF7006B2948 /* TuningsPitchWheelView.swift in Sources */,
+				C4E67B8B214F5EF3006B2948 /* TuningsPanel+UITableViewDelegate.swift in Sources */,
+				C4E67B44214F5EA8006B2948 /* KeyboardSettingsViewController.swift in Sources */,
+				C4E67B38214F5E91006B2948 /* LFOToggle.swift in Sources */,
+				C4E67B4D214F5EAF006B2948 /* LinkExtensions.swift in Sources */,
+				C4E67B54214F5EB8006B2948 /* Manager+MIDIListener.swift in Sources */,
+				C4E67B50214F5EB8006B2948 /* MIDIInput.swift in Sources */,
+				C4E67B18214F5E2A006B2948 /* AEArray.m in Sources */,
+				C4E67B10214F5E1F006B2948 /* S1DSPKernel+startStopNotes.mm in Sources */,
+				C4E67B22214F5E71006B2948 /* InfoViewController.swift in Sources */,
+				C4E67B15214F5E2A006B2948 /* AEWeakRetainingProxy.m in Sources */,
+				C4E67B37214F5E91006B2948 /* LFOButtonStyleKit.swift in Sources */,
+				C4E67B6D214F5EC9006B2948 /* Presets+LoadSaveManipulate.swift in Sources */,
+				C4E67B49214F5EAC006B2948 /* KeyboardShowButton.swift in Sources */,
+				C4E67B4F214F5EB8006B2948 /* MIDICell.swift in Sources */,
+				C4E67B7E214F5EE3006B2948 /* AppSettings.swift in Sources */,
+				C4E67B48214F5EAC006B2948 /* BlackKeyStyleKit.swift in Sources */,
+				C4E67B66214F5EC9006B2948 /* Presets+CategoryDelegate.swift in Sources */,
+				C4E67B2D214F5E7B006B2948 /* ToggleSwitchStyleKit.swift in Sources */,
+				C4E67B01214F5DD0006B2948 /* AKSynthOne.swift in Sources */,
+				C4E67B5A214F5EC1006B2948 /* ChildPanel.swift in Sources */,
+				C4E67B17214F5E2A006B2948 /* AEManagedValue.m in Sources */,
+				C4E67B45214F5EA8006B2948 /* Manager+Keyboard.swift in Sources */,
+				C4E67B42214F5EA5006B2948 /* HeaderViewContoller.swift in Sources */,
+				C4E67B0B214F5E1F006B2948 /* S1DSPKernel+MIDI.mm in Sources */,
+				C4E67B46214F5EA8006B2948 /* Manager+ModWheelDelegate.swift in Sources */,
+				C4E67B33214F5E88006B2948 /* DevViewController.swift in Sources */,
+				C4E67B09214F5E1F006B2948 /* S1DSPKernel+getSetDependentParameters.mm in Sources */,
+				C4E67B03214F5DD0006B2948 /* SDSustainer.swift in Sources */,
+				C4E67B08214F5E1F006B2948 /* S1DSPKernel+didChanges.mm in Sources */,
+				C4E67B0F214F5E1F006B2948 /* S1DSPKernel+setup.mm in Sources */,
+				C4E67B0D214F5E1F006B2948 /* S1DSPKernel+process.mm in Sources */,
+				C4E67B61214F5EC4006B2948 /* Preset.swift in Sources */,
+				C4E67B4A214F5EAC006B2948 /* KeyboardView.swift in Sources */,
+				C4E67B02214F5DD0006B2948 /* Conductor.swift in Sources */,
+				C4E67B6A214F5EC9006B2948 /* Presets+UITableViewDataSource.swift in Sources */,
+				C4E67B36214F5E91006B2948 /* LFOWavePicker.swift in Sources */,
+				C4E67B39214F5E96006B2948 /* EnvelopesPanelController.swift in Sources */,
+				C4E67B89214F5EF3006B2948 /* TuningsPanelController.swift in Sources */,
+				C4E67B11214F5E1F006B2948 /* S1DSPKernel+tapers.mm in Sources */,
+				C4E67B25214F5E77006B2948 /* Audiobus.swift in Sources */,
+				C4E67B23214F5E74006B2948 /* Manager+MailingListDelegate.swift in Sources */,
+				C4E67B32214F5E84006B2948 /* StepperStyleKit.swift in Sources */,
+				C4E67B71214F5ECD006B2948 /* PresetUIButton.swift in Sources */,
+				C4E67B67214F5EC9006B2948 /* Presets+PresetCellDelegate.swift in Sources */,
+				C4E67B4E214F5EB8006B2948 /* ChannelStepper.swift in Sources */,
+				C4E67B30214F5E7F006B2948 /* Knob.swift in Sources */,
+				C4E67B1D214F5E2A006B2948 /* AEAudioThreadEndpoint.m in Sources */,
+				C4E67B20214F5E5A006B2948 /* Manager.swift in Sources */,
+				C4E67B4C214F5EAF006B2948 /* ABLLinkManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -1801,6 +2326,11 @@
 			isa = PBXTargetDependency;
 			target = 941645C920B3597300D62851 /* OneSignalNotificationServiceExtension */;
 			targetProxy = 941645CF20B3597300D62851 /* PBXContainerItemProxy */;
+		};
+		C4E67AF6214F5B0C006B2948 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C4E67AE8214F5B0C006B2948 /* SynthOneAUv3 */;
+			targetProxy = C4E67AF5214F5B0C006B2948 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1818,6 +2348,14 @@
 				94F53E7D212F11620012C0DE /* zh-Hans */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C4E67AF0214F5B0C006B2948 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C4E67AF1214F5B0C006B2948 /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 		EA143DF8210A86DC00543E17 /* Dev.strings */ = {
@@ -2246,6 +2784,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9W69ZP8S5F;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/Audiobus\"",
+					"$(SRCROOT)/../AudioKit/AudioKit/Core/AudioKitCore/**",
+				);
 				INFOPLIST_FILE = AudioKitSynthOne/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -2282,6 +2826,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9W69ZP8S5F;
 				GCC_OPTIMIZATION_LEVEL = fast;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/Audiobus\"",
+					"$(SRCROOT)/../AudioKit/AudioKit/Core/AudioKitCore/**",
+				);
 				INFOPLIST_FILE = AudioKitSynthOne/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -2300,6 +2850,74 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/AudioKitSynthOne/DSP/AudioKitSynthOne-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Release;
+		};
+		C4E67AF9214F5B0C006B2948 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 057FCA819C9A57CA183D22C1 /* Pods-SynthOneAUv3.debug.xcconfig */;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9W69ZP8S5F;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/Audiobus\"",
+					"$(SRCROOT)/../AudioKit/AudioKit/Core/AudioKitCore/**",
+				);
+				INFOPLIST_FILE = SynthOneAUv3/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.audiokitpro.AudioKitSynthOne.SynthOneAUv3;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_BRIDGING_HEADER = "SynthOneAUv3/SynthOneAUv3-Bridging-Header.h";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C4E67AFA214F5B0C006B2948 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1978E84CD92FA110FF4DD954 /* Pods-SynthOneAUv3.release.xcconfig */;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9W69ZP8S5F;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/Audiobus\"",
+					"$(SRCROOT)/../AudioKit/AudioKit/Core/AudioKitCore/**",
+				);
+				INFOPLIST_FILE = SynthOneAUv3/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.audiokitpro.AudioKitSynthOne.SynthOneAUv3;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "SynthOneAUv3/SynthOneAUv3-Bridging-Header.h";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -2329,6 +2947,15 @@
 			buildConfigurations = (
 				C4D193D71F1187B500FF4FE4 /* Debug */,
 				C4D193D81F1187B500FF4FE4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C4E67AF8214F5B0C006B2948 /* Build configuration list for PBXNativeTarget "SynthOneAUv3" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C4E67AF9214F5B0C006B2948 /* Debug */,
+				C4E67AFA214F5B0C006B2948 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

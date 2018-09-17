@@ -19,7 +19,7 @@ class Conductor: S1Protocol {
     static var sharedInstance = Conductor()
     var neverSleep = false {
         didSet {
-            UIApplication.shared.isIdleTimerDisabled = neverSleep
+//            UIApplication.shared.isIdleTimerDisabled = neverSleep
         }
     }
     var backgroundAudio = false
@@ -169,7 +169,7 @@ class Conductor: S1Protocol {
                 AKLog("Unsuccessful")
             }
         }
-        Audiobus.start()
+//        Audiobus.start()
     }
 
     func updateDisplayLabel(_ message: String) {

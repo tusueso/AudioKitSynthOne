@@ -168,7 +168,7 @@ class MailingListViewController: UIViewController, UITextFieldDelegate {
     @IBAction func learnMorePressed(_ sender: Any) {
 
         if let url = URL(string: "https://audiokitpro.com/audiokit-synth-one/") {
-            UIApplication.shared.open(url)
+//            UIApplication.shared.open(url)
         }
     }
 

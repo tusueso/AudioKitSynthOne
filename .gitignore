@@ -69,3 +69,5 @@ fastlane/test_output
 
 AudioKitSynthOne/Link/include
 AudioKitSynthOne/Link/lib
+
+.DS_Store

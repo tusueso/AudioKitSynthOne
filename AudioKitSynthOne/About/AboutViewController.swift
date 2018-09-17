@@ -56,14 +56,14 @@ class AboutViewController: UIViewController {
         githubButton.callback = { _ in
             self.githubButton.value = 0
             if let url = URL(string: "https://github.com/AudioKit/") {
-                UIApplication.shared.open(url)
+//                UIApplication.shared.open(url)
             }
         }
 
         videoButton.callback = { _ in
             self.videoButton.value = 0
             if let url = URL(string: "http://youtu.be/hwDNgCYowYs") {
-                UIApplication.shared.open(url)
+//                UIApplication.shared.open(url)
             }
         }
 
@@ -72,7 +72,7 @@ class AboutViewController: UIViewController {
             self.requestReview()
             if let url = URL(string:
                 "https://itunes.apple.com/us/app/audiokit-synth-one-synthesizer/id1371050497?ls=1&mt=8") {
-                UIApplication.shared.open(url)
+//                UIApplication.shared.open(url)
             }
         }
     }
