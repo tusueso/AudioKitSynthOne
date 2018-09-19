@@ -40,6 +40,12 @@ public class AudioUnitViewController: AUViewController, AUAudioUnitFactory {
     @IBAction func start(_ sender: Any) {
         Conductor.sharedInstance.start()
     }
+    override public func viewDidLayoutSubviews() {
+        print("view did layout subview")
+    }
+    override public func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        print("new size \(size)")
+    }
 
     @IBAction func preset1(_ sender: Any) {
         let d = [ "tuningMasterSet": [0.6,0.75,1.0,1.3333333333333333,1.6666666666666667],

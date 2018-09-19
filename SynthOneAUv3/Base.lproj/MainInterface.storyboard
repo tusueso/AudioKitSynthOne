@@ -48,6 +48,14 @@
                                     <action selector="preset2:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Zkq-st-g78"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3dd-4A-xOf">
+                                <rect key="frame" x="159" y="107" width="33" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Main"/>
+                                <connections>
+                                    <segue destination="YQ8-Wm-GxQ" kind="show" id="9Df-Ir-xsX"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -59,6 +67,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+        </scene>
+        <!--Main-->
+        <scene sceneID="pac-Ie-XAG">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="ParentViewController" storyboardName="Main" id="YQ8-Wm-GxQ" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0p3-sE-dLp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="778" y="-55"/>
         </scene>
     </scenes>
 </document>
