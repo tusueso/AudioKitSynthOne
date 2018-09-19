@@ -66,7 +66,7 @@ class SynthOneAUv3AudioUnit: AUAudioUnit {
             print("has controller ", configuration.hostHasController)
             print("")
         }
-        return [0, 1, 2]
+        return [1]
     }
 
     override var outputBusses: AUAudioUnitBusArray {

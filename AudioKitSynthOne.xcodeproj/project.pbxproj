@@ -75,6 +75,21 @@
 		C435C58920C530C900DAECCD /* S1DSPKernel.mm in Sources */ = {isa = PBXBuildFile; fileRef = C435C57620C530C900DAECCD /* S1DSPKernel.mm */; };
 		C43A13AE20FC4C7C009E2B30 /* ABLLinkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C43A13AD20FC4C7C009E2B30 /* ABLLinkManager.swift */; };
 		C45DF29C21016A0E000AB3FD /* LinkExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45DF29B21016A0E000AB3FD /* LinkExtensions.swift */; };
+		C473942821520F0500D339EA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4D193CB1F1187B500FF4FE4 /* Main.storyboard */; };
+		C473942921520F4F00D339EA /* About.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA388CE0210498AC0026C0C0 /* About.storyboard */; };
+		C473942A21520F4F00D339EA /* MailingList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA388CFB2104995B0026C0C0 /* MailingList.storyboard */; };
+		C473942B21520F4F00D339EA /* Dev.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA388CFE210548460026C0C0 /* Dev.storyboard */; };
+		C473942C21520F4F00D339EA /* Effects.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA388CE6210498E90026C0C0 /* Effects.storyboard */; };
+		C473942D21520F4F00D339EA /* Envelopes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA388CF52104991C0026C0C0 /* Envelopes.storyboard */; };
+		C473942E21520F4F00D339EA /* Generators.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA388CF8210499530026C0C0 /* Generators.storyboard */; };
+		C473942F21520F4F00D339EA /* Header.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA388CE3210498DD0026C0C0 /* Header.storyboard */; };
+		C473943021520F4F00D339EA /* Presets.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA388CE9210498F20026C0C0 /* Presets.storyboard */; };
+		C473943121520F4F00D339EA /* Sequencer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA388CF2210499110026C0C0 /* Sequencer.storyboard */; };
+		C473943221520F4F00D339EA /* TouchPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA388CEF210499070026C0C0 /* TouchPad.storyboard */; };
+		C473943321520F4F00D339EA /* Tunings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA388CEC210498FD0026C0C0 /* Tunings.storyboard */; };
+		C47394342152323900D339EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4D193CE1F1187B500FF4FE4 /* Assets.xcassets */; };
+		C4739435215232BE00D339EA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA388D1D21071BD50026C0C0 /* Localizable.strings */; };
+		C4739436215232C100D339EA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA388D1A21071BD50026C0C0 /* InfoPlist.strings */; };
 		C47FB3C31F36694300EF2F01 /* RateKnob.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47FB3C21F36694300EF2F01 /* RateKnob.swift */; };
 		C4B490E720C649D900FD565A /* S1DSPKernel+destroy.mm in Sources */ = {isa = PBXBuildFile; fileRef = C4B490E520C649D900FD565A /* S1DSPKernel+destroy.mm */; };
 		C4B490E920C64AC600FD565A /* S1DSPKernel+MIDI.mm in Sources */ = {isa = PBXBuildFile; fileRef = C4B490E820C64AC600FD565A /* S1DSPKernel+MIDI.mm */; };
@@ -1653,7 +1668,6 @@
 				C4D193C21F1187B500FF4FE4 /* Resources */,
 				A02F99CB702A38B4BC2953CB /* [CP] Embed Pods Frameworks */,
 				C474D95D1F13172B00946035 /* Embed App Extensions */,
-				C4421AA920B81D0500BE9F12 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1850,18 +1864,23 @@
 				C4E67BCB214F6364006B2948 /* Sound of Izrael.json in Resources */,
 				C4E67B99214F634D006B2948 /* triangle_1348.json in Resources */,
 				C4E67BA2214F6355006B2948 /* pwm_0021.json in Resources */,
+				C473943121520F4F00D339EA /* Sequencer.storyboard in Resources */,
 				C4E67BB6214F635A006B2948 /* square_2696.json in Resources */,
+				C473942E21520F4F00D339EA /* Generators.storyboard in Resources */,
 				C4E67B98214F634D006B2948 /* triangle_0674.json in Resources */,
 				C4E67BBC214F635E006B2948 /* sawtooth_0021.json in Resources */,
 				C4E67BAB214F635A006B2948 /* square_0001.json in Resources */,
 				C4E67BC3214F635E006B2948 /* sawtooth_2696.json in Resources */,
 				C4E67BB9214F635E006B2948 /* sawtooth_0002.json in Resources */,
 				C4E67BB1214F635A006B2948 /* square_0084.json in Resources */,
+				C473943221520F4F00D339EA /* TouchPad.storyboard in Resources */,
 				C4E67BB2214F635A006B2948 /* square_0168.json in Resources */,
 				C4E67BB3214F635A006B2948 /* square_0337.json in Resources */,
 				C4E67B9B214F6351006B2948 /* bandlimitedWaveformFrequencies.json in Resources */,
 				C4E67BA4214F6355006B2948 /* pwm_0084.json in Resources */,
+				C473942D21520F4F00D339EA /* Envelopes.storyboard in Resources */,
 				C4E67BA3214F6355006B2948 /* pwm_0042.json in Resources */,
+				C473942921520F4F00D339EA /* About.storyboard in Resources */,
 				C4E67B8F214F634D006B2948 /* triangle_0001.json in Resources */,
 				C4E67BA6214F6355006B2948 /* pwm_0337.json in Resources */,
 				C4E67BA8214F6355006B2948 /* pwm_1348.json in Resources */,
@@ -1872,6 +1891,7 @@
 				C4E67B95214F634D006B2948 /* triangle_0084.json in Resources */,
 				C4E67BAA214F635A006B2948 /* square_0000.json in Resources */,
 				C4E67BBD214F635E006B2948 /* sawtooth_0042.json in Resources */,
+				C473942821520F0500D339EA /* Main.storyboard in Resources */,
 				C4E67BC7214F6364006B2948 /* DJ Puzzle.json in Resources */,
 				C4E67B91214F634D006B2948 /* triangle_0005.json in Resources */,
 				C4E67B96214F634D006B2948 /* triangle_0168.json in Resources */,
@@ -1888,18 +1908,25 @@
 				C4E67B9D214F6355006B2948 /* pwm_0000.json in Resources */,
 				C4E67BCD214F6364006B2948 /* User.json in Resources */,
 				C4E67BBF214F635E006B2948 /* sawtooth_0168.json in Resources */,
+				C4739436215232C100D339EA /* InfoPlist.strings in Resources */,
+				C473942F21520F4F00D339EA /* Header.storyboard in Resources */,
 				C4E67BA7214F6355006B2948 /* pwm_0674.json in Resources */,
 				C4E67BC4214F6364006B2948 /* BankA.json in Resources */,
 				C4E67B9F214F6355006B2948 /* pwm_0002.json in Resources */,
 				C4E67BA5214F6355006B2948 /* pwm_0168.json in Resources */,
 				C4E67BAD214F635A006B2948 /* square_0005.json in Resources */,
+				C473942A21520F4F00D339EA /* MailingList.storyboard in Resources */,
 				C4E67B9E214F6355006B2948 /* pwm_0001.json in Resources */,
 				C4E67BB7214F635E006B2948 /* sawtooth_0000.json in Resources */,
+				C47394342152323900D339EA /* Assets.xcassets in Resources */,
 				C4E67BB8214F635E006B2948 /* sawtooth_0001.json in Resources */,
+				C473943321520F4F00D339EA /* Tunings.storyboard in Resources */,
 				C4E67BCA214F6364006B2948 /* Red Sky Lullaby.json in Resources */,
 				C4E67B9A214F634D006B2948 /* triangle_2696.json in Resources */,
+				C4739435215232BE00D339EA /* Localizable.strings in Resources */,
 				C4E67BB4214F635A006B2948 /* square_0674.json in Resources */,
 				C4E67BBB214F635E006B2948 /* sawtooth_0010.json in Resources */,
+				C473942B21520F4F00D339EA /* Dev.storyboard in Resources */,
 				C4E67BB0214F635A006B2948 /* square_0042.json in Resources */,
 				C4E67AF2214F5B0C006B2948 /* MainInterface.storyboard in Resources */,
 				C4E67BC8214F6364006B2948 /* Electronisounds.json in Resources */,
@@ -1908,6 +1935,8 @@
 				C4E67BAF214F635A006B2948 /* square_0021.json in Resources */,
 				C4E67B97214F634D006B2948 /* triangle_0337.json in Resources */,
 				C4E67B8E214F634D006B2948 /* triangle_0000.json in Resources */,
+				C473942C21520F4F00D339EA /* Effects.storyboard in Resources */,
+				C473943021520F4F00D339EA /* Presets.storyboard in Resources */,
 				C4E67BC0214F635E006B2948 /* sawtooth_0337.json in Resources */,
 				C4E67BC6214F6364006B2948 /* Bonus.json in Resources */,
 			);
@@ -1962,7 +1991,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-AudioKitSynthOne/Pods-AudioKitSynthOne-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-AudioKitSynthOne/Pods-AudioKitSynthOne-frameworks.sh",
 				"${PODS_ROOT}/AudioKit/iOS/AudioKitUI.framework",
 				"${BUILT_PRODUCTS_DIR}/ChimpKit/ChimpKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Disk/Disk.framework",
@@ -1975,21 +2004,8 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AudioKitSynthOne/Pods-AudioKitSynthOne-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AudioKitSynthOne/Pods-AudioKitSynthOne-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
-		};
-		C4421AA920B81D0500BE9F12 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
 		};
 		F326D17312DDE12585405CB6 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2788,7 +2804,6 @@
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
 					"\"${PODS_ROOT}/Headers/Public/Audiobus\"",
-					"$(SRCROOT)/../AudioKit/AudioKit/Core/AudioKitCore/**",
 				);
 				INFOPLIST_FILE = AudioKitSynthOne/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
@@ -2830,7 +2845,6 @@
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
 					"\"${PODS_ROOT}/Headers/Public/Audiobus\"",
-					"$(SRCROOT)/../AudioKit/AudioKit/Core/AudioKitCore/**",
 				);
 				INFOPLIST_FILE = AudioKitSynthOne/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
@@ -2873,7 +2887,6 @@
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
 					"\"${PODS_ROOT}/Headers/Public/Audiobus\"",
-					"$(SRCROOT)/../AudioKit/AudioKit/Core/AudioKitCore/**",
 				);
 				INFOPLIST_FILE = SynthOneAUv3/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -2906,7 +2919,6 @@
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
 					"\"${PODS_ROOT}/Headers/Public/Audiobus\"",
-					"$(SRCROOT)/../AudioKit/AudioKit/Core/AudioKitCore/**",
 				);
 				INFOPLIST_FILE = SynthOneAUv3/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;

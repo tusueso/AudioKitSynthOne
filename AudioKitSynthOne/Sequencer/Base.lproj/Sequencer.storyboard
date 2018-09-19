@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="USV-bb-dhl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="USV-bb-dhl">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,7 +18,7 @@
                         <viewControllerLayoutGuide type="bottom" id="bvz-71-JLK"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="DmY-pP-oAv">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="299"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="au_arp" translatesAutoresizingMaskIntoConstraints="NO" id="WJE-oy-zRo">
@@ -31,82 +30,82 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <view tag="400" contentMode="TopLeft" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ibZ-yX-RdY" customClass="VerticalSlider" customModule="AudioKitSynthOne">
+                            <view tag="400" contentMode="TopLeft" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ibZ-yX-RdY" customClass="VerticalSlider" customModule="AudioKitSynthOne" customModuleProvider="target">
                                 <rect key="frame" x="29" y="100" width="44" height="160"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <view tag="401" contentMode="TopLeft" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bWC-6Y-FsP" customClass="VerticalSlider" customModule="AudioKitSynthOne">
+                            <view tag="401" contentMode="TopLeft" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bWC-6Y-FsP" customClass="VerticalSlider" customModule="AudioKitSynthOne" customModuleProvider="target">
                                 <rect key="frame" x="84" y="100" width="48" height="160"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <view tag="402" contentMode="TopLeft" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eJm-tw-b63" customClass="VerticalSlider" customModule="AudioKitSynthOne">
+                            <view tag="402" contentMode="TopLeft" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eJm-tw-b63" customClass="VerticalSlider" customModule="AudioKitSynthOne" customModuleProvider="target">
                                 <rect key="frame" x="137" y="100" width="48" height="160"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <view tag="403" contentMode="TopLeft" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7qW-dU-6S2" customClass="VerticalSlider" customModule="AudioKitSynthOne">
+                            <view tag="403" contentMode="TopLeft" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7qW-dU-6S2" customClass="VerticalSlider" customModule="AudioKitSynthOne" customModuleProvider="target">
                                 <rect key="frame" x="192" y="100" width="48" height="160"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <view tag="404" contentMode="TopLeft" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w6N-1d-qjw" customClass="VerticalSlider" customModule="AudioKitSynthOne">
+                            <view tag="404" contentMode="TopLeft" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w6N-1d-qjw" customClass="VerticalSlider" customModule="AudioKitSynthOne" customModuleProvider="target">
                                 <rect key="frame" x="260" y="100" width="48" height="160"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <view tag="405" contentMode="TopLeft" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nJM-Xy-tkB" customClass="VerticalSlider" customModule="AudioKitSynthOne">
+                            <view tag="405" contentMode="TopLeft" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nJM-Xy-tkB" customClass="VerticalSlider" customModule="AudioKitSynthOne" customModuleProvider="target">
                                 <rect key="frame" x="314" y="100" width="48" height="160"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <view tag="406" contentMode="TopLeft" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="alC-FU-VcD" customClass="VerticalSlider" customModule="AudioKitSynthOne">
+                            <view tag="406" contentMode="TopLeft" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="alC-FU-VcD" customClass="VerticalSlider" customModule="AudioKitSynthOne" customModuleProvider="target">
                                 <rect key="frame" x="368" y="100" width="48" height="160"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <view tag="407" contentMode="TopLeft" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ytq-Ta-57I" customClass="VerticalSlider" customModule="AudioKitSynthOne">
+                            <view tag="407" contentMode="TopLeft" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ytq-Ta-57I" customClass="VerticalSlider" customModule="AudioKitSynthOne" customModuleProvider="target">
                                 <rect key="frame" x="423" y="100" width="48" height="160"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <view tag="408" contentMode="TopLeft" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n8h-N7-w5C" customClass="VerticalSlider" customModule="AudioKitSynthOne">
+                            <view tag="408" contentMode="TopLeft" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="n8h-N7-w5C" customClass="VerticalSlider" customModule="AudioKitSynthOne" customModuleProvider="target">
                                 <rect key="frame" x="491" y="100" width="48" height="160"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <view tag="409" contentMode="TopLeft" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g6S-Rb-rja" customClass="VerticalSlider" customModule="AudioKitSynthOne">
+                            <view tag="409" contentMode="TopLeft" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g6S-Rb-rja" customClass="VerticalSlider" customModule="AudioKitSynthOne" customModuleProvider="target">
                                 <rect key="frame" x="546" y="100" width="48" height="160"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <view tag="410" contentMode="TopLeft" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F4v-di-0hN" customClass="VerticalSlider" customModule="AudioKitSynthOne">
+                            <view tag="410" contentMode="TopLeft" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F4v-di-0hN" customClass="VerticalSlider" customModule="AudioKitSynthOne" customModuleProvider="target">
                                 <rect key="frame" x="602" y="100" width="48" height="160"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <view tag="411" contentMode="TopLeft" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O5G-sN-c0D" customClass="VerticalSlider" customModule="AudioKitSynthOne">
+                            <view tag="411" contentMode="TopLeft" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O5G-sN-c0D" customClass="VerticalSlider" customModule="AudioKitSynthOne" customModuleProvider="target">
                                 <rect key="frame" x="659" y="100" width="48" height="160"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <view tag="412" contentMode="TopLeft" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WjZ-aQ-54m" customClass="VerticalSlider" customModule="AudioKitSynthOne">
+                            <view tag="412" contentMode="TopLeft" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WjZ-aQ-54m" customClass="VerticalSlider" customModule="AudioKitSynthOne" customModuleProvider="target">
                                 <rect key="frame" x="728" y="100" width="48" height="160"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <view tag="413" contentMode="TopLeft" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DJl-kA-rhp" customClass="VerticalSlider" customModule="AudioKitSynthOne">
+                            <view tag="413" contentMode="TopLeft" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DJl-kA-rhp" customClass="VerticalSlider" customModule="AudioKitSynthOne" customModuleProvider="target">
                                 <rect key="frame" x="785" y="100" width="48" height="160"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <view tag="414" contentMode="TopLeft" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jmR-tU-vEZ" customClass="VerticalSlider" customModule="AudioKitSynthOne">
+                            <view tag="414" contentMode="TopLeft" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jmR-tU-vEZ" customClass="VerticalSlider" customModule="AudioKitSynthOne" customModuleProvider="target">
                                 <rect key="frame" x="841" y="100" width="48" height="160"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <view tag="415" contentMode="TopLeft" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nMH-S3-jWh" customClass="VerticalSlider" customModule="AudioKitSynthOne">
+                            <view tag="415" contentMode="TopLeft" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nMH-S3-jWh" customClass="VerticalSlider" customModule="AudioKitSynthOne" customModuleProvider="target">
                                 <rect key="frame" x="898" y="100" width="48" height="160"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -319,17 +318,17 @@
                                 <color key="textColor" red="0.85490196080000003" green="0.85490196080000003" blue="0.85490196080000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Yj-U6-12K" customClass="Stepper" customModule="AudioKitSynthOne">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Yj-U6-12K" customClass="Stepper" customModule="AudioKitSynthOne" customModuleProvider="target">
                                 <rect key="frame" x="282" y="16" width="108" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hJP-dg-ryJ" customClass="ArpDirectionButton" customModule="AudioKitSynthOne">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hJP-dg-ryJ" customClass="ArpDirectionButton" customModule="AudioKitSynthOne" customModuleProvider="target">
                                 <rect key="frame" x="453" y="16" width="108" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DHy-85-9HG" customClass="Stepper" customModule="AudioKitSynthOne">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DHy-85-9HG" customClass="Stepper" customModule="AudioKitSynthOne" customModuleProvider="target">
                                 <rect key="frame" x="816" y="16" width="108" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
