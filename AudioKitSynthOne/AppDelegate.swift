@@ -13,6 +13,7 @@ import OneSignal
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     let conductor = Conductor.sharedInstance
+    let linkOpener = LinkOpener.shared
     var window: UIWindow?
 
     func application(_ application: UIApplication,
@@ -22,6 +23,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Never Sleep mode is false
         UIApplication.shared.isIdleTimerDisabled = false
 
+        linkOpener.code = { url in
+            UIApplication.shared.open(url)
+        }
         let onesignalInitSettings = [kOSSettingsKeyAutoPrompt: false]
 
         // Set your OneSignal App ID in the Private.swift file.
@@ -61,3 +65,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 }
+

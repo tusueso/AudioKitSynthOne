@@ -34,7 +34,17 @@ public class AudioUnitViewController: AUViewController, AUAudioUnitFactory {
             print("erred with \(err)")
         }
         print("succesful!")
+
+        LinkOpener.shared.code = { url in
+            print("Trying to open \(url)")
+            if let context = self.extensionContext {
+                context.open(url) { _ in
+                    print("opened successfully")
+                }
+            } else {
+                print("Extension Context is nil")
+            }
+        }
         return audioUnit!
     }
-
 }

@@ -14,6 +14,14 @@ protocol EmbeddedViewsDelegate: AnyObject {
     func switchToChildPanel(_ newView: ChildPanel, isOnTop: Bool)
 }
 
+public class LinkOpener {
+    public static var shared = LinkOpener()
+    public var code: ((URL) -> Void)?
+    func open(_ url: URL) {
+        code?(url)
+    }
+}
+
 public class Manager: UpdatableViewController {
 
     @IBOutlet weak var topContainerView: UIView!
@@ -187,7 +195,7 @@ public class Manager: UpdatableViewController {
                                                  &callbackStruct,
                                                  UInt32(MemoryLayout<AudioOutputUnitMIDICallbacks>.size))
         if connectIAAMDI != 0 {
-            AKLog("Something bad happened")
+            AKLog("Did not connect IAA MIDI")
         }
 
         // Setup AudioBus MIDI Input

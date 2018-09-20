@@ -48,7 +48,7 @@ extension UIViewController {
         } else {
             // Fallback on earlier versions
             if let url = URL(string: "https://itunes.apple.com/us/app/id1371050497?action=write-review") {
-//                UIApplication.shared.open(url)
+                LinkOpener.shared.open(url)
             }
         }
     }
