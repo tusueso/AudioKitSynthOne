@@ -28,32 +28,78 @@ class SynthOneAUv3AudioUnit: AUAudioUnit {
 
         try super.init(componentDescription: componentDescription, options: options)
 
+
         self._internalRenderBlock = {[unowned self] (actionFlags, timeStamp, frameCount, outputBusNumber, outputData, renderEvent, pullInputBlock) in
 
             if renderEvent != nil {
-
-                let data = renderEvent!.pointee.MIDI.data
-
-                if renderEvent!.pointee.MIDI.eventType == AURenderEventType.MIDI {
-                    let status = data.0 & 0xf0
-                    let nn = data.1
-                    let v = data.2
-                    dump(data)
-                    dump(status)
-                    if status == 0x90 || status == 128 {
-                        Conductor.sharedInstance.synth.play(noteNumber: nn, velocity: v)
-                        //Conductor.sharedInstance.receivedMIDINoteOn(noteNumber: nn, velocity: v, channel: 0)
-                    }
-                    if status == 208 || status == 128 {
-                        if let note = renderEvent?.pointee.MIDI.next?.pointee.MIDI.data.1 {
-                            Conductor.sharedInstance.synth.stopAllNotes()
-                            //Conductor.sharedInstance.receivedMIDINoteOff(noteNumber: note, velocity: 0, channel: 0)
+                let head: AURenderEventHeader = renderEvent!.pointee.head
+                if head.eventType == .parameter {
+                    //let parameter: AUParameterEvent = renderEvent!.pointee.parameter
+                } else if head.eventType == .parameterRamp {
+                    //let parameter: AUParameterEvent = renderEvent!.pointee.parameter
+                } else if head.eventType == .MIDI {
+                    var MIDI: AUMIDIEvent? = renderEvent?.pointee.MIDI
+                    while MIDI != nil {
+                        let data = MIDI!.data
+                        if MIDI!.eventType == AURenderEventType.MIDI { // might be redundant?
+                            let statusByte = data.0 >> 4
+                            let channel = data.0 & 0b0000_1111
+                            let data1 = data.1 & 0b0111_1111
+                            let data2 = data.2 & 0b0111_1111
+                            if statusByte == 0b1000 {
+                                // note off
+                                Conductor.sharedInstance.synth.stop(noteNumber: data1) // add channel
+                                NSLog("channel:%d, note off nn:%d", channel, data1)
+                            } else if statusByte == 0b1001 {
+                                // note on
+                                Conductor.sharedInstance.synth.play(noteNumber: data1, velocity: data2) // add channel
+                                NSLog("channel:%d, note on nn:%d, vel:%d", channel, data1, data2)
+                            } else if statusByte == 0b1010 {
+                                // poly key pressure
+                                NSLog("channel:%d, poly key pressure nn:%d, p:%d", channel, data1, data2)
+                            } else if statusByte == 0b1011 {
+                                // controller change
+                                NSLog("channel:%d, controller change cc:%d, value:%d", channel, data1, data2)
+                            } else if statusByte == 0b1100 {
+                                // program change
+                                NSLog("channel:%d, program change preset #:%d", channel, data1)
+                            } else if statusByte == 0b1101 {
+                                // channel pressure
+                                NSLog("channel:%d, channel pressure:%d", channel, data1)
+                            } else if statusByte == 0b1110 {
+                                // pitch bend
+                                NSLog("channel:%d, pitch bend fine:%d, course:%d", channel, data1, data2)
+                            }
                         }
+                        MIDI = MIDI!.next?.pointee.MIDI
                     }
-
+                } else if head.eventType == .midiSysEx {
+                    //let MIDI: AUMIDIEvent = renderEvent!.pointee.MIDI
                 }
             }
 
+
+//            if renderEvent != nil {
+//                let data = renderEvent!.pointee.MIDI.data
+//                if renderEvent!.pointee.MIDI.eventType == AURenderEventType.MIDI {
+//                    let status = data.0 & 0xf0
+//                    let nn = data.1
+//                    let v = data.2
+//                    dump(data)
+//                    dump(status)
+//                    if status == 0x90 || status == 128 {
+//                        Conductor.sharedInstance.synth.play(noteNumber: nn, velocity: v)
+//                    }
+//                    if status == 208 || status == 128 {
+//                        if let note = renderEvent?.pointee.MIDI.next?.pointee.MIDI.data.1 {
+//                            Conductor.sharedInstance.synth.stop(noteNumber: nn)
+//                        }
+//                    }
+//                }
+//            }
+
+            // AUHostMusicalContextBlock
+            // Block by which hosts provide musical tempo, time signature, and beat position
             if let mcb = self.mcb {
                 var timeSignatureNumerator = 0.0
                 var timeSignatureDenominator = 0
@@ -78,6 +124,8 @@ class SynthOneAUv3AudioUnit: AUAudioUnit {
 
             }
 
+            // AUHostTransportStateBlock
+            // Block by which hosts provide information about their transport state.
             if let tsb = self.tsb {
                 var flags: AUHostTransportStateFlags = []
                 var currentSamplePosition = 0.0
@@ -116,7 +164,11 @@ class SynthOneAUv3AudioUnit: AUAudioUnit {
                 }
             }
 
-
+            // AUMIDIOutputEventBlock
+            //@brief        Block to provide MIDI output events to the host.
+//            if let moeb = self.moeb {
+//                NSLog("AUMIDIOutputEventBlock")
+//            }
 
             _ = AudioKit.engine.manualRenderingBlock(frameCount, outputData, nil)
 
@@ -157,7 +209,6 @@ class SynthOneAUv3AudioUnit: AUAudioUnit {
         self.mcb = self.musicalContextBlock
         self.tsb = self.transportStateBlock
         self.moeb = self.midiOutputEventBlock
-
     }
 
     override func deallocateRenderResources() {
@@ -166,8 +217,6 @@ class SynthOneAUv3AudioUnit: AUAudioUnit {
         self.tsb = nil
         self.moeb = nil
     }
-
-
 
     override var internalRenderBlock: AUInternalRenderBlock {
         return self._internalRenderBlock
