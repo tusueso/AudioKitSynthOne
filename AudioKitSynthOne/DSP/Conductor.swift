@@ -19,7 +19,7 @@ class Conductor: S1Protocol {
     static var sharedInstance = Conductor()
     var neverSleep = false {
         didSet {
-            LinkOpener.shared.isIdleTimerDisabled = neverSleep
+//            UIApplication.shared.isIdleTimerDisabled = neverSleep
         }
     }
     var backgroundAudio = false
