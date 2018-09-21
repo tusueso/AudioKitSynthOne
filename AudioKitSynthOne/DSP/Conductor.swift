@@ -169,7 +169,7 @@ class Conductor: S1Protocol {
                 AKLog("Unsuccessful")
             }
         }
-        #if AUV3_EXTENSION_1
+        #if AUV3_EXTENSION
             AKLog("Skipping Starting Audiobus")
         #else
             AKLog("Starting Audiobus")
