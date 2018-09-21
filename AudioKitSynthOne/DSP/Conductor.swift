@@ -169,7 +169,12 @@ class Conductor: S1Protocol {
                 AKLog("Unsuccessful")
             }
         }
-//        Audiobus.start()
+        #if AUV3_EXTENSION_1
+            AKLog("Skipping Starting Audiobus")
+        #else
+            AKLog("Starting Audiobus")
+            Audiobus.start()
+        #endif
     }
 
     func updateDisplayLabel(_ message: String) {
