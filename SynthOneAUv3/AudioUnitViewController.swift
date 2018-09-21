@@ -39,11 +39,14 @@ public class AudioUnitViewController: AUViewController, AUAudioUnitFactory {
             print("Trying to open \(url)")
             if let context = self.extensionContext {
                 context.open(url) { _ in
-                    print("opened successfully")
+                    print("opened successfully supposedly")
                 }
             } else {
                 print("Extension Context is nil")
             }
+        }
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "LoadUI", sender: self)
         }
         return audioUnit!
     }

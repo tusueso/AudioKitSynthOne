@@ -29,7 +29,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Load UI"/>
                                 <connections>
-                                    <segue destination="YQ8-Wm-GxQ" kind="show" id="9Df-Ir-xsX"/>
+                                    <segue destination="YQ8-Wm-GxQ" kind="show" identifier="LoadUI" id="9Df-Ir-xsX"/>
                                 </connections>
                             </button>
                         </subviews>
