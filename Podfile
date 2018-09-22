@@ -5,23 +5,26 @@ use_frameworks!
 source 'https://github.com/AudioKit/Specs.git'
 source 'https://github.com/CocoaPods/Specs.git'
 
-def available_pods
+def common_pods
     pod 'AudioKit', '>=4.4'
-    pod 'Disk', '~> 0.3.2'
-    pod 'Audiobus'
-    pod 'ChimpKit'
     pod 'OneSignal', '>= 2.6.2', '< 3.0'
 end
 
+def base_pods
+    common_pods
+    pod 'Disk', '~> 0.3.2'
+    pod 'Audiobus'
+end
+
 target 'AudioKitSynthOne' do
-    available_pods
+    base_pods 
+    pod 'ChimpKit'
 end
 
 target 'SynthOneAUv3' do
-    available_pods
+    base_pods
 end
 
 target 'OneSignalNotificationServiceExtension' do
-  pod 'OneSignal', '>= 2.6.2', '< 3.0'
-  pod 'AudioKit', '>=4.4'
+    common_pods
 end
