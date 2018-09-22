@@ -54,11 +54,12 @@ extension Manager {
             guard let popOverController = segue.destination as? AboutViewController else { return }
             popOverController.delegate = self
         }
-
+        #if !AUV3_EXTENSION
         if segue.identifier == "SegueToMailingList" {
             guard let popOverController = segue.destination as? MailingListViewController else { return }
             popOverController.delegate = self
         }
+        #endif
     }
 
     func add(asChildViewController viewController: UIViewController, isTopContainer: Bool = true) {

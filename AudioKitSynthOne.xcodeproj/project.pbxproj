@@ -215,8 +215,6 @@
 		C4E67B20214F5E5A006B2948 /* Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B4916520C7C72900FD565A /* Manager.swift */; };
 		C4E67B21214F5E71006B2948 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B4916220C7C72900FD565A /* AboutViewController.swift */; };
 		C4E67B22214F5E71006B2948 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B4916120C7C72900FD565A /* InfoViewController.swift */; };
-		C4E67B23214F5E74006B2948 /* Manager+MailingListDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B4919620C7C81200FD565A /* Manager+MailingListDelegate.swift */; };
-		C4E67B24214F5E74006B2948 /* MailingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B4919720C7C81200FD565A /* MailingListViewController.swift */; };
 		C4E67B25214F5E77006B2948 /* Audiobus.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B4914420C7C6E300FD565A /* Audiobus.swift */; };
 		C4E67B26214F5E77006B2948 /* Audiobus+MIDI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B4914620C7C6E300FD565A /* Audiobus+MIDI.swift */; };
 		C4E67B27214F5E77006B2948 /* Manager+Audiobus.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4B4914520C7C6E300FD565A /* Manager+Audiobus.swift */; };
@@ -2281,7 +2279,6 @@
 				C4E67B5D214F5EC1006B2948 /* PanelController.swift in Sources */,
 				C4E67B51214F5EB8006B2948 /* MIDIKnob.swift in Sources */,
 				C4E67B64214F5EC4006B2948 /* PresetsCategoriesViewController.swift in Sources */,
-				C4E67B24214F5E74006B2948 /* MailingListViewController.swift in Sources */,
 				C4E67B8D214F5EF7006B2948 /* TuningsPitchWheelView.swift in Sources */,
 				C4E67B8B214F5EF3006B2948 /* TuningsPanel+UITableViewDelegate.swift in Sources */,
 				C4E67B44214F5EA8006B2948 /* KeyboardSettingsViewController.swift in Sources */,
@@ -2323,7 +2320,6 @@
 				C4E67B89214F5EF3006B2948 /* TuningsPanelController.swift in Sources */,
 				C4E67B11214F5E1F006B2948 /* S1DSPKernel+tapers.mm in Sources */,
 				C4E67B25214F5E77006B2948 /* Audiobus.swift in Sources */,
-				C4E67B23214F5E74006B2948 /* Manager+MailingListDelegate.swift in Sources */,
 				C4E67B32214F5E84006B2948 /* StepperStyleKit.swift in Sources */,
 				C4E67B71214F5ECD006B2948 /* PresetUIButton.swift in Sources */,
 				C4E67B67214F5EC9006B2948 /* Presets+PresetCellDelegate.swift in Sources */,
