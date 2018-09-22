@@ -8,6 +8,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 def common_pods
     pod 'AudioKit', '>=4.4'
     pod 'OneSignal', '>= 2.6.2', '< 3.0'
+    pod 'RealtimeWatchdog'
 end
 
 def base_pods

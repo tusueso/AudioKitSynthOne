@@ -8,6 +8,7 @@ PODS:
   - ChimpKit (3.1.1)
   - Disk (0.3.3)
   - OneSignal (2.8.8)
+  - RealtimeWatchdog (1.0.1)
 
 DEPENDENCIES:
   - Audiobus
@@ -15,6 +16,7 @@ DEPENDENCIES:
   - ChimpKit
   - Disk (~> 0.3.2)
   - OneSignal (< 3.0, >= 2.6.2)
+  - RealtimeWatchdog
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -23,6 +25,7 @@ SPEC REPOS:
     - ChimpKit
     - Disk
     - OneSignal
+    - RealtimeWatchdog
 
 SPEC CHECKSUMS:
   Audiobus: 7e25081005aed75e8170ad3f5a904acf90e1d73b
@@ -30,7 +33,8 @@ SPEC CHECKSUMS:
   ChimpKit: d020126089544daa349397a91f1489a3f271b791
   Disk: d1f55cd61f6ca20f368232d0c6e37e3c3dfcb63e
   OneSignal: 7d2571e9fce1d961b882e1bd9f1f242802e9c8b1
+  RealtimeWatchdog: 972e1bf69df2074b5e2f1cb458cb71125286b040
 
-PODFILE CHECKSUM: 8cf0c498c14871a3d8d08526aae49a29f517e452
+PODFILE CHECKSUM: d5cfc7850d3b63a272bb842fdd6b1a8b52628602
 
 COCOAPODS: 1.6.0.beta.1
