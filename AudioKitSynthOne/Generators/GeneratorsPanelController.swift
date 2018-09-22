@@ -54,37 +54,32 @@ class GeneratorsPanelController: PanelController {
 
     public override func viewDidLoad() {
         super.viewDidLoad()
-
         currentPanel = .generators
+        let c = Conductor.sharedInstance
 
         // Defaults, limits
-        guard let s = conductor.synth else {
-            AKLog("GeneratorsPanel view state is invalid because synth is not instantiated")
-            return
-        }
-
         morph1SemitoneOffset.onlyIntegers = true
-        morph1SemitoneOffset.range = s.getRange(.morph1SemitoneOffset)
+        morph1SemitoneOffset.range = c.getRange(.morph1SemitoneOffset)
         morph2SemitoneOffset.onlyIntegers = true
-        morph2SemitoneOffset.range = s.getRange(.morph2SemitoneOffset)
+        morph2SemitoneOffset.range = c.getRange(.morph2SemitoneOffset)
         morph1SemitoneOffset.knobSensitivity = 0.004
         morph2SemitoneOffset.knobSensitivity = 0.004
-        morph2Detuning.range = s.getRange(.morph2Detuning)
-        morphBalance.range = s.getRange(.morphBalance)
-        morph1Volume.range = s.getRange(.morph1Volume)
-        morph2Volume.range = s.getRange(.morph2Volume)
-        glideKnob.range = s.getRange(.glide)
+        morph2Detuning.range = c.getRange(.morph2Detuning)
+        morphBalance.range = c.getRange(.morphBalance)
+        morph1Volume.range = c.getRange(.morph1Volume)
+        morph2Volume.range = c.getRange(.morph2Volume)
+        glideKnob.range = c.getRange(.glide)
         glideKnob.taper = 2
-        cutoff.range = s.getRange(.cutoff)
+        cutoff.range = c.getRange(.cutoff)
         cutoff.taper = 3
-        resonance.range = s.getRange(.resonance)
-        subVolume.range = s.getRange(.subVolume)
-        fmVolume.range = s.getRange(.fmVolume)
-        fmAmount.range = s.getRange(.fmAmount)
-        noiseVolume.range = s.getRange(.noiseVolume)
-        masterVolume.range = s.getRange(.masterVolume)
-        tempoStepper.maxValue = s.getMaximum(.arpRate)
-        tempoStepper.minValue = s.getMinimum(.arpRate)
+        resonance.range = c.getRange(.resonance)
+        subVolume.range = c.getRange(.subVolume)
+        fmVolume.range = c.getRange(.fmVolume)
+        fmAmount.range = c.getRange(.fmAmount)
+        noiseVolume.range = c.getRange(.noiseVolume)
+        masterVolume.range = c.getRange(.masterVolume)
+        tempoStepper.maxValue = c.getMaximum(.arpRate)
+        tempoStepper.minValue = c.getMinimum(.arpRate)
 
         conductor.bind(morph1Selector, to: .index1)
         conductor.bind(morph2Selector, to: .index2)
@@ -119,7 +114,7 @@ class GeneratorsPanelController: PanelController {
     }
 
     func setupAudioPlot() {
-        audioPlot = AKNodeOutputPlot(conductor.synth, frame: CGRect(x: 0, y: 0, width: 172, height: 93))
+        audioPlot = AKNodeOutputPlot(Conductor.sharedInstance.tap, frame: CGRect(x: 0, y: 0, width: 172, height: 93))
         audioPlot.backgroundColor = #colorLiteral(red: 0.2431372549, green: 0.2431372549, blue: 0.262745098, alpha: 0)
         audioPlot.color = #colorLiteral(red: 0.9611048102, green: 0.509832561, blue: 0, alpha: 1)
         audioPlot.gain = 1

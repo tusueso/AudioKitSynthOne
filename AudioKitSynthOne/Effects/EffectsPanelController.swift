@@ -56,12 +56,8 @@ class EffectsPanelController: PanelController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let s = Conductor.sharedInstance
         currentPanel = .effects
-        guard let s = conductor.synth else {
-            AKLog("EffectsPanel view state is invalid because synth is not instantiated")
-            return
-        }
 
         sampleRateKnob.range = s.getRange(.bitCrushSampleRate)
         sampleRateKnob.taper = 4.6

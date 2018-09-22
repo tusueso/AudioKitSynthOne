@@ -38,8 +38,8 @@ extension Manager {
         devViewController.freezeReverb.value = (appSettings.freezeReverb == true ? 1 : 0)
 
         // DSP parameter stored in app settings
-        conductor.synth.setSynthParameter(.portamentoHalfTime, appSettings.portamentoHalfTime)
-        devViewController.portamento.value = conductor.synth.getSynthParameter(.portamentoHalfTime)
+        conductor.setSynthParameter(.portamentoHalfTime, appSettings.portamentoHalfTime)
+        devViewController.portamento.value = conductor.getSynthParameter(.portamentoHalfTime)
 
         // MIDI Learn
         generatorsPanel.masterVolume.midiCC = MIDIByte(appSettings.masterVolumeCC)
@@ -105,7 +105,7 @@ extension Manager {
 
         appSettings.midiSources = midiInputs.filter { $0.isOpen }.compactMap { $0.name }
 
-        appSettings.portamentoHalfTime = conductor.synth.getSynthParameter(.portamentoHalfTime)
+        appSettings.portamentoHalfTime = conductor.getSynthParameter(.portamentoHalfTime)
 
         // MIDI Learn
         appSettings.masterVolumeCC = Int(generatorsPanel.masterVolume.midiCC)

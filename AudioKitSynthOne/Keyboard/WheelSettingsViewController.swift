@@ -22,23 +22,17 @@ class WheelSettingsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         modWheelSegment.selectedSegmentIndex = modWheelDestination
-
         let c = Conductor.sharedInstance
-        guard let s = c.synth else {
-            AKLog("PopUpMODController view state is invalid because synth is not instantiated")
-            return
-        }
 
-        pitchUpperRange.maxValue = s.getMaximum(.pitchbendMaxSemitones)
-        pitchUpperRange.minValue = s.getMinimum(.pitchbendMaxSemitones)
-        pitchUpperRange.value = s.getSynthParameter(.pitchbendMaxSemitones)
+        pitchUpperRange.maxValue = c.getMaximum(.pitchbendMaxSemitones)
+        pitchUpperRange.minValue = c.getMinimum(.pitchbendMaxSemitones)
+        pitchUpperRange.value = c.getSynthParameter(.pitchbendMaxSemitones)
         c.bind(pitchUpperRange, to: .pitchbendMaxSemitones)
 
-        pitchLowerRange.maxValue = s.getMaximum(.pitchbendMinSemitones)
-        pitchLowerRange.minValue = s.getMinimum(.pitchbendMinSemitones)
-        pitchLowerRange.value = s.getSynthParameter(.pitchbendMinSemitones)
+        pitchLowerRange.maxValue = c.getMaximum(.pitchbendMinSemitones)
+        pitchLowerRange.minValue = c.getMinimum(.pitchbendMinSemitones)
+        pitchLowerRange.value = c.getSynthParameter(.pitchbendMinSemitones)
         c.bind(pitchLowerRange, to: .pitchbendMinSemitones)
     }
 

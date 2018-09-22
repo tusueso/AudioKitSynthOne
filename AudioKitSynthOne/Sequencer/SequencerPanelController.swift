@@ -25,14 +25,9 @@ class SequencerPanelController: PanelController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        let s = Conductor.sharedInstance
 
         currentPanel = .sequencer
-
-        guard let s = conductor.synth else {
-            AKLog("SequencerPanel view state is invalid because synth is not instantiated")
-            return
-        }
-
         seqStepsStepper.minValue = s.getMinimum(.arpTotalSteps)
         seqStepsStepper.maxValue = s.getMaximum(.arpTotalSteps)
         octaveStepper.minValue = s.getMinimum(.arpOctave)
@@ -89,7 +84,7 @@ class SequencerPanelController: PanelController {
             let sequencerPatternParameter = sequencerPatternArray[notePosition]
             conductor.bind(sequencerPatternSlider, to: sequencerPatternParameter) { _, control in
                 return { value in
-                    let r = self.conductor.synth.getRange(sequencerPatternParameter)
+                    let r = self.conductor.getRange(sequencerPatternParameter)
                     let transpose = Int(Double(value).denormalized(to: r))
                     s.setPattern(forIndex: notePosition, transpose)
                     self.conductor.updateSingleUI(sequencerPatternParameter,
@@ -144,9 +139,9 @@ class SequencerPanelController: PanelController {
     // MARK: - Helpers
 
     @objc public func updateLED(beatCounter: Int, heldNotes: Int = 128) {
-        let arpIsOn = conductor.synth.getSynthParameter(.arpIsOn) > 0 ? true : false
-        let arpIsSequencer = conductor.synth.getSynthParameter(.arpIsSequencer) > 0 ? true : false
-        let seqTotalSteps = Int(conductor.synth.getSynthParameter(.arpTotalSteps))
+        let arpIsOn = conductor.getSynthParameter(.arpIsOn) > 0 ? true : false
+        let arpIsSequencer = conductor.getSynthParameter(.arpIsSequencer) > 0 ? true : false
+        let seqTotalSteps = Int(conductor.getSynthParameter(.arpTotalSteps))
 
         // clear out all indicators
         for button in octBoostButtons { button.isActive = false }
@@ -166,7 +161,7 @@ class SequencerPanelController: PanelController {
 
     internal func updateOctBoostButton(notePosition: Int) {
         let octBoostButton = octBoostButtons[notePosition]
-        octBoostButton.transposeAmt = conductor.synth.getPattern(forIndex: notePosition)
-        octBoostButton.value = conductor.synth.getOctaveBoost(forIndex: notePosition) == true ? 1 : 0
+        octBoostButton.transposeAmt = conductor.getPattern(forIndex: notePosition)
+        octBoostButton.value = conductor.getOctaveBoost(forIndex: notePosition) == true ? 1 : 0
     }
 }

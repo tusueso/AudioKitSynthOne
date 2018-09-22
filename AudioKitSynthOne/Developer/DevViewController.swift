@@ -63,13 +63,9 @@ class DevViewController: UpdatableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let s = Conductor.sharedInstance
+        
         // Defaults, limits
-        guard let s = conductor.synth else {
-            AKLog("DevViewController view state is invalid because synth is not instantiated")
-            return
-        }
-
         backgroundImage.isHidden = false
         backgroundImage.alpha = 0.15
 

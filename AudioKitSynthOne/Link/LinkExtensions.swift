@@ -43,7 +43,7 @@ extension GeneratorsPanelController {
         // Subscribe tempo change events
         ABLLinkManager.shared.add(listener: .tempo({ bpm, quantum in
             self.tempoStepper.value = bpm
-            self.conductor.synth.setSynthParameter(.arpRate, bpm)
+            self.conductor.setSynthParameter(.arpRate, bpm)
         }))
     }
 }

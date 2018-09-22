@@ -125,10 +125,10 @@ public class Manager: UpdatableViewController {
 
         // Conductor start
         conductor.start()
-        sustainer = SDSustainer(conductor.synth)
+        sustainer = SDSustainer(Conductor.sharedInstance.tap)
 
         keyboardView?.delegate = self
-        keyboardView?.polyphonicMode = conductor.synth.getSynthParameter(.isMono) < 1 ? true : false
+        keyboardView?.polyphonicMode = conductor.getSynthParameter(.isMono) < 1 ? true : false
 
         // Set Header as Delegate
         if let headerVC = self.childViewControllers.first as? HeaderViewController {
@@ -172,6 +172,8 @@ public class Manager: UpdatableViewController {
         add(asChildViewController: devViewController, isTopContainer: true)
         devViewController.view.removeFromSuperview()
 
+        //TODO: Move all IAA to Conductor
+        #if !AUV3_EXTENSION
         // IAA MIDI
         var callbackStruct = AudioOutputUnitMIDICallbacks(
             userData: nil,
@@ -195,11 +197,12 @@ public class Manager: UpdatableViewController {
                                                  &callbackStruct,
                                                  UInt32(MemoryLayout<AudioOutputUnitMIDICallbacks>.size))
         if connectIAAMDI != 0 {
-            AKLog("Did not connect IAA MIDI")
+            AKLog("Error connecting IAA MIDI")
         }
 
         // Setup AudioBus MIDI Input
         setupAudioBusInput()
+        #endif
     }
 
     public override func viewDidAppear(_ animated: Bool) {
@@ -293,16 +296,13 @@ public class Manager: UpdatableViewController {
     }
     func stopAllNotes() {
         self.keyboardView.allNotesOff()
-        conductor.synth.stopAllNotes()
+        conductor.stopAllNotes()
     }
 
     override func updateUI(_ parameter: S1Parameter, control inputControl: S1Control?, value: Double) {
-
+        let s = Conductor.sharedInstance
+        
         // Even though isMono is a dsp parameter it needs special treatment because this vc's state depends on it
-        guard let s = conductor.synth else {
-            AKLog("ParentViewController can't update global UI because synth is not instantiated")
-            return
-        }
         let isMono = s.getSynthParameter(.isMono)
 
         if isMono != monoButton.value {

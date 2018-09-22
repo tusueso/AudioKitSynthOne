@@ -22,9 +22,20 @@ class Conductor: S1Protocol {
             //LinkOpener.shared.isIdleTimerDisabled = neverSleep
         }
     }
+
+    // Synth should not be directly accessible.
+    // We need to build up a protocol for conductor/synth so aks1 can be a template project
+    private var synth: AKSynthOne!
+    private var started = false
+    var tap: AKPolyphonicNode {
+        get {
+            return synth as AKPolyphonicNode
+        }
+    }
+
     var backgroundAudio = false
     var banks: [Bank] = []
-    var synth: AKSynthOne!
+
     var bindings: [(S1Parameter, S1Control)] = []
     var heldNoteCount: Int = 0
     private var audioUnitPropertyListener: AudioUnitPropertyListener!
@@ -40,7 +51,6 @@ class Conductor: S1Protocol {
     var iaaTimer: Timer = Timer()
 
     public var viewControllers: Set<UpdatableViewController> = []
-    fileprivate var started = false
 
     func bind(_ control: S1Control,
               to parameter: S1Parameter,
@@ -106,7 +116,7 @@ class Conductor: S1Protocol {
                     AKLog("ERROR: S1Parameter enum out of range: \(address)")
                     return
             }
-            let value = self.synth.getSynthParameter(parameter)
+            let value = synth.getSynthParameter(parameter)
             updateSingleUI(parameter, control: nil, value: value)
         }
 
@@ -153,6 +163,9 @@ class Conductor: S1Protocol {
         }
         started = true
 
+        #if AUV3_EXTENSION
+        AKLog("Skipping Starting Audiobus")
+        #else
         if let au = AudioKit.engine.outputNode.audioUnit {
             // IAA Host Icon
             audioUnitPropertyListener = AudioUnitPropertyListener { (_, _) in
@@ -169,11 +182,9 @@ class Conductor: S1Protocol {
                 AKLog("Unsuccessful")
             }
         }
-        #if AUV3_EXTENSION
-            AKLog("Skipping Starting Audiobus")
-        #else
-            AKLog("Starting Audiobus")
-            Audiobus.start()
+
+        AKLog("Starting Audiobus")
+        Audiobus.start()
         #endif
     }
 
@@ -189,110 +200,218 @@ class Conductor: S1Protocol {
 
     // MARK: - boiler plate passthrough to AKSynthOne...make a conductor protocol and add these
     open func setSynthParameter(_ parameter: S1Parameter, _ value: Double) {
+        guard started == true else {
+            AKLog("race condition: Setting synth parameter \(parameter) before synth is started")
+            return
+        }
         synth.setSynthParameter(parameter, value)
     }
 
     open func getSynthParameter(_ parameter: S1Parameter) -> Double {
+        guard started == true else {
+            AKLog("race condition: Accessing synth before it is started")
+            return 0
+        }
         return synth.getSynthParameter(parameter)
     }
 
     open func getDependentParameter(_ parameter: S1Parameter) -> Double {
+        guard started == true else {
+            AKLog("race condition: Accessing synth before it is started")
+            return 0
+        }
         return synth.getDependentParameter(parameter)
     }
+
     open func setDependentParameter(_ parameter: S1Parameter, _ value: Double, _ payload: Int32) {
+        guard started == true else {
+            AKLog("race condition: Accessing synth before it is started")
+            return
+        }
         synth.setDependentParameter(parameter, value, payload)
     }
 
     open func getMinimum(_ parameter: S1Parameter) -> Double {
+        guard started == true else {
+            AKLog("race condition: Accessing synth before it is started")
+            return 0
+        }
         return synth.getMinimum(parameter)
     }
 
     open func getMaximum(_ parameter: S1Parameter) -> Double {
+        guard started == true else {
+            AKLog("race condition: Accessing synth before it is started")
+            return 0
+        }
         return synth.getMaximum(parameter)
     }
 
     open func getRange(_ parameter: S1Parameter) -> ClosedRange<Double> {
+        guard started == true else {
+            AKLog("race condition: Accessing synth before it is started")
+            return 0 ... 1
+        }
         let min = synth.getMinimum(parameter)
         let max = synth.getMaximum(parameter)
         return min ... max
     }
 
     open func getDefault(_ parameter: S1Parameter) -> Double {
+        guard started == true else {
+            AKLog("race condition: Accessing synth before it is started")
+            return 0
+        }
         return synth.getDefault(parameter)
     }
 
-    /// stops all notes
     open func reset() {
+        guard started == true else {
+            AKLog("race condition: Accessing synth before it is started")
+            return
+        }
         synth.reset()
+    }
+
+    open func resetSequencer() {
+        guard started == true else {
+            AKLog("race condition: Accessing synth before it is started")
+            return
+        }
+        synth.resetSequencer()
+    }
+
+    open func stopAllNotes() {
+        guard started == true else {
+            AKLog("race condition: Accessing synth before it is started")
+            return
+        }
+        synth.stopAllNotes()
     }
 
     // AKPolyphonic
 
     // Function to play a NoteState with the note number with velocity.
     // DSP will choose frequency at note number (AKPolyphonicNode.tuningTable).
-    open func play(noteNumber: MIDINoteNumber, velocity: MIDIVelocity) {
+    open func play(channel: UInt8, noteNumber: MIDINoteNumber, velocity: MIDIVelocity) {
+        guard started == true else {
+            AKLog("race condition: Accessing synth before it is started")
+            return
+        }
         synth.play(noteNumber: noteNumber, velocity: velocity)
     }
 
     // Function to play a NoteState with the note number with velocity at frequency
-    open func play(noteNumber: MIDINoteNumber, velocity: MIDIVelocity, frequency: Double) {
+    open func play(channel: UInt8, noteNumber: MIDINoteNumber, velocity: MIDIVelocity, frequency: Double) {
+        guard started == true else {
+            AKLog("race condition: Accessing synth before it is started")
+            return
+        }
         synth.play(noteNumber: noteNumber, velocity: velocity, frequency: frequency)
     }
 
     /// Function to stop the NoteNumber at note number
-    open func stop(noteNumber: MIDINoteNumber) {
+    open func stop(channel: UInt8, noteNumber: MIDINoteNumber) {
+        guard started == true else {
+            AKLog("race condition: Accessing synth before it is started")
+            return
+        }
         synth.stop(noteNumber: noteNumber)
     }
 
-    /// Sequncer functions
+    /// Sequncer function
     open func getPattern(forIndex inputIndex: Int) -> Int {
+        guard started == true else {
+            AKLog("race condition: Accessing synth before it is started")
+            return 0
+        }
         return synth.getPattern(forIndex: inputIndex)
     }
 
+    /// Sequncer function
     open func setPattern(forIndex inputIndex: Int, _ value: Int) {
         synth.setPattern(forIndex: inputIndex, value)
     }
 
+    /// Sequncer function
     open func getOctaveBoost(forIndex inputIndex: Int) -> Bool {
+        guard started == true else {
+            AKLog("race condition: Accessing synth before it is started")
+            return false
+        }
         return synth.getOctaveBoost(forIndex: inputIndex)
     }
 
+    /// Sequncer function
     open func setOctaveBoost(forIndex inputIndex: Int, _ value: Double) {
+        guard started == true else {
+            AKLog("race condition: Accessing synth before it is started")
+            return
+        }
         synth.setOctaveBoost(forIndex: inputIndex, value)
     }
 
+    /// Sequncer function
     open func isNoteOn(forIndex inputIndex: Int) -> Bool {
+        guard started == true else {
+            AKLog("race condition: Accessing synth before it is started")
+            return false
+        }
         return synth.isNoteOn(forIndex: inputIndex)
     }
 
+    /// Sequncer function
     open func setNoteOn(forIndex inputIndex: Int, _ value: Bool) {
+        guard started == true else {
+            AKLog("race condition: Accessing synth before it is started")
+            return
+        }
         synth.setNoteOn(forIndex: inputIndex, value)
     }
 
     open func polyKeyPressure(channel: UInt8, noteNumber: UInt8, pressure: UInt8) {
-        //Do something
+        guard started == true else {
+            AKLog("race condition: Accessing synth before it is started")
+            return
+        }
     }
 
     open func controllerChange(channel: UInt8, cc: UInt8, value: UInt8) {
+        guard started == true else {
+            AKLog("race condition: Accessing synth before it is started")
+            return
+        }
+
         if cc == 1 {
             // Mod Wheel
             //TODO: ModWheel
+//            let touchPadPanel = self.viewControllers.first(where: { $0 is TouchPadPanelController })
+//                as? TouchPadPanelController
+//            touchPadPanel?.dependentParameterDidChange(parameter)
         }
     }
 
     open func channelPressure(channel: UInt8, pressure: UInt8) {
-        //TODO: channelPressure
+        guard started == true else {
+            AKLog("race condition: Accessing synth before it is started")
+            return
+        }
     }
 
     open func programChange(channel: UInt8, preset: UInt8) {
-        // do something
+        guard started == true else {
+            AKLog("race condition: Accessing synth before it is started")
+            return
+        }
     }
 
     open func pitchBend(channel: UInt8, amount: UInt16) {
+        guard started == true else {
+            AKLog("race condition: Accessing synth before it is started")
+            return
+        }
         synth.setSynthParameter(.pitchbend, Double(amount))
     }
-
-
 
 
     // MARK: - S1Protocol
@@ -354,9 +473,7 @@ class Conductor: S1Protocol {
     }
 
     @objc func checkIAAConnectionsEnterBackground() {
-
         if let audiobusClient = Audiobus.client {
-
             if !audiobusClient.isConnected && !audiobusClient.isConnectedToInput && !backgroundAudio {
                 deactivateSession()
                 AKLog("disconnected without timer")
@@ -376,17 +493,13 @@ class Conductor: S1Protocol {
     }
 
     func deactivateSession() {
-
         stopEngine()
-
         do {
             try AKSettings.session.setActive(false)
         } catch let error as NSError {
             AKLog("error setting session: " + error.description)
         }
-
         iaaTimer.invalidate()
-
         AKLog("disconnected with timer")
     }
 

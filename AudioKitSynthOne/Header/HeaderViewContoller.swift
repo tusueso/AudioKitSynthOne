@@ -48,10 +48,10 @@ public class HeaderViewController: UpdatableViewController {
                     _ d: S1Parameter,
                     _ s: S1Parameter,
                     _ r: S1Parameter) -> String {
-        return "A: \(conductor.synth.getSynthParameter(a).decimalString) " +
-            "D: \(conductor.synth.getSynthParameter(d).decimalString) " +
-            "S: \(conductor.synth.getSynthParameter(s).percentageString) " +
-            "R: \(conductor.synth.getSynthParameter(r).decimalString) "
+        return "A: \(conductor.getSynthParameter(a).decimalString) " +
+            "D: \(conductor.getSynthParameter(d).decimalString) " +
+            "S: \(conductor.getSynthParameter(s).percentageString) " +
+            "R: \(conductor.getSynthParameter(r).decimalString) "
     }
 
     public override func viewDidLoad() {
@@ -79,11 +79,9 @@ public class HeaderViewController: UpdatableViewController {
     }
 
     func updateDisplayLabel(_ parameter: S1Parameter, value: Double) {
-        guard let s = conductor.synth else {
-            AKLog("Can't update header displayLabel because synth is not instantiated")
-            return
-        }
+        let s = Conductor.sharedInstance
         let lfoSource = LFOSource(rawValue: Int(value))
+        
         switch parameter {
         case .index1:
             let message = NSLocalizedString("DCO 1 Morph: \(value.decimalString)", comment: "Oscillator 1 Waveform Morph Index")

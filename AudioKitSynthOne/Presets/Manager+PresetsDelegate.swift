@@ -11,7 +11,7 @@
 extension Manager: PresetsDelegate {
 
     func presetDidChange(_ newActivePreset: Preset) {
-        conductor.synth.reset()
+        conductor.reset()
 
         activePreset = newActivePreset
 

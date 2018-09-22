@@ -48,12 +48,18 @@ class SynthOneAUv3AudioUnit: AUAudioUnit {
                             let data2 = data.2 & 0b0111_1111
                             if statusByte == 0b1000 {
                                 // note off
-                                Conductor.sharedInstance.stop(noteNumber: data1) // add channel
+                                Conductor.sharedInstance.stop(channel: channel, noteNumber: data1)
                                 NSLog("channel:%d, note off nn:%d", channel, data1)
                             } else if statusByte == 0b1001 {
-                                // note on
-                                Conductor.sharedInstance.play(noteNumber: data1, velocity: data2) // add channel
-                                NSLog("channel:%d, note on nn:%d, vel:%d", channel, data1, data2)
+                                if data2 > 0 {
+                                    // note on
+                                    NSLog("channel:%d, note on nn:%d, vel:%d", channel, data1, data2)
+                                    Conductor.sharedInstance.play(channel: channel, noteNumber: data1, velocity: data2)
+                                } else {
+                                    // note off
+                                    NSLog("channel:%d, note off nn:%d", channel, data1)
+                                    Conductor.sharedInstance.stop(channel: channel, noteNumber: data1)
+                                }
                             } else if statusByte == 0b1010 {
                                 // poly key pressure
                                 NSLog("channel:%d, poly key pressure nn:%d, p:%d", channel, data1, data2)
@@ -85,26 +91,6 @@ class SynthOneAUv3AudioUnit: AUAudioUnit {
                 }
             }
 
-
-//            if renderEvent != nil {
-//                let data = renderEvent!.pointee.MIDI.data
-//                if renderEvent!.pointee.MIDI.eventType == AURenderEventType.MIDI {
-//                    let status = data.0 & 0xf0
-//                    let nn = data.1
-//                    let v = data.2
-//                    dump(data)
-//                    dump(status)
-//                    if status == 0x90 || status == 128 {
-//                        Conductor.sharedInstance.synth.play(noteNumber: nn, velocity: v)
-//                    }
-//                    if status == 208 || status == 128 {
-//                        if let note = renderEvent?.pointee.MIDI.next?.pointee.MIDI.data.1 {
-//                            Conductor.sharedInstance.synth.stop(noteNumber: nn)
-//                        }
-//                    }
-//                }
-//            }
-
             // AUHostMusicalContextBlock
             // Block by which hosts provide musical tempo, time signature, and beat position
             if let mcb = self.mcb {
@@ -115,9 +101,7 @@ class SynthOneAUv3AudioUnit: AUAudioUnit {
                 var currentMeasureDownbeatPosition = 0.0
 
                 if mcb( &self.currentTempo, &timeSignatureNumerator, &timeSignatureDenominator, &currentBeatPosition, &sampleOffsetToNextBeat, &currentMeasureDownbeatPosition ) {
-                    if let s = Conductor.sharedInstance.synth {
-                        s.setSynthParameter(.arpRate, self.currentTempo)
-                    }
+                    Conductor.sharedInstance.setSynthParameter(.arpRate, self.currentTempo)
 //                    NSLog("current tempo %f", self.currentTempo)
 //                    NSLog("timeSignatureNumerator %f", timeSignatureNumerator)
 //                    NSLog("timeSignatureDenominator %ld", timeSignatureDenominator)

@@ -13,11 +13,7 @@ extension Manager {
     // MARK: - Preset Load/Save
 
     func loadPreset() {
-
-        guard let s = conductor.synth else {
-            print("ERROR:can't load preset if synth is not initialized")
-            return
-        }
+        let s = Conductor.sharedInstance
 
         // The DEV panel has toggles (stored in settings) that impact loading of subsets of parameters of a Preset
 
@@ -155,11 +151,7 @@ extension Manager {
     }
 
     func saveValuesToPreset() {
-        guard let s = conductor.synth else {
-            AKLog("Could not save synth state to preset because synth is not instantiated")
-            return
-        }
-
+        let s = Conductor.sharedInstance
         activePreset.arpRate = s.getSynthParameter(.arpRate)
         activePreset.delayToggled = s.getSynthParameter(.delayOn)
         activePreset.delayFeedback = s.getSynthParameter(.delayFeedback)

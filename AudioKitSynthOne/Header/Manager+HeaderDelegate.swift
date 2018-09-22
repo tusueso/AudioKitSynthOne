@@ -117,12 +117,8 @@ extension Manager: HeaderDelegate {
     }
 
     func panicPressed() {
-        conductor.synth.reset() // kinder, gentler panic
-        // conductor.synth.resetDSP() // nuclear panic option
-
-        // Turn off held notes on keybaord
+        conductor.reset()
         keyboardView.allNotesOff()
-
         let title = NSLocalizedString("Midi Panic", comment: "Alert Title: MIDI Panic")
         let message = NSLocalizedString("All notes have been turned off.", comment: "Alert Message: MIDI Panic")
         displayAlertController(title, message: message)

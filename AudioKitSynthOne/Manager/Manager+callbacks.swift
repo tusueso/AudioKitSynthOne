@@ -7,12 +7,9 @@
 //
 
 extension Manager {
+    
     func setupCallbacks() {
-
-        guard let s = conductor.synth else {
-            AKLog("Manager view state is invalid because synth is not instantiated")
-            return
-        }
+        let c = Conductor.sharedInstance
 
         octaveStepper.callback = { value in
             self.keyboardView.firstOctave = Int(value) + 2
@@ -59,7 +56,7 @@ extension Manager {
         monoButton.callback = { value in
             let monoMode = value > 0 ? true : false
             self.keyboardView.polyphonicMode = !monoMode
-            s.setSynthParameter(.isMono, value)
+            c.setSynthParameter(.isMono, value)
             self.conductor.updateSingleUI(.isMono, control: self.monoButton, value: value)
         }
 
@@ -94,28 +91,28 @@ extension Manager {
                 // Cutoff
                 let newValue = 1 - value
                 let scaledValue = Double.scaleRangeLog2(newValue, rangeMin: 120, rangeMax: 7_600)
-                s.setSynthParameter(.cutoff, scaledValue * 3)
-                self.conductor.updateSingleUI(.cutoff, control: self.modWheelPad, value: s.getSynthParameter(.cutoff))
+                c.setSynthParameter(.cutoff, scaledValue * 3)
+                c.updateSingleUI(.cutoff, control: self.modWheelPad, value: c.getSynthParameter(.cutoff))
             case 1:
                 // LFO 1 Rate
-                s.setDependentParameter(.lfo1Rate, value, self.conductor.lfo1RateModWheelID)
+                c.setDependentParameter(.lfo1Rate, value, self.conductor.lfo1RateModWheelID)
             case 2:
                 // LFO 2 Rate
-                s.setDependentParameter(.lfo2Rate, value, self.conductor.lfo2RateModWheelID)
+                c.setDependentParameter(.lfo2Rate, value, self.conductor.lfo2RateModWheelID)
             default:
                 break
             }
         }
 
         pitchBend.callback = { value01 in
-            s.setDependentParameter(.pitchbend, value01, Conductor.sharedInstance.pitchBendID)
+            c.setDependentParameter(.pitchbend, value01, Conductor.sharedInstance.pitchBendID)
         }
         pitchBend.completionHandler = {  _, touchesEnded, reset in
             if touchesEnded && !reset {
                 self.pitchBend.resetToCenter()
             }
             if reset {
-                s.setDependentParameter(.pitchbend, 0.5, Conductor.sharedInstance.pitchBendID)
+                c.setDependentParameter(.pitchbend, 0.5, Conductor.sharedInstance.pitchBendID)
             }
         }
     }

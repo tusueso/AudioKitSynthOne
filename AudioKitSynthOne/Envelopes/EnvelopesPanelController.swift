@@ -27,13 +27,8 @@ class EnvelopesPanelController: PanelController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let s = Conductor.sharedInstance
         envelopeLabelBackground.layer.cornerRadius = 8
-
-        guard let s = conductor.synth else {
-            AKLog("EnvelopesPanel view state is invalid because synth is not instantiated")
-            return
-        }
 
         attackKnob.range = s.getRange(.attackDuration)
         decayKnob.range = s.getRange(.decayDuration)
@@ -60,18 +55,18 @@ class EnvelopesPanelController: PanelController {
         conductor.bind(filterADSRMixKnob, to: .filterADSRMix)
 
         adsrView.callback = { att, dec, sus, rel in
-            self.conductor.synth.setSynthParameter(.attackDuration, att)
-            self.conductor.synth.setSynthParameter(.decayDuration, dec)
-            self.conductor.synth.setSynthParameter(.sustainLevel, sus)
-            self.conductor.synth.setSynthParameter(.releaseDuration, rel)
+            self.conductor.setSynthParameter(.attackDuration, att)
+            self.conductor.setSynthParameter(.decayDuration, dec)
+            self.conductor.setSynthParameter(.sustainLevel, sus)
+            self.conductor.setSynthParameter(.releaseDuration, rel)
             self.conductor.updateAllUI()
         }
 
         filterADSRView.callback = { att, dec, sus, rel in
-            self.conductor.synth.setSynthParameter(.filterAttackDuration, att)
-            self.conductor.synth.setSynthParameter(.filterDecayDuration, dec)
-            self.conductor.synth.setSynthParameter(.filterSustainLevel, sus)
-            self.conductor.synth.setSynthParameter(.filterReleaseDuration, rel)
+            self.conductor.setSynthParameter(.filterAttackDuration, att)
+            self.conductor.setSynthParameter(.filterDecayDuration, dec)
+            self.conductor.setSynthParameter(.filterSustainLevel, sus)
+            self.conductor.setSynthParameter(.filterReleaseDuration, rel)
             self.conductor.updateAllUI()
         }
     }
