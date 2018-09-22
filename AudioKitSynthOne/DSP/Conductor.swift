@@ -187,6 +187,114 @@ class Conductor: S1Protocol {
         headerVC?.updateDisplayLabel(parameter, value: value)
     }
 
+    // MARK: - boiler plate passthrough to AKSynthOne...make a conductor protocol and add these
+    open func setSynthParameter(_ parameter: S1Parameter, _ value: Double) {
+        synth.setSynthParameter(parameter, value)
+    }
+
+    open func getSynthParameter(_ parameter: S1Parameter) -> Double {
+        return synth.getSynthParameter(parameter)
+    }
+
+    open func getDependentParameter(_ parameter: S1Parameter) -> Double {
+        return synth.getDependentParameter(parameter)
+    }
+    open func setDependentParameter(_ parameter: S1Parameter, _ value: Double, _ payload: Int32) {
+        synth.setDependentParameter(parameter, value, payload)
+    }
+
+    open func getMinimum(_ parameter: S1Parameter) -> Double {
+        return synth.getMinimum(parameter)
+    }
+
+    open func getMaximum(_ parameter: S1Parameter) -> Double {
+        return synth.getMaximum(parameter)
+    }
+
+    open func getRange(_ parameter: S1Parameter) -> ClosedRange<Double> {
+        let min = synth.getMinimum(parameter)
+        let max = synth.getMaximum(parameter)
+        return min ... max
+    }
+
+    open func getDefault(_ parameter: S1Parameter) -> Double {
+        return synth.getDefault(parameter)
+    }
+
+    /// stops all notes
+    open func reset() {
+        synth.reset()
+    }
+
+    // AKPolyphonic
+
+    // Function to play a NoteState with the note number with velocity.
+    // DSP will choose frequency at note number (AKPolyphonicNode.tuningTable).
+    open func play(noteNumber: MIDINoteNumber, velocity: MIDIVelocity) {
+        synth.play(noteNumber: noteNumber, velocity: velocity)
+    }
+
+    // Function to play a NoteState with the note number with velocity at frequency
+    open func play(noteNumber: MIDINoteNumber, velocity: MIDIVelocity, frequency: Double) {
+        synth.play(noteNumber: noteNumber, velocity: velocity, frequency: frequency)
+    }
+
+    /// Function to stop the NoteNumber at note number
+    open func stop(noteNumber: MIDINoteNumber) {
+        synth.stop(noteNumber: noteNumber)
+    }
+
+    /// Sequncer functions
+    open func getPattern(forIndex inputIndex: Int) -> Int {
+        return synth.getPattern(forIndex: inputIndex)
+    }
+
+    open func setPattern(forIndex inputIndex: Int, _ value: Int) {
+        synth.setPattern(forIndex: inputIndex, value)
+    }
+
+    open func getOctaveBoost(forIndex inputIndex: Int) -> Bool {
+        return synth.getOctaveBoost(forIndex: inputIndex)
+    }
+
+    open func setOctaveBoost(forIndex inputIndex: Int, _ value: Double) {
+        synth.setOctaveBoost(forIndex: inputIndex, value)
+    }
+
+    open func isNoteOn(forIndex inputIndex: Int) -> Bool {
+        return synth.isNoteOn(forIndex: inputIndex)
+    }
+
+    open func setNoteOn(forIndex inputIndex: Int, _ value: Bool) {
+        synth.setNoteOn(forIndex: inputIndex, value)
+    }
+
+    open func polyKeyPressure(channel: UInt8, noteNumber: UInt8, pressure: UInt8) {
+        //Do something
+    }
+
+    open func controllerChange(channel: UInt8, cc: UInt8, value: UInt8) {
+        if cc == 1 {
+            // Mod Wheel
+            //TODO: ModWheel
+        }
+    }
+
+    open func channelPressure(channel: UInt8, pressure: UInt8) {
+        //TODO: channelPressure
+    }
+
+    open func programChange(channel: UInt8, preset: UInt8) {
+        // do something
+    }
+
+    open func pitchBend(channel: UInt8, amount: UInt16) {
+        synth.setSynthParameter(.pitchbend, Double(amount))
+    }
+
+
+
+
     // MARK: - S1Protocol
 
     // called by DSP on main thread

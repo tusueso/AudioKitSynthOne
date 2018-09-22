@@ -44,12 +44,8 @@ class WheelSettingsViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        guard let s = Conductor.sharedInstance.synth else {
-            AKLog("PopUpMODController view state is invalid because synth is not instantiated")
-            return
-        }
-        pitchUpperRange.value = s.getSynthParameter(.pitchbendMaxSemitones)
-        pitchLowerRange.value = s.getSynthParameter(.pitchbendMinSemitones)
+        pitchUpperRange.value = Conductor.sharedInstance.getSynthParameter(.pitchbendMaxSemitones)
+        pitchLowerRange.value = Conductor.sharedInstance.getSynthParameter(.pitchbendMinSemitones)
     }
 
     @IBAction func routingValueDidChange(_ sender: UISegmentedControl) {

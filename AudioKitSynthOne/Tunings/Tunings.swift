@@ -139,8 +139,8 @@ class Tunings {
         let i = 0
         let tuning = tunings[i]
         _ = AKPolyphonicNode.tuningTable.tuningTable(fromFrequencies: tuning.masterSet)
-        let f = Conductor.sharedInstance.synth!.getDefault(.frequencyA4)
-        Conductor.sharedInstance.synth!.setSynthParameter(.frequencyA4, f)
+        let f = Conductor.sharedInstance.getDefault(.frequencyA4)
+        Conductor.sharedInstance.setSynthParameter(.frequencyA4, f)
         tuningsDelegate?.tuningDidChange()
         return i
     }

@@ -30,7 +30,6 @@ class TuningsPanelController: PanelController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        guard let synth = Conductor.sharedInstance.synth else { return }
         currentPanel = .tunings
         tuningTableView.backgroundColor = UIColor.clear
         tuningTableView.isOpaque = false
@@ -40,14 +39,14 @@ class TuningsPanelController: PanelController {
         tuningTableView.delegate = self
         tuningModel.tuningsDelegate = self
 
-        masterTuningKnob.range = synth.getRange(.frequencyA4)
-        masterTuningKnob.value = synth.getSynthParameter(.frequencyA4)
+        masterTuningKnob.range = Conductor.sharedInstance.getRange(.frequencyA4)
+        masterTuningKnob.value = Conductor.sharedInstance.getSynthParameter(.frequencyA4)
         Conductor.sharedInstance.bind(masterTuningKnob, to: .frequencyA4)
 
         resetTuningsButton.callback = { value in
             if value == 1 {
                 let i = self.tuningModel.resetTuning()
-                self.masterTuningKnob.value = synth.getSynthParameter(.frequencyA4)
+                self.masterTuningKnob.value = Conductor.sharedInstance.getSynthParameter(.frequencyA4)
                 self.selectRow(i)
                 self.resetTuningsButton.value = 0
             }

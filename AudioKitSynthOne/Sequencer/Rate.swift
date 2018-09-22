@@ -129,10 +129,10 @@ public enum Rate: Int, CustomStringConvertible {
     }
 
     func seconds(bars: Double = 1.0, triplet: Bool = false) -> Double {
-        guard let s = Conductor.sharedInstance.synth else { return 0.0 }
         let minutesPerSecond = 1.0 / 60.0
         let beatsPerBar = 4.0
-        return (beatsPerBar * bars) / (s.getSynthParameter(.arpRate) * minutesPerSecond) / (triplet ? 1.5 : 1)
+        let arpRate = Conductor.sharedInstance.getSynthParameter(.arpRate)
+        return (beatsPerBar * bars) / (arpRate * minutesPerSecond) / (triplet ? 1.5 : 1)
     }
 
     private static func findMinimum(_ value: Double, comparator: (Int) -> Double) -> Rate {

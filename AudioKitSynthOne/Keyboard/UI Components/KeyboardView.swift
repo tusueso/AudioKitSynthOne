@@ -82,11 +82,11 @@ public protocol AKKeyboardDelegate: class {
     }
 
     private var arpIsOn: Bool {
-        return Conductor.sharedInstance.synth.getSynthParameter(.arpIsOn) > 0 ? true : false
+        return Conductor.sharedInstance.getSynthParameter(.arpIsOn) > 0 ? true : false
     }
 
     private var arpIsSequencer: Bool {
-        return Conductor.sharedInstance.synth.getSynthParameter(.arpIsSequencer) > 0 ? true : false
+        return Conductor.sharedInstance.getSynthParameter(.arpIsSequencer) > 0 ? true : false
     }
 
     let naturalNotes = ["C", "D", "E", "F", "G", "A", "B"]

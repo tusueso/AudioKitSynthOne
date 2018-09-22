@@ -294,6 +294,10 @@ import AudioKit
     // MARK: - AKPolyphonic
 
     // Function to start, play, or activate the node at frequency
+    open override func play(noteNumber: MIDINoteNumber, velocity: MIDIVelocity) {
+        internalAU?.startNote(noteNumber, velocity: velocity)
+    }
+
     open override func play(noteNumber: MIDINoteNumber, velocity: MIDIVelocity, frequency: Double) {
         internalAU?.startNote(noteNumber, velocity: velocity, frequency: Float(frequency))
     }
@@ -301,6 +305,10 @@ import AudioKit
     /// Function to stop or bypass the node, both are equivalent
     open override func stop(noteNumber: MIDINoteNumber) {
         internalAU?.stopNote(noteNumber)
+    }
+
+    open func controllerChange(channel: UInt8, cc: UInt8, value: UInt8) {
+        //NSLog("channel:%d, controller change cc:%d, value:%d", channel, data1, data2)
     }
 
     // MARK: - Passthroughs for AKSynthOneProtocol called by DSP on main thread

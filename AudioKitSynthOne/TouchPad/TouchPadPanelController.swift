@@ -27,22 +27,20 @@ class TouchPadPanelController: PanelController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        guard let s = conductor.synth else { return }
-
         currentPanel = .touchPad
         snapToggle.value = 1
 
         // TouchPad 1
         touchPad1.horizontalRange = 0...1
         touchPad1.horizontalTaper = 1
-        lfoRate = s.getDependentParameter(.lfo1Rate)
-        lfoAmp = s.getSynthParameter(.lfo1Amplitude)
+        lfoRate = Conductor.sharedInstance.getDependentParameter(.lfo1Rate)
+        lfoAmp = Conductor.sharedInstance.getSynthParameter(.lfo1Amplitude)
 
         // TouchPad 2
-        touchPad2.horizontalRange = s.getRange(.cutoff)
+        touchPad2.horizontalRange = Conductor.sharedInstance.getRange(.cutoff)
         touchPad2.horizontalTaper = 4.04
-        cutoff = s.getSynthParameter(.cutoff)
-        rez = s.getSynthParameter(.resonance)
+        cutoff = Conductor.sharedInstance.getSynthParameter(.cutoff)
+        rez = Conductor.sharedInstance.getSynthParameter(.resonance)
         let pad2X = cutoff.normalized(from: touchPad2.horizontalRange, taper: touchPad2.horizontalTaper)
 
         setupCallbacks()
@@ -61,8 +59,6 @@ class TouchPadPanelController: PanelController {
     // MARK: - Touch Pad Callbacks
 
     func setupCallbacks() {
-        let c = conductor
-        guard let s = c.synth else { return }
 
         touchPad1.callback = { horizontal, vertical, touchesBegan in
             self.particleEmitter1.emitterPosition = CGPoint(x: (self.touchPad1.bounds.width / 2),
@@ -70,16 +66,16 @@ class TouchPadPanelController: PanelController {
 
             if touchesBegan {
                 // record values before touched
-                self.lfoRate = s.getDependentParameter(.lfo1Rate)
-                self.lfoAmp = s.getSynthParameter(.lfo1Amplitude)
+                self.lfoRate = Conductor.sharedInstance.getDependentParameter(.lfo1Rate)
+                self.lfoAmp = Conductor.sharedInstance.getSynthParameter(.lfo1Amplitude)
 
                 // start particles
                 self.particleEmitter1.birthRate = 1
             }
 
-            s.setDependentParameter(.lfo1Rate, horizontal, c.lfo1RateTouchPadID)
-            s.setSynthParameter(.lfo1Amplitude, vertical)
-            c.updateSingleUI(.lfo1Amplitude, control: nil, value: vertical)
+            Conductor.sharedInstance.setDependentParameter(.lfo1Rate, horizontal, Conductor.sharedInstance.lfo1RateTouchPadID)
+            Conductor.sharedInstance.setSynthParameter(.lfo1Amplitude, vertical)
+            Conductor.sharedInstance.updateSingleUI(.lfo1Amplitude, control: nil, value: vertical)
         }
 
         touchPad1.completionHandler = { horizontal, vertical, touchesEnded, reset in
@@ -90,7 +86,9 @@ class TouchPadPanelController: PanelController {
             if self.snapToggle.isOn && touchesEnded && !reset {
                 self.resetTouchPad1()
             }
-            c.updateSingleUI(.lfo1Amplitude, control: nil, value: s.getSynthParameter(.lfo1Amplitude))
+            Conductor.sharedInstance.updateSingleUI(.lfo1Amplitude,
+                                                    control: nil,
+                                                    value: Conductor.sharedInstance.getSynthParameter(.lfo1Amplitude))
         }
 
         touchPad2.callback = { horizontal, vertical, touchesBegan in
@@ -100,20 +98,20 @@ class TouchPadPanelController: PanelController {
             // Particle Position
             if touchesBegan {
                 // record values before touched
-                self.cutoff = s.getSynthParameter(.cutoff)
-                self.rez = s.getSynthParameter(.resonance)
+                self.cutoff = Conductor.sharedInstance.getSynthParameter(.cutoff)
+                self.rez = Conductor.sharedInstance.getSynthParameter(.resonance)
                 self.particleEmitter2.birthRate = 1
             }
 
-            let minimumResonance = self.conductor.synth.getMinimum(.resonance)
-            let maximumResonance = self.conductor.synth.getMaximum(.resonance)
+            let minimumResonance = Conductor.sharedInstance.getMinimum(.resonance)
+            let maximumResonance = Conductor.sharedInstance.getMaximum(.resonance)
             let scaledVertical = vertical.denormalized(to: minimumResonance...maximumResonance)
 
             // Affect parameters based on touch position
-            s.setSynthParameter(.cutoff, horizontal)
-            c.updateSingleUI(.cutoff, control: nil, value: horizontal)
-            s.setSynthParameter(.resonance, scaledVertical )
-            c.updateSingleUI(.resonance, control: nil, value: scaledVertical)
+            Conductor.sharedInstance.setSynthParameter(.cutoff, horizontal)
+            Conductor.sharedInstance.updateSingleUI(.cutoff, control: nil, value: horizontal)
+            Conductor.sharedInstance.setSynthParameter(.resonance, scaledVertical )
+            Conductor.sharedInstance.updateSingleUI(.resonance, control: nil, value: scaledVertical)
         }
 
         touchPad2.completionHandler = { horizontal, vertical, touchesEnded, reset in
@@ -125,8 +123,8 @@ class TouchPadPanelController: PanelController {
                self.resetTouchPad2()
             }
 
-            c.updateSingleUI(.cutoff, control: nil, value: s.getSynthParameter(.cutoff))
-            c.updateSingleUI(.resonance, control: nil, value: s.getSynthParameter(.resonance))
+            Conductor.sharedInstance.updateSingleUI(.cutoff, control: nil, value: Conductor.sharedInstance.getSynthParameter(.cutoff))
+            Conductor.sharedInstance.updateSingleUI(.resonance, control: nil, value: Conductor.sharedInstance.getSynthParameter(.resonance))
         }
 
         createParticles()
@@ -135,14 +133,14 @@ class TouchPadPanelController: PanelController {
     // MARK: - Reset Touch Pads
 
     func resetTouchPad1() {
-        conductor.synth.setDependentParameter(.lfo1Rate, lfoRate, conductor.lfo1RateTouchPadID)
-        conductor.synth.setSynthParameter(.lfo1Amplitude, lfoAmp)
+        Conductor.sharedInstance.setDependentParameter(.lfo1Rate, lfoRate, conductor.lfo1RateTouchPadID)
+        Conductor.sharedInstance.setSynthParameter(.lfo1Amplitude, lfoAmp)
         touchPad1.resetToPosition(lfoRate, lfoAmp)
     }
 
     func resetTouchPad2() {
-        conductor.synth.setSynthParameter(.cutoff, cutoff)
-        conductor.synth.setSynthParameter(.resonance, rez)
+        Conductor.sharedInstance.setSynthParameter(.cutoff, cutoff)
+        Conductor.sharedInstance.setSynthParameter(.resonance, rez)
         let x = cutoff.normalized(from: touchPad2.horizontalRange, taper: touchPad2.horizontalTaper)
         touchPad2.resetToPosition(x, rez)
     }
@@ -155,15 +153,15 @@ class TouchPadPanelController: PanelController {
         switch parameter {
 
         case .lfo1Amplitude:
-            touchPad1.updateTouchPoint(Double(conductor.synth.getDependentParameter(.lfo1Rate)), value)
+            touchPad1.updateTouchPoint(Double(Conductor.sharedInstance.getDependentParameter(.lfo1Rate)), value)
 
         case .cutoff:
             let x = value.normalized(from: touchPad2.horizontalRange, taper: touchPad2.horizontalTaper)
             touchPad2.updateTouchPoint(x, Double(touchPad2.y))
 
         case .resonance:
-            let minimumResonance = self.conductor.synth.getMinimum(.resonance)
-            let maximumResonance = self.conductor.synth.getMaximum(.resonance)
+            let minimumResonance = Conductor.sharedInstance.getMinimum(.resonance)
+            let maximumResonance = Conductor.sharedInstance.getMaximum(.resonance)
             let scaledY = value.normalized(from: minimumResonance...maximumResonance)
             touchPad2.updateTouchPoint(Double(touchPad2.x), scaledY)
 
@@ -179,7 +177,7 @@ class TouchPadPanelController: PanelController {
         switch dependentParameter.parameter {
         case .lfo1Rate:
             let val = Double(dependentParameter.normalizedValue)
-            touchPad1.updateTouchPoint(val, Double(conductor.synth.getSynthParameter(.lfo1Amplitude)))
+            touchPad1.updateTouchPoint(val, Double(Conductor.sharedInstance.getSynthParameter(.lfo1Amplitude)))
         default:
             _ = 0
         }
