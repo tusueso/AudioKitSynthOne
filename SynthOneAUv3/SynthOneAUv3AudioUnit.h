@@ -13,6 +13,10 @@
 // Define parameter addresses.
 extern const AudioUnitParameterID myParam1;
 
-@interface SynthOneAUv3AudioUnit : AUAudioUnit
-
+@interface SynthOneAUv3AudioUnit : AUAudioUnit {
+    AUInternalRenderBlock _internalRenderBlock;
+    AUHostMusicalContextBlock _musicalContext;
+    AUMIDIOutputEventBlock _outputEventBlock;
+    AUHostTransportStateBlock _transportStateBlock;
+}
 @end

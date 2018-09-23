@@ -86,7 +86,25 @@ const AudioUnitParameterID myParam1 = 0;
 
     // Validate that the bus formats are compatible.
     // Allocate your resources.
+    if (self.musicalContextBlock) {
+        _musicalContext = self.musicalContextBlock;
 
+    } else {
+        _musicalContext = nil;
+    }
+
+    if (self.MIDIOutputEventBlock) {
+        _outputEventBlock = self.MIDIOutputEventBlock;
+
+    } else {
+        _outputEventBlock = nil;
+    }
+
+    if (self.musicalContextBlock) {
+        _transportStateBlock = self.transportStateBlock;
+    } else {
+        _transportStateBlock = nil;
+    }
     return YES;
 }
 
@@ -95,6 +113,9 @@ const AudioUnitParameterID myParam1 = 0;
 - (void)deallocateRenderResources {
     // Deallocate your resources.
     [super deallocateRenderResources];
+    _musicalContext = nil;
+    _outputEventBlock = nil;
+    _transportStateBlock = nil;
 }
 
 #pragma mark - AUAudioUnit (AUAudioUnitImplementation)
@@ -108,9 +129,69 @@ const AudioUnitParameterID myParam1 = 0;
                               AVAudioFrameCount frameCount,
                               NSInteger outputBusNumber,
                               AudioBufferList *outputData,
-                              const AURenderEvent *realtimeEventListHead,
+                              const AURenderEvent *renderEventHead,
                               AURenderPullInputBlock pullInputBlock) {
         // Do event handling and signal processing here.
+        AURenderEvent const* renderEvent = renderEventHead;
+        while(renderEvent != nil) {
+            switch(renderEvent->head.eventType) {
+                case AURenderEventParameter:
+                    break;
+                case AURenderEventParameterRamp:
+                    break;
+                case AURenderEventMIDI:
+                {
+                    AUMIDIEvent midiEvent = renderEvent->MIDI;
+                    uint8_t message = midiEvent.data[0] & 0xF0;
+                    uint8_t channel = midiEvent.data[0] & 0x0F;
+                    uint8_t data1 = midiEvent.data[1];
+                    uint8_t data2 = midiEvent.data[2];
+                    if (message == 0x80) {
+                        // note off
+                        //Conductor.sharedInstance.stop(channel: channel, noteNumber: data1)
+                        NSLog(@"channel:%d, note off nn:%d", channel, data1);
+                    } else if(message ==  0x90) {
+                        if (data2 > 0) {
+                            // note on
+                            NSLog(@"channel:%d, note on nn:%d, vel:%d", channel, data1, data2);
+                            //Conductor.sharedInstance.play(channel: channel, noteNumber: data1, velocity: data2)
+                        } else {
+                            // note off
+                            NSLog(@"channel:%d, note off nn:%d", channel, data1);
+                            //Conductor.sharedInstance.stop(channel: channel, noteNumber: data1)
+                        }
+                    } else if (message ==  0xA0) {
+                        // poly key pressure
+                        NSLog(@"channel:%d, poly key pressure nn:%d, p:%d", channel, data1, data2);
+                        //Conductor.sharedInstance.polyKeyPressure(channel: channel, noteNumber: data1, pressure: data2)
+                    } else if (message ==  0xB0) {
+                        // controller change
+                        NSLog(@"channel:%d, controller change cc:%d, value:%d", channel, data1, data2);
+                        //Conductor.sharedInstance.controllerChange(channel: channel, cc: data1, value: data2)
+                    } else if (message ==  0xC0) {
+                        // program change
+                        NSLog(@"channel:%d, program change preset #:%d", channel, data1);
+                        //Conductor.sharedInstance.programChange(channel: channel, preset: data1)
+                    } else if (message ==  0xD0) {
+                        // channel pressure
+                        NSLog(@"channel:%d, channel pressure:%d", channel, data1);
+                        //Conductor.sharedInstance.channelPressure(channel: channel, pressure: data1)
+                    } else if (message ==  0xE0) {
+                        // pitch bend
+                        uint16_t pb = ((uint16_t)data2 << 7) + (uint16_t)data1;
+                        NSLog(@"channel:%d, pitch bend fine:%d, course:%d, pb:%d", channel, data1, data2, pb);
+                        //Conductor.sharedInstance.pitchBend(channel: channel, amount: pb)
+                    }
+                }
+                    break;
+                case AURenderEventMIDISysEx:
+                    break;
+                default:
+                    break;
+            }
+            renderEvent = renderEvent->head.next;
+        }
+
 
         return noErr;
     };
