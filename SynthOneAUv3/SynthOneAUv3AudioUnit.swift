@@ -11,7 +11,7 @@ import AudioKit
 import CoreAudioKit
 import AudioToolbox
 
-class SynthOneAUv3AudioUnit: AUAudioUnit {
+class SwiftSynthOneAUv3AudioUnit: AUAudioUnit {
 
     private var _outputBusArray: AUAudioUnitBusArray!
     private var _internalRenderBlock: AUInternalRenderBlock!

@@ -384,6 +384,7 @@
 		C4E67BCB214F6364006B2948 /* Sound of Izrael.json in Resources */ = {isa = PBXBuildFile; fileRef = 94D37DD320E06641002008A4 /* Sound of Izrael.json */; };
 		C4E67BCC214F6364006B2948 /* Starter Bank.json in Resources */ = {isa = PBXBuildFile; fileRef = 941752B920E2BD2E0076D953 /* Starter Bank.json */; };
 		C4E67BCD214F6364006B2948 /* User.json in Resources */ = {isa = PBXBuildFile; fileRef = C435C51920C52D1700DAECCD /* User.json */; };
+		C4F10A97215726F000640C8B /* SynthOneAUv3AudioUnit.m in Sources */ = {isa = PBXBuildFile; fileRef = C4F10A96215726F000640C8B /* SynthOneAUv3AudioUnit.m */; };
 		C4F7ECAF1F244A4B0011B119 /* ToggleButtonStyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F7ECA61F2446960011B119 /* ToggleButtonStyleKit.swift */; };
 		C4F7ECB51F244A510011B119 /* Knob+Touches.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F7ECA81F2446960011B119 /* Knob+Touches.swift */; };
 		C4F7ECB61F244A510011B119 /* Knob.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F7ECA91F2446960011B119 /* Knob.swift */; };
@@ -752,6 +753,8 @@
 		C4E67AF3214F5B0C006B2948 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C4E67AF4214F5B0C006B2948 /* SynthOneAUv3-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SynthOneAUv3-Bridging-Header.h"; sourceTree = "<group>"; };
 		C4E67AFB214F5C2E006B2948 /* SynthOneAUv3AudioUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynthOneAUv3AudioUnit.swift; sourceTree = "<group>"; };
+		C4F10A96215726F000640C8B /* SynthOneAUv3AudioUnit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SynthOneAUv3AudioUnit.m; sourceTree = "<group>"; };
+		C4F10A98215726FF00640C8B /* SynthOneAUv3AudioUnit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SynthOneAUv3AudioUnit.h; sourceTree = "<group>"; };
 		C4F7ECA61F2446960011B119 /* ToggleButtonStyleKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleButtonStyleKit.swift; sourceTree = "<group>"; };
 		C4F7ECA81F2446960011B119 /* Knob+Touches.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Knob+Touches.swift"; sourceTree = "<group>"; };
 		C4F7ECA91F2446960011B119 /* Knob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Knob.swift; sourceTree = "<group>"; };
@@ -1527,6 +1530,8 @@
 				C4E67AF0214F5B0C006B2948 /* MainInterface.storyboard */,
 				C4E67AF3214F5B0C006B2948 /* Info.plist */,
 				C4E67AF4214F5B0C006B2948 /* SynthOneAUv3-Bridging-Header.h */,
+				C4F10A98215726FF00640C8B /* SynthOneAUv3AudioUnit.h */,
+				C4F10A96215726F000640C8B /* SynthOneAUv3AudioUnit.m */,
 				C4E67AFB214F5C2E006B2948 /* SynthOneAUv3AudioUnit.swift */,
 			);
 			path = SynthOneAUv3;
@@ -2280,6 +2285,7 @@
 				C4E67B74214F5ED5006B2948 /* ArpButton.swift in Sources */,
 				C4E67B5D214F5EC1006B2948 /* PanelController.swift in Sources */,
 				C4E67B51214F5EB8006B2948 /* MIDIKnob.swift in Sources */,
+				C4F10A97215726F000640C8B /* SynthOneAUv3AudioUnit.m in Sources */,
 				C4E67B64214F5EC4006B2948 /* PresetsCategoriesViewController.swift in Sources */,
 				C4E67B8D214F5EF7006B2948 /* TuningsPitchWheelView.swift in Sources */,
 				C4E67B8B214F5EF3006B2948 /* TuningsPanel+UITableViewDelegate.swift in Sources */,

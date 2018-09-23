@@ -12,6 +12,7 @@
 #import "S1Parameter.h"
 #import "AKSynthOneRate.h"
 #import "Audiobus.h"
+#import "SynthOneAUv3AudioUnit.h"
 
 #include "ABLLink.h"
 #include "ABLLinkUtils.h"
