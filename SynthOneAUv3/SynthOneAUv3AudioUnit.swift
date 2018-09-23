@@ -31,64 +31,61 @@ class SynthOneAUv3AudioUnit: AUAudioUnit {
 
         self._internalRenderBlock = {[unowned self] (actionFlags, timeStamp, frameCount, outputBusNumber, outputData, renderEvent, pullInputBlock) in
 
-            if renderEvent != nil {
+            var renderEvent: UnsafePointer<AURenderEvent>? = UnsafePointer(renderEvent)
+            while renderEvent != nil {
                 let head: AURenderEventHeader = renderEvent!.pointee.head
                 if head.eventType == .parameter {
                     //let parameter: AUParameterEvent = renderEvent!.pointee.parameter
                 } else if head.eventType == .parameterRamp {
                     //let parameter: AUParameterEvent = renderEvent!.pointee.parameter
                 } else if head.eventType == .MIDI {
-                    var MIDI: AUMIDIEvent? = renderEvent?.pointee.MIDI
-                    while MIDI != nil {
-                        let data = MIDI!.data
-                        if MIDI!.eventType == AURenderEventType.MIDI { // might be redundant?
-                            let statusByte = data.0 >> 4
-                            let channel = data.0 & 0b0000_1111
-                            let data1 = data.1 & 0b0111_1111
-                            let data2 = data.2 & 0b0111_1111
-                            if statusByte == 0b1000 {
-                                // note off
-                                Conductor.sharedInstance.stop(channel: channel, noteNumber: data1)
-                                NSLog("channel:%d, note off nn:%d", channel, data1)
-                            } else if statusByte == 0b1001 {
-                                if data2 > 0 {
-                                    // note on
-                                    NSLog("channel:%d, note on nn:%d, vel:%d", channel, data1, data2)
-                                    Conductor.sharedInstance.play(channel: channel, noteNumber: data1, velocity: data2)
-                                } else {
-                                    // note off
-                                    NSLog("channel:%d, note off nn:%d", channel, data1)
-                                    Conductor.sharedInstance.stop(channel: channel, noteNumber: data1)
-                                }
-                            } else if statusByte == 0b1010 {
-                                // poly key pressure
-                                NSLog("channel:%d, poly key pressure nn:%d, p:%d", channel, data1, data2)
-                                Conductor.sharedInstance.polyKeyPressure(channel: channel, noteNumber: data1, pressure: data2)
-                            } else if statusByte == 0b1011 {
-                                // controller change
-                                NSLog("channel:%d, controller change cc:%d, value:%d", channel, data1, data2)
-                                Conductor.sharedInstance.controllerChange(channel: channel, cc: data1, value: data2)
-                            } else if statusByte == 0b1100 {
-                                // program change
-                                NSLog("channel:%d, program change preset #:%d", channel, data1)
-                                Conductor.sharedInstance.programChange(channel: channel, preset: data1)
-                            } else if statusByte == 0b1101 {
-                                // channel pressure
-                                NSLog("channel:%d, channel pressure:%d", channel, data1)
-                                Conductor.sharedInstance.channelPressure(channel: channel, pressure: data1)
-                            } else if statusByte == 0b1110 {
-                                // pitch bend
-                                let pb = UInt16(data2) << 7 + UInt16(data1)
-                                NSLog("channel:%d, pitch bend fine:%d, course:%d, pb:%d", channel, data1, data2, pb)
-                                Conductor.sharedInstance.pitchBend(channel: channel, amount: pb)
-                            }
+                    let MIDI: AUMIDIEvent = renderEvent!.pointee.MIDI
+                    let data = MIDI.data
+                    let statusByte = data.0 >> 4
+                    let channel = data.0 & 0b0000_1111
+                    let data1 = data.1 & 0b0111_1111
+                    let data2 = data.2 & 0b0111_1111
+                    if statusByte == 0b1000 {
+                        // note off
+                        Conductor.sharedInstance.stop(channel: channel, noteNumber: data1)
+                        NSLog("channel:%d, note off nn:%d", channel, data1)
+                    } else if statusByte == 0b1001 {
+                        if data2 > 0 {
+                            // note on
+                            NSLog("channel:%d, note on nn:%d, vel:%d", channel, data1, data2)
+                            Conductor.sharedInstance.play(channel: channel, noteNumber: data1, velocity: data2)
+                        } else {
+                            // note off
+                            NSLog("channel:%d, note off nn:%d", channel, data1)
+                            Conductor.sharedInstance.stop(channel: channel, noteNumber: data1)
                         }
-                        MIDI = MIDI!.next?.pointee.MIDI
-
+                    } else if statusByte == 0b1010 {
+                        // poly key pressure
+                        NSLog("channel:%d, poly key pressure nn:%d, p:%d", channel, data1, data2)
+                        Conductor.sharedInstance.polyKeyPressure(channel: channel, noteNumber: data1, pressure: data2)
+                    } else if statusByte == 0b1011 {
+                        // controller change
+                        NSLog("channel:%d, controller change cc:%d, value:%d", channel, data1, data2)
+                        Conductor.sharedInstance.controllerChange(channel: channel, cc: data1, value: data2)
+                    } else if statusByte == 0b1100 {
+                        // program change
+                        NSLog("channel:%d, program change preset #:%d", channel, data1)
+                        Conductor.sharedInstance.programChange(channel: channel, preset: data1)
+                    } else if statusByte == 0b1101 {
+                        // channel pressure
+                        NSLog("channel:%d, channel pressure:%d", channel, data1)
+                        Conductor.sharedInstance.channelPressure(channel: channel, pressure: data1)
+                    } else if statusByte == 0b1110 {
+                        // pitch bend
+                        let pb = UInt16(data2) << 7 + UInt16(data1)
+                        NSLog("channel:%d, pitch bend fine:%d, course:%d, pb:%d", channel, data1, data2, pb)
+                        Conductor.sharedInstance.pitchBend(channel: channel, amount: pb)
                     }
                 } else if head.eventType == .midiSysEx {
                     //let MIDI: AUMIDIEvent = renderEvent!.pointee.MIDI
                 }
+
+                renderEvent = UnsafePointer(renderEvent?.pointee.head.next)
             }
 
             // AUHostMusicalContextBlock
