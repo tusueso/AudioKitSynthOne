@@ -14,13 +14,19 @@
 const AudioUnitParameterID myParam1 = 0;
 
 @interface SynthOneAUv3AudioUnit ()
-
+{
+    AUAudioUnitBusArray* _inputBusArray;
+    AUAudioUnitBusArray* _outputBusArray;
+    AUHostMusicalContextBlock _musicalContextBlock;
+    AUMIDIOutputEventBlock _outputEventBlock;
+    AUHostTransportStateBlock _transportStateBlock;
+}
 @property (nonatomic, readwrite) AUParameterTree *parameterTree;
-
 @end
 
 
 @implementation SynthOneAUv3AudioUnit
+
 @synthesize parameterTree = _parameterTree;
 
 - (instancetype)initWithComponentDescription:(AudioComponentDescription)componentDescription options:(AudioComponentInstantiationOptions)options error:(NSError **)outError {
@@ -56,6 +62,15 @@ const AudioUnitParameterID myParam1 = 0;
 
     self.maximumFramesToRender = 512;
 
+    //TODO: AURE help
+    AVAudioFormat* audioFormat = AudioKit.format;
+    AudioKit.engine.enableManualRenderingMode(AVAudioEngineManualRenderingModeRealtime, format: audioFormat, maximumFrameCount: 4096)
+    conductor = Conductor.sharedInstance
+    AUAudioUnitBus* inputBus = [[AUAudioUnitBus alloc] initWithFormat:audioFormat error:nil];
+    AUAudioUnitBus* outputBus = [[AUAudioUnitBus alloc] initWithFormat:audioFormat error:nil];
+    _inputBusArray  = [[AUAudioUnitBusArray alloc] initWithAudioUnit:self busType:AUAudioUnitBusTypeInput busses: @[inputBus]];
+    _outputBusArray = [[AUAudioUnitBusArray alloc] initWithAudioUnit:self busType:AUAudioUnitBusTypeOutput busses: @[outputBus]];
+
     return self;
 }
 
@@ -65,16 +80,14 @@ const AudioUnitParameterID myParam1 = 0;
 // Subclassers must override this property getter and should return the same object every time.
 // See sample code.
 - (AUAudioUnitBusArray *)inputBusses {
-#warning implementation must return non-nil AUAudioUnitBusArray
-    return nil;
+    return _inputBusArray;
 }
 
 // An audio unit's audio output connection points.
 // Subclassers must override this property getter and should return the same object every time.
 // See sample code.
 - (AUAudioUnitBusArray *)outputBusses {
-#warning implementation must return non-nil AUAudioUnitBusArray
-    return nil;
+    return _outputBusArray;
 }
 
 // Allocate resources required to render.
@@ -85,37 +98,22 @@ const AudioUnitParameterID myParam1 = 0;
     }
 
     // Validate that the bus formats are compatible.
+
     // Allocate your resources.
-    if (self.musicalContextBlock) {
-        _musicalContext = self.musicalContextBlock;
+    _musicalContextBlock = self.musicalContextBlock;
+    _outputEventBlock = self.MIDIOutputEventBlock;
+    _transportStateBlock = self.transportStateBlock;
 
-    } else {
-        _musicalContext = nil;
-    }
-
-    if (self.MIDIOutputEventBlock) {
-        _outputEventBlock = self.MIDIOutputEventBlock;
-
-    } else {
-        _outputEventBlock = nil;
-    }
-
-    if (self.musicalContextBlock) {
-        _transportStateBlock = self.transportStateBlock;
-    } else {
-        _transportStateBlock = nil;
-    }
     return YES;
 }
 
 // Deallocate resources allocated in allocateRenderResourcesAndReturnError:
 // Subclassers should call the superclass implementation.
 - (void)deallocateRenderResources {
-    // Deallocate your resources.
-    [super deallocateRenderResources];
-    _musicalContext = nil;
+    _musicalContextBlock = nil;
     _outputEventBlock = nil;
     _transportStateBlock = nil;
+    [super deallocateRenderResources];
 }
 
 #pragma mark - AUAudioUnit (AUAudioUnitImplementation)
@@ -124,6 +122,10 @@ const AudioUnitParameterID myParam1 = 0;
 - (AUInternalRenderBlock)internalRenderBlock {
     // Capture in locals to avoid Obj-C member lookups. If "self" is captured in render, we're doing it wrong. See sample code.
 
+    __block AUHostMusicalContextBlock mcb = _musicalContextBlock;
+    __block AUMIDIOutputEventBlock moeb = _outputEventBlock;
+    __block AUHostTransportStateBlock tcb = _transportStateBlock;
+
     return ^AUAudioUnitStatus(AudioUnitRenderActionFlags *actionFlags,
                               const AudioTimeStamp *timestamp,
                               AVAudioFrameCount frameCount,
@@ -131,6 +133,59 @@ const AudioUnitParameterID myParam1 = 0;
                               AudioBufferList *outputData,
                               const AURenderEvent *renderEventHead,
                               AURenderPullInputBlock pullInputBlock) {
+
+        //
+        if(mcb) {
+            double currentTempo = 120.0;
+            double timeSignatureNumerator = 0.0;
+            NSInteger timeSignatureDenominator = 0;
+            double currentBeatPosition = 0.0;
+            NSInteger sampleOffsetToNextBeat = 0;
+            double currentMeasureDownbeatPosition = 0.0;
+            mcb(&currentTempo, &timeSignatureNumerator, &timeSignatureDenominator, &currentBeatPosition, &sampleOffsetToNextBeat, &currentMeasureDownbeatPosition );
+            //TODO:CONDUCTOR
+            //Conductor.sharedInstance.setSynthParameter(.arpRate, _currentTempo)
+            //            NSLog("current tempo %f", self.currentTempo)
+            //            NSLog("timeSignatureNumerator %f", timeSignatureNumerator)
+            //            NSLog("timeSignatureDenominator %ld", timeSignatureDenominator)
+        }
+
+        if(tcb) {
+            AUHostTransportStateFlags flags;
+            double currentSamplePosition = 0.0;
+            double cycleStartBeatPosition = 0.0;
+            double cycleEndBeatPosition = 0.0;
+            const BOOL result = tcb(&flags, &currentSamplePosition, &cycleStartBeatPosition, &cycleEndBeatPosition);
+            if (!result) {
+                NSLog(@"Cannot retrieve transport state from host");
+            } else {
+                if(flags & AUHostTransportStateChanged) {
+                    //                NSLog("AUHostTransportStateChanged bit set")
+                    //                NSLog("currentSamplePosition %f", currentSamplePosition)
+                }
+
+                if (flags & AUHostTransportStateMoving) {
+                    //                NSLog("AUHostTransportStateMoving bit set");
+                    //                NSLog("currentSamplePosition %f", currentSamplePosition)
+                    //                NSLog("currentBeatPosition %f", currentBeatPosition);
+                    //                NSLog("sampleOffsetToNextBeat %ld", sampleOffsetToNextBeat);
+                    //                NSLog("currentMeasureDownbeatPosition %f", currentMeasureDownbeatPosition);
+                }
+
+                if(flags & AUHostTransportStateRecording) {
+                    //                        NSLog("AUHostTransportStateRecording bit set")
+                    //                        NSLog("currentSamplePosition %f", currentSamplePosition)
+                }
+
+                if(flags & AUHostTransportStateCycling) {
+                    //                        NSLog("AUHostTransportStateCycling bit set")
+                    //                        NSLog("currentSamplePosition %f", currentSamplePosition)
+                    //                        NSLog("cycleStartBeatPosition %f", cycleStartBeatPosition)
+                    //                        NSLog("cycleEndBeatPosition %f", cycleEndBeatPosition)
+                }
+            }
+        }
+
         // Do event handling and signal processing here.
         AURenderEvent const* renderEvent = renderEventHead;
         while(renderEvent != nil) {
@@ -139,17 +194,19 @@ const AudioUnitParameterID myParam1 = 0;
                     break;
                 case AURenderEventParameterRamp:
                     break;
+                //TODO:CONDUCTOR
                 case AURenderEventMIDI:
                 {
                     AUMIDIEvent midiEvent = renderEvent->MIDI;
+                    AUEventSampleTime now = midiEvent.eventSampleTime - timestamp->mSampleTime;
                     uint8_t message = midiEvent.data[0] & 0xF0;
                     uint8_t channel = midiEvent.data[0] & 0x0F;
                     uint8_t data1 = midiEvent.data[1];
                     uint8_t data2 = midiEvent.data[2];
                     if (message == 0x80) {
                         // note off
-                        //Conductor.sharedInstance.stop(channel: channel, noteNumber: data1)
                         NSLog(@"channel:%d, note off nn:%d", channel, data1);
+                        //Conductor.sharedInstance.stop(channel: channel, noteNumber: data1)
                     } else if(message ==  0x90) {
                         if (data2 > 0) {
                             // note on
@@ -182,6 +239,33 @@ const AudioUnitParameterID myParam1 = 0;
                         NSLog(@"channel:%d, pitch bend fine:%d, course:%d, pb:%d", channel, data1, data2, pb);
                         //Conductor.sharedInstance.pitchBend(channel: channel, amount: pb)
                     }
+#if 0
+                    // perform midi output block on each event
+                    if( moeb) {
+                        // example from Gene's blog
+                        // send back the original unchanged
+                        moeb(now, 0, renderEvent->MIDI.length, renderEvent->MIDI.data);
+
+                        // now make new MIDI data
+                        // note on
+                        uint8_t bytes[3];
+                        bytes[0] = 0x90;
+                        bytes[1] = data1;
+                        bytes[2] = data2;
+                        if (message == 0x90 && data2 != 0) {
+                            bytes[1] = data1 + interval;
+                            moeb(now, 0, 3, bytes);
+                        }
+                        // note off
+                        bytes[0] = 0x90;
+                        bytes[1] = data1;
+                        bytes[2] = 0;
+                        if (message == 0x90 && data2 == 0) {
+                            bytes[1] = data1 + interval;
+                            moeb(now, 0, 3, bytes);
+                        }
+                    }
+#endif
                 }
                     break;
                 case AURenderEventMIDISysEx:
@@ -192,6 +276,8 @@ const AudioUnitParameterID myParam1 = 0;
             renderEvent = renderEvent->head.next;
         }
 
+        //TODO:AURE
+        AudioKit.engine.manualRenderingBlock(frameCount, outputData, nil)
 
         return noErr;
     };

@@ -28,8 +28,8 @@ class SwiftSynthOneAUv3AudioUnit: AUAudioUnit {
 
         try super.init(componentDescription: componentDescription, options: options)
 
-
-        self._internalRenderBlock = {[unowned self] (actionFlags, timeStamp, frameCount, outputBusNumber, outputData, renderEvent, pullInputBlock) in
+            // note that "self" is captured many times throughout this block definition
+            self._internalRenderBlock = {[unowned self] (actionFlags, timeStamp, frameCount, outputBusNumber, outputData, renderEvent, pullInputBlock) in
 
             var renderEvent: UnsafePointer<AURenderEvent>? = UnsafePointer(renderEvent)
             while renderEvent != nil {
@@ -109,7 +109,6 @@ class SwiftSynthOneAUv3AudioUnit: AUAudioUnit {
 //                        NSLog("currentMeasureDownbeatPosition %f", currentMeasureDownbeatPosition);
                     }
                 }
-
             }
 
             // AUHostTransportStateBlock
@@ -172,6 +171,7 @@ class SwiftSynthOneAUv3AudioUnit: AUAudioUnit {
             throw error
         }
     }
+    
     override func supportedViewConfigurations(_ availableViewConfigurations: [AUAudioUnitViewConfiguration]) -> IndexSet {
         for configuration in availableViewConfigurations {
             print("width ", configuration.width)
