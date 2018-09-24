@@ -18,6 +18,11 @@ public class AudioUnitViewController: AUViewController, AUAudioUnitFactory {
         if audioUnit == nil {
             print("returned with nil audiounit")
             return
+        } else {
+            // per apple docs if au is loaded we need to connect ui to it
+            // https://developer.apple.com/library/archive/documentation/General/Conceptual/ExtensibilityPG/AudioUnit.html
+            print("viewDidLoad:AU is valid: connect ui")
+            connectUIToAudioUnit()
         }
         
         // Get the parameter tree and add observers for any parameters that the UI needs to keep in sync with the AudioUnit
@@ -45,9 +50,23 @@ public class AudioUnitViewController: AUViewController, AUAudioUnitFactory {
                 print("Extension Context is nil")
             }
         }
+
+        if isViewLoaded {
+            connectUIToAudioUnit()
+        }
+        
+        return audioUnit!
+    }
+
+    // see apple doc ref in view did load
+    public func connectUIToAudioUnit() {
+        // Get the parameter tree and add observers for any parameters that the UI needs to keep in sync with the Audio Unit
+
+        //TODO:ensure we only call this once
+        //
         DispatchQueue.main.async {
             self.performSegue(withIdentifier: "LoadUI", sender: self)
         }
-        return audioUnit!
     }
+
 }
