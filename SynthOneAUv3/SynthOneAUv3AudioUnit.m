@@ -7,7 +7,8 @@
 //
 
 #import "SynthOneAUv3AudioUnit.h"
-
+#import <AudioKit/AudioKit-swift.h>
+#import <SynthOneAUv3-Swift.h>
 #import <AVFoundation/AVFoundation.h>
 
 // Define parameter addresses.
@@ -62,10 +63,10 @@ const AudioUnitParameterID myParam1 = 0;
 
     self.maximumFramesToRender = 512;
 
-    //TODO: AURE help
     AVAudioFormat* audioFormat = AudioKit.format;
-    AudioKit.engine.enableManualRenderingMode(AVAudioEngineManualRenderingModeRealtime, format: audioFormat, maximumFrameCount: 4096)
-    conductor = Conductor.sharedInstance
+    NSError* error = nil;
+    [AudioKit.engine enableManualRenderingMode:AVAudioEngineManualRenderingModeRealtime format:audioFormat maximumFrameCount:4096 error:&error];
+    [[Conductor class] sharedInstance];
     AUAudioUnitBus* inputBus = [[AUAudioUnitBus alloc] initWithFormat:audioFormat error:nil];
     AUAudioUnitBus* outputBus = [[AUAudioUnitBus alloc] initWithFormat:audioFormat error:nil];
     _inputBusArray  = [[AUAudioUnitBusArray alloc] initWithAudioUnit:self busType:AUAudioUnitBusTypeInput busses: @[inputBus]];
@@ -198,7 +199,7 @@ const AudioUnitParameterID myParam1 = 0;
                 case AURenderEventMIDI:
                 {
                     AUMIDIEvent midiEvent = renderEvent->MIDI;
-                    AUEventSampleTime now = midiEvent.eventSampleTime - timestamp->mSampleTime;
+                    //AUEventSampleTime now = midiEvent.eventSampleTime - timestamp->mSampleTime;
                     uint8_t message = midiEvent.data[0] & 0xF0;
                     uint8_t channel = midiEvent.data[0] & 0x0F;
                     uint8_t data1 = midiEvent.data[1];
@@ -276,8 +277,7 @@ const AudioUnitParameterID myParam1 = 0;
             renderEvent = renderEvent->head.next;
         }
 
-        //TODO:AURE
-        AudioKit.engine.manualRenderingBlock(frameCount, outputData, nil)
+        AudioKit.engine.manualRenderingBlock(frameCount, outputData, nil);
 
         return noErr;
     };

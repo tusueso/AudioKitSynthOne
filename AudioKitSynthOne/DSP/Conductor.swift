@@ -15,7 +15,7 @@ protocol S1Control: class {
 
 typealias S1ControlCallback = (S1Parameter, S1Control?) -> ((_: Double) -> Void)
 
-class Conductor: S1Protocol {
+@objc class Conductor: NSObject, S1Protocol {
     static var sharedInstance = Conductor()
     var neverSleep = false {
         didSet {
