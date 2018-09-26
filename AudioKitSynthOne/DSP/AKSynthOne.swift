@@ -22,7 +22,7 @@ import AudioKit
 
     // MARK: - Properties
 
-    public var internalAU: AKAudioUnitType?
+    @objc public var internalAU: AKAudioUnitType?
     public var token: AUParameterObserverToken?
 
     fileprivate var waveformArray = [AKTable]()

@@ -7,7 +7,9 @@
 //
 
 import UIKit
+#if !AUV3_EXTENSION
 import MessageUI
+#endif
 
 protocol AboutDelegate: AnyObject {
     func showDevView()
@@ -93,26 +95,29 @@ class AboutViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
 
-     @IBAction func emailPressed(_ sender: UIButton) {
+    @IBAction func emailPressed(_ sender: UIButton) {
+        #if !AUV3_EXTENSION
 
-     let receipients = ["hello@audiokitpro.com"]
-     let subject = "From AudioKit Synth App"
-     let messageBody = ""
+        let receipients = ["hello@audiokitpro.com"]
+        let subject = "From AudioKit Synth App"
+        let messageBody = ""
 
-     let configuredMailComposeViewController = configureMailComposeViewController(recepients: receipients,
-                                                                                  subject: subject,
-                                                                                  messageBody: messageBody)
+        let configuredMailComposeViewController = configureMailComposeViewController(recepients: receipients,
+                                                                                     subject: subject,
+                                                                                     messageBody: messageBody)
 
-     if canSendMail() {
-     self.present(configuredMailComposeViewController, animated: true, completion: nil)
-     } else {
-     showSendMailErrorAlert()
-     }
-     }
-
+        if canSendMail() {
+            self.present(configuredMailComposeViewController, animated: true, completion: nil)
+        } else {
+            showSendMailErrorAlert()
+        }
+        #endif
+    }
 }
 
 // MARK: - MFMailComposeViewController Delegate
+
+#if !AUV3_EXTENSION
 
 extension AboutViewController: MFMailComposeViewControllerDelegate {
 
@@ -151,3 +156,4 @@ extension AboutViewController: MFMailComposeViewControllerDelegate {
         present(sendMailErrorAlert, animated: true, completion: nil)
     }
 }
+#endif

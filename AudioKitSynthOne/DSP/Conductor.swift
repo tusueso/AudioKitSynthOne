@@ -16,16 +16,18 @@ protocol S1Control: class {
 typealias S1ControlCallback = (S1Parameter, S1Control?) -> ((_: Double) -> Void)
 
 @objc class Conductor: NSObject, S1Protocol {
-    static var sharedInstance = Conductor()
+    @objc static var sharedInstance = Conductor()
+    @objc public class func shared() -> Conductor {
+        return Conductor.sharedInstance
+    }
+
     var neverSleep = false {
         didSet {
             //LinkOpener.shared.isIdleTimerDisabled = neverSleep
         }
     }
 
-    // Synth should not be directly accessible.
-    // We need to build up a protocol for conductor/synth so aks1 can be a template project
-    private var synth: AKSynthOne!
+    @objc var synth: AKSynthOne!
     private var started = false
     var tap: AKPolyphonicNode {
         get {
@@ -126,7 +128,7 @@ typealias S1ControlCallback = (S1Parameter, S1Control?) -> ((_: Double) -> Void)
         updateDisplayLabel("\(manager.activePreset.position): \(manager.activePreset.name)")
     }
 
-    func start() {
+    @objc public func start() {
         #if DEBUG
         AKSettings.enableLogging = true
         AKLog("Logging is ON")
@@ -473,6 +475,7 @@ typealias S1ControlCallback = (S1Parameter, S1Control?) -> ((_: Double) -> Void)
     }
 
     @objc func checkIAAConnectionsEnterBackground() {
+        #if !AUV3_EXTENSION
         if let audiobusClient = Audiobus.client {
             if !audiobusClient.isConnected && !audiobusClient.isConnectedToInput && !backgroundAudio {
                 deactivateSession()
@@ -485,6 +488,7 @@ typealias S1ControlCallback = (S1Parameter, S1Control?) -> ((_: Double) -> Void)
                                                 userInfo: nil, repeats: true)
             }
         }
+        #endif
     }
 
     func checkIAAConnectionsEnterForeground() {

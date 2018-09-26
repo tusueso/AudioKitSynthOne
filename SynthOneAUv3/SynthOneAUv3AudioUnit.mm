@@ -10,6 +10,7 @@
 #import <AudioKit/AudioKit-swift.h>
 #import <SynthOneAUv3-Swift.h>
 #import <AVFoundation/AVFoundation.h>
+#import "S1DSPKernel.hpp"
 
 // Define parameter addresses.
 const AudioUnitParameterID myParam1 = 0;
@@ -21,6 +22,7 @@ const AudioUnitParameterID myParam1 = 0;
     AUHostMusicalContextBlock _musicalContextBlock;
     AUMIDIOutputEventBlock _outputEventBlock;
     AUHostTransportStateBlock _transportStateBlock;
+    S1DSPKernel* _kernelPtr;
 }
 @property (nonatomic, readwrite) AUParameterTree *parameterTree;
 @end
@@ -66,7 +68,10 @@ const AudioUnitParameterID myParam1 = 0;
     AVAudioFormat* audioFormat = AudioKit.format;
     NSError* error = nil;
     [AudioKit.engine enableManualRenderingMode:AVAudioEngineManualRenderingModeRealtime format:audioFormat maximumFrameCount:4096 error:&error];
-    [[Conductor class] sharedInstance];
+    Conductor* conductor = [Conductor sharedInstance];
+    [conductor start];
+    _kernelPtr = (S1DSPKernel*)conductor.synth.internalAU->_kernelPtr; // I am a Mad God
+
     AUAudioUnitBus* inputBus = [[AUAudioUnitBus alloc] initWithFormat:audioFormat error:nil];
     AUAudioUnitBus* outputBus = [[AUAudioUnitBus alloc] initWithFormat:audioFormat error:nil];
     _inputBusArray  = [[AUAudioUnitBusArray alloc] initWithAudioUnit:self busType:AUAudioUnitBusTypeInput busses: @[inputBus]];
@@ -124,8 +129,9 @@ const AudioUnitParameterID myParam1 = 0;
     // Capture in locals to avoid Obj-C member lookups. If "self" is captured in render, we're doing it wrong. See sample code.
 
     __block AUHostMusicalContextBlock mcb = _musicalContextBlock;
-    __block AUMIDIOutputEventBlock moeb = _outputEventBlock;
+    //__block AUMIDIOutputEventBlock moeb = _outputEventBlock;
     __block AUHostTransportStateBlock tcb = _transportStateBlock;
+    __block S1DSPKernel* _kernelRef = _kernelPtr;
 
     return ^AUAudioUnitStatus(AudioUnitRenderActionFlags *actionFlags,
                               const AudioTimeStamp *timestamp,
@@ -144,8 +150,7 @@ const AudioUnitParameterID myParam1 = 0;
             NSInteger sampleOffsetToNextBeat = 0;
             double currentMeasureDownbeatPosition = 0.0;
             mcb(&currentTempo, &timeSignatureNumerator, &timeSignatureDenominator, &currentBeatPosition, &sampleOffsetToNextBeat, &currentMeasureDownbeatPosition );
-            //TODO:CONDUCTOR
-            //Conductor.sharedInstance.setSynthParameter(.arpRate, _currentTempo)
+            _kernelRef->setParameter(arpRate, currentTempo);
             //            NSLog("current tempo %f", self.currentTempo)
             //            NSLog("timeSignatureNumerator %f", timeSignatureNumerator)
             //            NSLog("timeSignatureDenominator %ld", timeSignatureDenominator)
@@ -207,16 +212,16 @@ const AudioUnitParameterID myParam1 = 0;
                     if (message == 0x80) {
                         // note off
                         NSLog(@"channel:%d, note off nn:%d", channel, data1);
-                        //Conductor.sharedInstance.stop(channel: channel, noteNumber: data1)
+                        _kernelRef->stopNote(data1);
                     } else if(message ==  0x90) {
                         if (data2 > 0) {
                             // note on
                             NSLog(@"channel:%d, note on nn:%d, vel:%d", channel, data1, data2);
-                            //Conductor.sharedInstance.play(channel: channel, noteNumber: data1, velocity: data2)
+                            _kernelRef->startNote(data1, data2);
                         } else {
                             // note off
                             NSLog(@"channel:%d, note off nn:%d", channel, data1);
-                            //Conductor.sharedInstance.stop(channel: channel, noteNumber: data1)
+                            _kernelRef->stopNote(data1);
                         }
                     } else if (message ==  0xA0) {
                         // poly key pressure
@@ -224,21 +229,23 @@ const AudioUnitParameterID myParam1 = 0;
                         //Conductor.sharedInstance.polyKeyPressure(channel: channel, noteNumber: data1, pressure: data2)
                     } else if (message ==  0xB0) {
                         // controller change
+                        //TODO:MARCUS: need to move mod wheel logic from vc to dsp (like pitchbend)
                         NSLog(@"channel:%d, controller change cc:%d, value:%d", channel, data1, data2);
-                        //Conductor.sharedInstance.controllerChange(channel: channel, cc: data1, value: data2)
+                        //TODO:MARCUS: create dsp controller change method
                     } else if (message ==  0xC0) {
                         // program change
                         NSLog(@"channel:%d, program change preset #:%d", channel, data1);
-                        //Conductor.sharedInstance.programChange(channel: channel, preset: data1)
+                        //TODO:MARCUS: create dsp program change method
                     } else if (message ==  0xD0) {
                         // channel pressure
                         NSLog(@"channel:%d, channel pressure:%d", channel, data1);
+                        //TODO:MARCUS: create dsp channelPressure method
                         //Conductor.sharedInstance.channelPressure(channel: channel, pressure: data1)
                     } else if (message ==  0xE0) {
                         // pitch bend
                         uint16_t pb = ((uint16_t)data2 << 7) + (uint16_t)data1;
                         NSLog(@"channel:%d, pitch bend fine:%d, course:%d, pb:%d", channel, data1, data2, pb);
-                        //Conductor.sharedInstance.pitchBend(channel: channel, amount: pb)
+                        _kernelRef->setParameter(pitchbend, pb);
                     }
 #if 0
                     // perform midi output block on each event

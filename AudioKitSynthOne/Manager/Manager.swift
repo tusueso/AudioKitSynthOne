@@ -68,8 +68,9 @@ public class Manager: UpdatableViewController {
 
     // AudioBus
     private var audioUnitPropertyListener: AudioUnitPropertyListener!
+    #if !AUV3_EXTENSION
     var midiInput: ABMIDIReceiverPort?
-
+    #endif
     // MARK: - Define child view controllers
 
     // swiftlint:disable force_cast

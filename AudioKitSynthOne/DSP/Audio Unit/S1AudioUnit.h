@@ -62,6 +62,7 @@ typedef struct S1ArpBeatCounter {
 {
     @public
     AEMessageQueue  *_messageQueue;
+    void* _kernelPtr;
 }
 
 @property (nonatomic) NSArray *parameters;

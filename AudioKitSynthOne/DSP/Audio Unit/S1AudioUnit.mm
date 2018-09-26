@@ -99,6 +99,7 @@
 }
 
 - (void)setupWaveform:(UInt32)tableIndex size:(int)size {
+    _kernelPtr = &_kernel;
     _kernel.setupWaveform(tableIndex, (uint32_t)size);
 }
 
