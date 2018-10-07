@@ -46,7 +46,8 @@ class GeneratorsPanelController: PanelController {
 
     @IBOutlet weak var legatoModeToggle: ToggleButton!
     @IBOutlet weak var widenToggle: FlatToggleButton!
-
+    @IBOutlet weak var oscBandlimitEnable: ToggleButton!
+    
     var audioPlot: AKNodeOutputPlot!
     var isAudioPlotFilled: Bool = false
     var midiKnobs = [MIDIKnob]()
@@ -109,11 +110,44 @@ class GeneratorsPanelController: PanelController {
         conductor.bind(widenToggle, to: .widen)
         conductor.bind(sequencerToggle, to: .arpIsOn)
         conductor.bind(tempoStepper, to: .arpRate)
+        conductor.bind(oscBandlimitEnable, to: .oscBandlimitEnable)
 
         // Setup Audio Plot Display
         setupAudioPlot()
 
         setupLinkStuff()
+
+		// Sets the read order for VoiceOver
+		view.accessibilityElements = [
+			morph1Selector,
+			morph1SemitoneOffset,
+			morph2Selector,
+			morph2SemitoneOffset,
+			morph2Detuning,
+			subVolume,
+			subOctaveDown,
+			subIsSquare,
+			morph1Volume,
+			morph2Volume,
+			morphBalance,
+			masterVolume,
+			fmVolume,
+			fmAmount,
+			filterTypeToggle,
+			cutoff,
+			resonance,
+			noiseVolume,
+			glideKnob,
+			isMonoToggle,
+			legatoModeToggle,
+			oscBandlimitEnable,
+			widenToggle,
+			sequencerToggle,
+			tempoStepper,
+			leftNavButton,
+			rightNavButton
+		]
+
     }
 
     func setupAudioPlot() {

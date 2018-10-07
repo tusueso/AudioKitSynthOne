@@ -12,6 +12,7 @@
 		941645D120B3597300D62851 /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 941645CA20B3597300D62851 /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		941752BA20E2BD2E0076D953 /* Starter Bank.json in Resources */ = {isa = PBXBuildFile; fileRef = 941752B920E2BD2E0076D953 /* Starter Bank.json */; };
 		94656AED205F410900634B2C /* KeyboardShowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94656AEC205F410900634B2C /* KeyboardShowButton.swift */; };
+		946980572169258A007EAA5B /* String+CapitalizeFirst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946980562169258A007EAA5B /* String+CapitalizeFirst.swift */; };
 		947956A91F329AB200FE5D9B /* Stepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947956A81F329AB100FE5D9B /* Stepper.swift */; };
 		947956AD1F329AB200FE5D9B /* StepperStyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947956A51F329AB100FE5D9B /* StepperStyleKit.swift */; };
 		947956B31F32A70400FE5D9B /* ToggleSwitchStyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 947956B21F32A70300FE5D9B /* ToggleSwitchStyleKit.swift */; };
@@ -179,9 +180,62 @@
 		EA388CF6210499530026C0C0 /* Generators.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA388CF8210499530026C0C0 /* Generators.storyboard */; };
 		EA388CF92104995B0026C0C0 /* MailingList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA388CFB2104995B0026C0C0 /* MailingList.storyboard */; };
 		EA388CFC210548460026C0C0 /* Dev.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA388CFE210548460026C0C0 /* Dev.storyboard */; };
-		EA388D1921071BD50026C0C0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA388D1721071BD50026C0C0 /* InfoPlist.strings */; };
 		EA388D1C21071BD50026C0C0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA388D1A21071BD50026C0C0 /* InfoPlist.strings */; };
 		EA388D1F21071BD50026C0C0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA388D1D21071BD50026C0C0 /* Localizable.strings */; };
+		F482CC2C2123CDE70093ADC8 /* triangle_0674.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CBF62123CDE70093ADC8 /* triangle_0674.json */; };
+		F482CC2D2123CDE70093ADC8 /* bandlimitedWaveformFrequencies.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CBF72123CDE70093ADC8 /* bandlimitedWaveformFrequencies.json */; };
+		F482CC2E2123CDE70093ADC8 /* pwm_0000.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CBF82123CDE70093ADC8 /* pwm_0000.json */; };
+		F482CC2F2123CDE70093ADC8 /* square_0674.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CBF92123CDE70093ADC8 /* square_0674.json */; };
+		F482CC302123CDE70093ADC8 /* sawtooth_0002.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CBFA2123CDE70093ADC8 /* sawtooth_0002.json */; };
+		F482CC312123CDE70093ADC8 /* triangle_0005.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CBFB2123CDE70093ADC8 /* triangle_0005.json */; };
+		F482CC322123CDE70093ADC8 /* square_0005.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CBFC2123CDE70093ADC8 /* square_0005.json */; };
+		F482CC332123CDE70093ADC8 /* pwm_1348.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CBFD2123CDE70093ADC8 /* pwm_1348.json */; };
+		F482CC342123CDE70093ADC8 /* sawtooth_2696.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CBFE2123CDE70093ADC8 /* sawtooth_2696.json */; };
+		F482CC352123CDE70093ADC8 /* pwm_0021.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CBFF2123CDE70093ADC8 /* pwm_0021.json */; };
+		F482CC362123CDE70093ADC8 /* sawtooth_0042.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC002123CDE70093ADC8 /* sawtooth_0042.json */; };
+		F482CC372123CDE70093ADC8 /* square_0337.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC012123CDE70093ADC8 /* square_0337.json */; };
+		F482CC382123CDE70093ADC8 /* pwm_0001.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC022123CDE70093ADC8 /* pwm_0001.json */; };
+		F482CC392123CDE70093ADC8 /* pwm_0168.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC032123CDE70093ADC8 /* pwm_0168.json */; };
+		F482CC3A2123CDE70093ADC8 /* triangle_0337.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC042123CDE70093ADC8 /* triangle_0337.json */; };
+		F482CC3B2123CDE70093ADC8 /* triangle_0042.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC052123CDE70093ADC8 /* triangle_0042.json */; };
+		F482CC3C2123CDE70093ADC8 /* square_2696.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC062123CDE70093ADC8 /* square_2696.json */; };
+		F482CC3D2123CDE70093ADC8 /* triangle_2696.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC072123CDE70093ADC8 /* triangle_2696.json */; };
+		F482CC3E2123CDE70093ADC8 /* square_0042.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC082123CDE70093ADC8 /* square_0042.json */; };
+		F482CC3F2123CDE70093ADC8 /* pwm_0084.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC092123CDE70093ADC8 /* pwm_0084.json */; };
+		F482CC402123CDE70093ADC8 /* sawtooth_0337.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC0A2123CDE70093ADC8 /* sawtooth_0337.json */; };
+		F482CC412123CDE70093ADC8 /* pwm_0010.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC0B2123CDE70093ADC8 /* pwm_0010.json */; };
+		F482CC422123CDE70093ADC8 /* sawtooth_0674.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC0C2123CDE70093ADC8 /* sawtooth_0674.json */; };
+		F482CC432123CDE70093ADC8 /* square_0002.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC0D2123CDE70093ADC8 /* square_0002.json */; };
+		F482CC442123CDE70093ADC8 /* triangle_0002.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC0E2123CDE70093ADC8 /* triangle_0002.json */; };
+		F482CC452123CDE70093ADC8 /* sawtooth_0005.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC0F2123CDE70093ADC8 /* sawtooth_0005.json */; };
+		F482CC462123CDE70093ADC8 /* pwm_0337.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC102123CDE70093ADC8 /* pwm_0337.json */; };
+		F482CC472123CDE70093ADC8 /* square_0001.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC112123CDE70093ADC8 /* square_0001.json */; };
+		F482CC482123CDE70093ADC8 /* triangle_0168.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC122123CDE70093ADC8 /* triangle_0168.json */; };
+		F482CC492123CDE70093ADC8 /* sawtooth_0084.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC132123CDE70093ADC8 /* sawtooth_0084.json */; };
+		F482CC4A2123CDE70093ADC8 /* sawtooth_0010.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC142123CDE70093ADC8 /* sawtooth_0010.json */; };
+		F482CC4B2123CDE70093ADC8 /* square_0168.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC152123CDE70093ADC8 /* square_0168.json */; };
+		F482CC4C2123CDE70093ADC8 /* triangle_0001.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC162123CDE70093ADC8 /* triangle_0001.json */; };
+		F482CC4D2123CDE70093ADC8 /* bandlimitedWaveforms.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC172123CDE70093ADC8 /* bandlimitedWaveforms.json */; };
+		F482CC4E2123CDE70093ADC8 /* square_1348.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC182123CDE70093ADC8 /* square_1348.json */; };
+		F482CC4F2123CDE70093ADC8 /* triangle_0021.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC192123CDE70093ADC8 /* triangle_0021.json */; };
+		F482CC502123CDE70093ADC8 /* square_0021.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC1A2123CDE70093ADC8 /* square_0021.json */; };
+		F482CC512123CDE70093ADC8 /* triangle_1348.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC1B2123CDE70093ADC8 /* triangle_1348.json */; };
+		F482CC522123CDE70093ADC8 /* pwm_0005.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC1C2123CDE70093ADC8 /* pwm_0005.json */; };
+		F482CC532123CDE70093ADC8 /* triangle_0000.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC1D2123CDE70093ADC8 /* triangle_0000.json */; };
+		F482CC542123CDE70093ADC8 /* square_0000.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC1E2123CDE70093ADC8 /* square_0000.json */; };
+		F482CC552123CDE70093ADC8 /* pwm_0674.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC1F2123CDE70093ADC8 /* pwm_0674.json */; };
+		F482CC562123CDE70093ADC8 /* pwm_0002.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC202123CDE70093ADC8 /* pwm_0002.json */; };
+		F482CC572123CDE70093ADC8 /* sawtooth_0000.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC212123CDE70093ADC8 /* sawtooth_0000.json */; };
+		F482CC582123CDE70093ADC8 /* sawtooth_0001.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC222123CDE70093ADC8 /* sawtooth_0001.json */; };
+		F482CC592123CDE70093ADC8 /* square_0084.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC232123CDE70093ADC8 /* square_0084.json */; };
+		F482CC5A2123CDE70093ADC8 /* triangle_0010.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC242123CDE70093ADC8 /* triangle_0010.json */; };
+		F482CC5B2123CDE70093ADC8 /* sawtooth_0168.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC252123CDE70093ADC8 /* sawtooth_0168.json */; };
+		F482CC5C2123CDE70093ADC8 /* square_0010.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC262123CDE70093ADC8 /* square_0010.json */; };
+		F482CC5D2123CDE70093ADC8 /* triangle_0084.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC272123CDE70093ADC8 /* triangle_0084.json */; };
+		F482CC5E2123CDE70093ADC8 /* pwm_2696.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC282123CDE70093ADC8 /* pwm_2696.json */; };
+		F482CC5F2123CDE70093ADC8 /* sawtooth_1348.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC292123CDE70093ADC8 /* sawtooth_1348.json */; };
+		F482CC602123CDE70093ADC8 /* sawtooth_0021.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC2A2123CDE70093ADC8 /* sawtooth_0021.json */; };
+		F482CC612123CDE70093ADC8 /* pwm_0042.json in Resources */ = {isa = PBXBuildFile; fileRef = F482CC2B2123CDE70093ADC8 /* pwm_0042.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -246,6 +300,7 @@
 		9441B84C2126618E003A5163 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		945C3A0E1F31428B0086D58B /* VerticalSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalSlider.swift; sourceTree = "<group>"; };
 		94656AEC205F410900634B2C /* KeyboardShowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardShowButton.swift; sourceTree = "<group>"; };
+		946980562169258A007EAA5B /* String+CapitalizeFirst.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+CapitalizeFirst.swift"; sourceTree = "<group>"; };
 		94780FEF1F9B0108006D3710 /* AudioKitSynthOne.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AudioKitSynthOne.entitlements; sourceTree = "<group>"; };
 		947956A51F329AB100FE5D9B /* StepperStyleKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepperStyleKit.swift; sourceTree = "<group>"; };
 		947956A81F329AB100FE5D9B /* Stepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stepper.swift; sourceTree = "<group>"; };
@@ -267,6 +322,38 @@
 		94DB18D11F37D879008368AE /* NavButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavButton.swift; sourceTree = "<group>"; };
 		94DB3FDF1FC8C0EA007F8081 /* PresetUIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetUIButton.swift; sourceTree = "<group>"; };
 		94E951341F3644E5009A8B00 /* Rate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rate.swift; sourceTree = "<group>"; };
+		94F53E4F212F0C4D0012C0DE /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Main.strings"; sourceTree = "<group>"; };
+		94F53E50212F0C4D0012C0DE /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/About.strings"; sourceTree = "<group>"; };
+		94F53E51212F0C4D0012C0DE /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/MailingList.strings"; sourceTree = "<group>"; };
+		94F53E52212F0C4D0012C0DE /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Dev.strings"; sourceTree = "<group>"; };
+		94F53E53212F0C4D0012C0DE /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Effects.strings"; sourceTree = "<group>"; };
+		94F53E54212F0C4D0012C0DE /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Envelopes.strings"; sourceTree = "<group>"; };
+		94F53E55212F0C4D0012C0DE /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Generators.strings"; sourceTree = "<group>"; };
+		94F53E56212F0C4D0012C0DE /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Header.strings"; sourceTree = "<group>"; };
+		94F53E57212F0C4D0012C0DE /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Presets.strings"; sourceTree = "<group>"; };
+		94F53E58212F0C4D0012C0DE /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Sequencer.strings"; sourceTree = "<group>"; };
+		94F53E59212F0C4D0012C0DE /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/TouchPad.strings"; sourceTree = "<group>"; };
+		94F53E5A212F0C4D0012C0DE /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Tunings.strings"; sourceTree = "<group>"; };
+		94F53E5B212F0C4E0012C0DE /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Dev.strings"; sourceTree = "<group>"; };
+		94F53E5C212F0C4E0012C0DE /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		94F53E5D212F0C4E0012C0DE /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		94F53E5E212F0C4E0012C0DE /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		94F53E7D212F11620012C0DE /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		94F53E7E212F11620012C0DE /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/About.strings"; sourceTree = "<group>"; };
+		94F53E7F212F11620012C0DE /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MailingList.strings"; sourceTree = "<group>"; };
+		94F53E80212F11620012C0DE /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Dev.strings"; sourceTree = "<group>"; };
+		94F53E81212F11620012C0DE /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Effects.strings"; sourceTree = "<group>"; };
+		94F53E82212F11620012C0DE /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Envelopes.strings"; sourceTree = "<group>"; };
+		94F53E83212F11620012C0DE /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Generators.strings"; sourceTree = "<group>"; };
+		94F53E84212F11630012C0DE /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Header.strings"; sourceTree = "<group>"; };
+		94F53E85212F11630012C0DE /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Presets.strings"; sourceTree = "<group>"; };
+		94F53E86212F11630012C0DE /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Sequencer.strings"; sourceTree = "<group>"; };
+		94F53E87212F11630012C0DE /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/TouchPad.strings"; sourceTree = "<group>"; };
+		94F53E88212F11630012C0DE /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Tunings.strings"; sourceTree = "<group>"; };
+		94F53E89212F11790012C0DE /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		94F53E8A212F11790012C0DE /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		94F53E8B212F11790012C0DE /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		94F53E8C212F11A90012C0DE /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "AudioKitSynthOne/Developer/zh-Hans.lproj/zh-Hans.lproj/Dev.strings"; sourceTree = SOURCE_ROOT; };
 		94F694C51F683D5D0061DA5E /* CallbackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallbackButton.swift; sourceTree = "<group>"; };
 		94FEFEC71F3150D00064EC09 /* SliderTransposeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderTransposeButton.swift; sourceTree = "<group>"; };
 		BA27CDAC229BF66A1C649B42 /* Pods_AudioKitSynthOne.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AudioKitSynthOne.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -505,6 +592,60 @@
 		EA388D2221071C170026C0C0 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EA388D2721071C330026C0C0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F437E99E20EB22D00096FEAC /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		F482CBF62123CDE70093ADC8 /* triangle_0674.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = triangle_0674.json; sourceTree = "<group>"; };
+		F482CBF72123CDE70093ADC8 /* bandlimitedWaveformFrequencies.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bandlimitedWaveformFrequencies.json; sourceTree = "<group>"; };
+		F482CBF82123CDE70093ADC8 /* pwm_0000.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pwm_0000.json; sourceTree = "<group>"; };
+		F482CBF92123CDE70093ADC8 /* square_0674.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = square_0674.json; sourceTree = "<group>"; };
+		F482CBFA2123CDE70093ADC8 /* sawtooth_0002.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sawtooth_0002.json; sourceTree = "<group>"; };
+		F482CBFB2123CDE70093ADC8 /* triangle_0005.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = triangle_0005.json; sourceTree = "<group>"; };
+		F482CBFC2123CDE70093ADC8 /* square_0005.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = square_0005.json; sourceTree = "<group>"; };
+		F482CBFD2123CDE70093ADC8 /* pwm_1348.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pwm_1348.json; sourceTree = "<group>"; };
+		F482CBFE2123CDE70093ADC8 /* sawtooth_2696.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sawtooth_2696.json; sourceTree = "<group>"; };
+		F482CBFF2123CDE70093ADC8 /* pwm_0021.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pwm_0021.json; sourceTree = "<group>"; };
+		F482CC002123CDE70093ADC8 /* sawtooth_0042.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sawtooth_0042.json; sourceTree = "<group>"; };
+		F482CC012123CDE70093ADC8 /* square_0337.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = square_0337.json; sourceTree = "<group>"; };
+		F482CC022123CDE70093ADC8 /* pwm_0001.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pwm_0001.json; sourceTree = "<group>"; };
+		F482CC032123CDE70093ADC8 /* pwm_0168.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pwm_0168.json; sourceTree = "<group>"; };
+		F482CC042123CDE70093ADC8 /* triangle_0337.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = triangle_0337.json; sourceTree = "<group>"; };
+		F482CC052123CDE70093ADC8 /* triangle_0042.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = triangle_0042.json; sourceTree = "<group>"; };
+		F482CC062123CDE70093ADC8 /* square_2696.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = square_2696.json; sourceTree = "<group>"; };
+		F482CC072123CDE70093ADC8 /* triangle_2696.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = triangle_2696.json; sourceTree = "<group>"; };
+		F482CC082123CDE70093ADC8 /* square_0042.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = square_0042.json; sourceTree = "<group>"; };
+		F482CC092123CDE70093ADC8 /* pwm_0084.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pwm_0084.json; sourceTree = "<group>"; };
+		F482CC0A2123CDE70093ADC8 /* sawtooth_0337.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sawtooth_0337.json; sourceTree = "<group>"; };
+		F482CC0B2123CDE70093ADC8 /* pwm_0010.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pwm_0010.json; sourceTree = "<group>"; };
+		F482CC0C2123CDE70093ADC8 /* sawtooth_0674.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sawtooth_0674.json; sourceTree = "<group>"; };
+		F482CC0D2123CDE70093ADC8 /* square_0002.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = square_0002.json; sourceTree = "<group>"; };
+		F482CC0E2123CDE70093ADC8 /* triangle_0002.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = triangle_0002.json; sourceTree = "<group>"; };
+		F482CC0F2123CDE70093ADC8 /* sawtooth_0005.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sawtooth_0005.json; sourceTree = "<group>"; };
+		F482CC102123CDE70093ADC8 /* pwm_0337.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pwm_0337.json; sourceTree = "<group>"; };
+		F482CC112123CDE70093ADC8 /* square_0001.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = square_0001.json; sourceTree = "<group>"; };
+		F482CC122123CDE70093ADC8 /* triangle_0168.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = triangle_0168.json; sourceTree = "<group>"; };
+		F482CC132123CDE70093ADC8 /* sawtooth_0084.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sawtooth_0084.json; sourceTree = "<group>"; };
+		F482CC142123CDE70093ADC8 /* sawtooth_0010.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sawtooth_0010.json; sourceTree = "<group>"; };
+		F482CC152123CDE70093ADC8 /* square_0168.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = square_0168.json; sourceTree = "<group>"; };
+		F482CC162123CDE70093ADC8 /* triangle_0001.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = triangle_0001.json; sourceTree = "<group>"; };
+		F482CC172123CDE70093ADC8 /* bandlimitedWaveforms.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bandlimitedWaveforms.json; sourceTree = "<group>"; };
+		F482CC182123CDE70093ADC8 /* square_1348.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = square_1348.json; sourceTree = "<group>"; };
+		F482CC192123CDE70093ADC8 /* triangle_0021.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = triangle_0021.json; sourceTree = "<group>"; };
+		F482CC1A2123CDE70093ADC8 /* square_0021.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = square_0021.json; sourceTree = "<group>"; };
+		F482CC1B2123CDE70093ADC8 /* triangle_1348.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = triangle_1348.json; sourceTree = "<group>"; };
+		F482CC1C2123CDE70093ADC8 /* pwm_0005.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pwm_0005.json; sourceTree = "<group>"; };
+		F482CC1D2123CDE70093ADC8 /* triangle_0000.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = triangle_0000.json; sourceTree = "<group>"; };
+		F482CC1E2123CDE70093ADC8 /* square_0000.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = square_0000.json; sourceTree = "<group>"; };
+		F482CC1F2123CDE70093ADC8 /* pwm_0674.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pwm_0674.json; sourceTree = "<group>"; };
+		F482CC202123CDE70093ADC8 /* pwm_0002.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pwm_0002.json; sourceTree = "<group>"; };
+		F482CC212123CDE70093ADC8 /* sawtooth_0000.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sawtooth_0000.json; sourceTree = "<group>"; };
+		F482CC222123CDE70093ADC8 /* sawtooth_0001.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sawtooth_0001.json; sourceTree = "<group>"; };
+		F482CC232123CDE70093ADC8 /* square_0084.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = square_0084.json; sourceTree = "<group>"; };
+		F482CC242123CDE70093ADC8 /* triangle_0010.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = triangle_0010.json; sourceTree = "<group>"; };
+		F482CC252123CDE70093ADC8 /* sawtooth_0168.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sawtooth_0168.json; sourceTree = "<group>"; };
+		F482CC262123CDE70093ADC8 /* square_0010.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = square_0010.json; sourceTree = "<group>"; };
+		F482CC272123CDE70093ADC8 /* triangle_0084.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = triangle_0084.json; sourceTree = "<group>"; };
+		F482CC282123CDE70093ADC8 /* pwm_2696.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pwm_2696.json; sourceTree = "<group>"; };
+		F482CC292123CDE70093ADC8 /* sawtooth_1348.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sawtooth_1348.json; sourceTree = "<group>"; };
+		F482CC2A2123CDE70093ADC8 /* sawtooth_0021.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sawtooth_0021.json; sourceTree = "<group>"; };
+		F482CC2B2123CDE70093ADC8 /* pwm_0042.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = pwm_0042.json; sourceTree = "<group>"; };
 		F4CB749120EEE0AF00716B92 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -657,6 +798,7 @@
 				C435C4F420C5234900DAECCD /* CategoryCell.swift */,
 				C435C4F720C5234900DAECCD /* PresetCell.swift */,
 				94DB3FDF1FC8C0EA007F8081 /* PresetUIButton.swift */,
+				946980562169258A007EAA5B /* String+CapitalizeFirst.swift */,
 			);
 			path = "UI Components";
 			sourceTree = "<group>";
@@ -766,6 +908,7 @@
 				C435C55120C530C900DAECCD /* Conductor.swift */,
 				C435C55320C530C900DAECCD /* S1Parameter.h */,
 				C435C55620C530C900DAECCD /* SDSustainer.swift */,
+				F482CBF52123CDE70093ADC8 /* BandlimitedWavetables */,
 				C435C56E20C530C900DAECCD /* Audio Unit */,
 				C435C57520C530C900DAECCD /* Kernel */,
 				C435C56B20C530C900DAECCD /* Note State */,
@@ -1138,6 +1281,99 @@
 			path = Controls;
 			sourceTree = "<group>";
 		};
+		F482CBF52123CDE70093ADC8 /* BandlimitedWavetables */ = {
+			isa = PBXGroup;
+			children = (
+				F482CBF72123CDE70093ADC8 /* bandlimitedWaveformFrequencies.json */,
+				F482CC172123CDE70093ADC8 /* bandlimitedWaveforms.json */,
+				F482CC652123CE340093ADC8 /* Triangle */,
+				F482CC622123CE0A0093ADC8 /* PWM */,
+				F482CC642123CE230093ADC8 /* Square */,
+				F482CC632123CE180093ADC8 /* Sawtooth */,
+			);
+			path = BandlimitedWavetables;
+			sourceTree = "<group>";
+		};
+		F482CC622123CE0A0093ADC8 /* PWM */ = {
+			isa = PBXGroup;
+			children = (
+				F482CBF82123CDE70093ADC8 /* pwm_0000.json */,
+				F482CC022123CDE70093ADC8 /* pwm_0001.json */,
+				F482CC202123CDE70093ADC8 /* pwm_0002.json */,
+				F482CC1C2123CDE70093ADC8 /* pwm_0005.json */,
+				F482CC0B2123CDE70093ADC8 /* pwm_0010.json */,
+				F482CBFF2123CDE70093ADC8 /* pwm_0021.json */,
+				F482CC2B2123CDE70093ADC8 /* pwm_0042.json */,
+				F482CC092123CDE70093ADC8 /* pwm_0084.json */,
+				F482CC032123CDE70093ADC8 /* pwm_0168.json */,
+				F482CC102123CDE70093ADC8 /* pwm_0337.json */,
+				F482CC1F2123CDE70093ADC8 /* pwm_0674.json */,
+				F482CBFD2123CDE70093ADC8 /* pwm_1348.json */,
+				F482CC282123CDE70093ADC8 /* pwm_2696.json */,
+			);
+			path = PWM;
+			sourceTree = "<group>";
+		};
+		F482CC632123CE180093ADC8 /* Sawtooth */ = {
+			isa = PBXGroup;
+			children = (
+				F482CC212123CDE70093ADC8 /* sawtooth_0000.json */,
+				F482CC222123CDE70093ADC8 /* sawtooth_0001.json */,
+				F482CBFA2123CDE70093ADC8 /* sawtooth_0002.json */,
+				F482CC0F2123CDE70093ADC8 /* sawtooth_0005.json */,
+				F482CC142123CDE70093ADC8 /* sawtooth_0010.json */,
+				F482CC2A2123CDE70093ADC8 /* sawtooth_0021.json */,
+				F482CC002123CDE70093ADC8 /* sawtooth_0042.json */,
+				F482CC132123CDE70093ADC8 /* sawtooth_0084.json */,
+				F482CC252123CDE70093ADC8 /* sawtooth_0168.json */,
+				F482CC0A2123CDE70093ADC8 /* sawtooth_0337.json */,
+				F482CC0C2123CDE70093ADC8 /* sawtooth_0674.json */,
+				F482CC292123CDE70093ADC8 /* sawtooth_1348.json */,
+				F482CBFE2123CDE70093ADC8 /* sawtooth_2696.json */,
+			);
+			path = Sawtooth;
+			sourceTree = "<group>";
+		};
+		F482CC642123CE230093ADC8 /* Square */ = {
+			isa = PBXGroup;
+			children = (
+				F482CC1E2123CDE70093ADC8 /* square_0000.json */,
+				F482CC112123CDE70093ADC8 /* square_0001.json */,
+				F482CC0D2123CDE70093ADC8 /* square_0002.json */,
+				F482CBFC2123CDE70093ADC8 /* square_0005.json */,
+				F482CC262123CDE70093ADC8 /* square_0010.json */,
+				F482CC1A2123CDE70093ADC8 /* square_0021.json */,
+				F482CC082123CDE70093ADC8 /* square_0042.json */,
+				F482CC232123CDE70093ADC8 /* square_0084.json */,
+				F482CC152123CDE70093ADC8 /* square_0168.json */,
+				F482CC012123CDE70093ADC8 /* square_0337.json */,
+				F482CBF92123CDE70093ADC8 /* square_0674.json */,
+				F482CC182123CDE70093ADC8 /* square_1348.json */,
+				F482CC062123CDE70093ADC8 /* square_2696.json */,
+			);
+			path = Square;
+			sourceTree = "<group>";
+		};
+		F482CC652123CE340093ADC8 /* Triangle */ = {
+			isa = PBXGroup;
+			children = (
+				F482CC1D2123CDE70093ADC8 /* triangle_0000.json */,
+				F482CC162123CDE70093ADC8 /* triangle_0001.json */,
+				F482CC0E2123CDE70093ADC8 /* triangle_0002.json */,
+				F482CBFB2123CDE70093ADC8 /* triangle_0005.json */,
+				F482CC242123CDE70093ADC8 /* triangle_0010.json */,
+				F482CC192123CDE70093ADC8 /* triangle_0021.json */,
+				F482CC052123CDE70093ADC8 /* triangle_0042.json */,
+				F482CC272123CDE70093ADC8 /* triangle_0084.json */,
+				F482CC122123CDE70093ADC8 /* triangle_0168.json */,
+				F482CC042123CDE70093ADC8 /* triangle_0337.json */,
+				F482CBF62123CDE70093ADC8 /* triangle_0674.json */,
+				F482CC1B2123CDE70093ADC8 /* triangle_1348.json */,
+				F482CC072123CDE70093ADC8 /* triangle_2696.json */,
+			);
+			path = Triangle;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1148,7 +1384,6 @@
 				49E9B8C03D2127F41FFB0052 /* [CP] Check Pods Manifest.lock */,
 				941645C620B3597300D62851 /* Sources */,
 				941645C720B3597300D62851 /* Frameworks */,
-				941645C820B3597300D62851 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -1194,12 +1429,13 @@
 					941645C920B3597300D62851 = {
 						CreatedOnToolsVersion = 9.3.1;
 						DevelopmentTeam = 9W69ZP8S5F;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 					};
 					C4D193C31F1187B500FF4FE4 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = 9W69ZP8S5F;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -1229,6 +1465,8 @@
 				fr,
 				"pt-BR",
 				ja,
+				"zh-Hant",
+				"zh-Hans",
 			);
 			mainGroup = C4D193BB1F1187B500FF4FE4;
 			productRefGroup = C4D193C51F1187B500FF4FE4 /* Products */;
@@ -1242,45 +1480,91 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		941645C820B3597300D62851 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				EA388D1921071BD50026C0C0 /* InfoPlist.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		C4D193C21F1187B500FF4FE4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F482CC4C2123CDE70093ADC8 /* triangle_0001.json in Resources */,
+				F482CC532123CDE70093ADC8 /* triangle_0000.json in Resources */,
+				F482CC5B2123CDE70093ADC8 /* sawtooth_0168.json in Resources */,
+				F482CC2E2123CDE70093ADC8 /* pwm_0000.json in Resources */,
+				F482CC312123CDE70093ADC8 /* triangle_0005.json in Resources */,
+				F482CC3E2123CDE70093ADC8 /* square_0042.json in Resources */,
+				F482CC422123CDE70093ADC8 /* sawtooth_0674.json in Resources */,
+				F482CC402123CDE70093ADC8 /* sawtooth_0337.json in Resources */,
+				F482CC4B2123CDE70093ADC8 /* square_0168.json in Resources */,
 				C435C51F20C52D1700DAECCD /* Brice Beasley.json in Resources */,
+				F482CC3F2123CDE70093ADC8 /* pwm_0084.json in Resources */,
+				F482CC3C2123CDE70093ADC8 /* square_2696.json in Resources */,
 				C435C52020C52D1700DAECCD /* DJ Puzzle.json in Resources */,
 				EA388CDE210498AC0026C0C0 /* About.storyboard in Resources */,
 				EA388D1C21071BD50026C0C0 /* InfoPlist.strings in Resources */,
 				EA388D1F21071BD50026C0C0 /* Localizable.strings in Resources */,
+				F482CC572123CDE70093ADC8 /* sawtooth_0000.json in Resources */,
 				EA388CE1210498DD0026C0C0 /* Header.storyboard in Resources */,
+				F482CC442123CDE70093ADC8 /* triangle_0002.json in Resources */,
+				F482CC5C2123CDE70093ADC8 /* square_0010.json in Resources */,
 				94985FF520D8908600D71239 /* JEC.json in Resources */,
+				F482CC3B2123CDE70093ADC8 /* triangle_0042.json in Resources */,
+				F482CC482123CDE70093ADC8 /* triangle_0168.json in Resources */,
+				F482CC542123CDE70093ADC8 /* square_0000.json in Resources */,
+				F482CC5F2123CDE70093ADC8 /* sawtooth_1348.json in Resources */,
+				F482CC302123CDE70093ADC8 /* sawtooth_0002.json in Resources */,
+				F482CC2D2123CDE70093ADC8 /* bandlimitedWaveformFrequencies.json in Resources */,
 				C435C52320C52D1700DAECCD /* Red Sky Lullaby.json in Resources */,
+				F482CC612123CDE70093ADC8 /* pwm_0042.json in Resources */,
+				F482CC392123CDE70093ADC8 /* pwm_0168.json in Resources */,
 				C435C52220C52D1700DAECCD /* User.json in Resources */,
+				F482CC342123CDE70093ADC8 /* sawtooth_2696.json in Resources */,
+				F482CC602123CDE70093ADC8 /* sawtooth_0021.json in Resources */,
 				C4B4913E20C7C6A000FD565A /* spark.png in Resources */,
+				F482CC382123CDE70093ADC8 /* pwm_0001.json in Resources */,
 				94985FF320D8899300D71239 /* Electronisounds.json in Resources */,
+				F482CC3D2123CDE70093ADC8 /* triangle_2696.json in Resources */,
+				F482CC492123CDE70093ADC8 /* sawtooth_0084.json in Resources */,
+				F482CC582123CDE70093ADC8 /* sawtooth_0001.json in Resources */,
+				F482CC4D2123CDE70093ADC8 /* bandlimitedWaveforms.json in Resources */,
+				F482CC502123CDE70093ADC8 /* square_0021.json in Resources */,
+				F482CC322123CDE70093ADC8 /* square_0005.json in Resources */,
 				C435C52420C52D1700DAECCD /* BankA.json in Resources */,
 				EA388CED210499070026C0C0 /* TouchPad.storyboard in Resources */,
+				F482CC512123CDE70093ADC8 /* triangle_1348.json in Resources */,
+				F482CC452123CDE70093ADC8 /* sawtooth_0005.json in Resources */,
+				F482CC332123CDE70093ADC8 /* pwm_1348.json in Resources */,
 				EA388CEA210498FD0026C0C0 /* Tunings.storyboard in Resources */,
+				F482CC2F2123CDE70093ADC8 /* square_0674.json in Resources */,
 				EA388CE4210498E90026C0C0 /* Effects.storyboard in Resources */,
 				941752BA20E2BD2E0076D953 /* Starter Bank.json in Resources */,
+				F482CC462123CDE70093ADC8 /* pwm_0337.json in Resources */,
+				F482CC5E2123CDE70093ADC8 /* pwm_2696.json in Resources */,
+				F482CC552123CDE70093ADC8 /* pwm_0674.json in Resources */,
+				F482CC372123CDE70093ADC8 /* square_0337.json in Resources */,
 				94D37DD420E06641002008A4 /* Sound of Izrael.json in Resources */,
+				F482CC5D2123CDE70093ADC8 /* triangle_0084.json in Resources */,
 				C435C52120C52D1700DAECCD /* Bonus.json in Resources */,
+				F482CC362123CDE70093ADC8 /* sawtooth_0042.json in Resources */,
+				F482CC522123CDE70093ADC8 /* pwm_0005.json in Resources */,
+				F482CC2C2123CDE70093ADC8 /* triangle_0674.json in Resources */,
+				F482CC4E2123CDE70093ADC8 /* square_1348.json in Resources */,
 				C4D193CF1F1187B500FF4FE4 /* Assets.xcassets in Resources */,
 				EA388CF0210499110026C0C0 /* Sequencer.storyboard in Resources */,
 				EA388CF32104991C0026C0C0 /* Envelopes.storyboard in Resources */,
+				F482CC5A2123CDE70093ADC8 /* triangle_0010.json in Resources */,
+				F482CC562123CDE70093ADC8 /* pwm_0002.json in Resources */,
 				C4B491C520C7EC2E00FD565A /* README.md in Resources */,
 				C4D193CD1F1187B500FF4FE4 /* Main.storyboard in Resources */,
 				EA388CF6210499530026C0C0 /* Generators.storyboard in Resources */,
+				F482CC412123CDE70093ADC8 /* pwm_0010.json in Resources */,
+				F482CC432123CDE70093ADC8 /* square_0002.json in Resources */,
+				F482CC4F2123CDE70093ADC8 /* triangle_0021.json in Resources */,
 				EA388CF92104995B0026C0C0 /* MailingList.storyboard in Resources */,
+				F482CC3A2123CDE70093ADC8 /* triangle_0337.json in Resources */,
+				F482CC4A2123CDE70093ADC8 /* sawtooth_0010.json in Resources */,
+				F482CC592123CDE70093ADC8 /* square_0084.json in Resources */,
 				EA388CFC210548460026C0C0 /* Dev.storyboard in Resources */,
+				F482CC472123CDE70093ADC8 /* square_0001.json in Resources */,
 				EA388CE7210498F20026C0C0 /* Presets.storyboard in Resources */,
+				F482CC352123CDE70093ADC8 /* pwm_0021.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1312,11 +1596,13 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-AudioKitSynthOne/Pods-AudioKitSynthOne-frameworks.sh",
+				"${PODS_ROOT}/AudioKit/iOS/AudioKitUI.framework",
 				"${BUILT_PRODUCTS_DIR}/ChimpKit/ChimpKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Disk/Disk.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AudioKitUI.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChimpKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Disk.framework",
 			);
@@ -1336,7 +1622,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
 		F326D17312DDE12585405CB6 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1463,6 +1749,7 @@
 				947956B31F32A70400FE5D9B /* ToggleSwitchStyleKit.swift in Sources */,
 				C4B491B120C7D11500FD565A /* MIDIKnob.swift in Sources */,
 				C47FB3C31F36694300EF2F01 /* RateKnob.swift in Sources */,
+				946980572169258A007EAA5B /* String+CapitalizeFirst.swift in Sources */,
 				C4B491BC20C7DEB100FD565A /* ArpButtonStyleKit.swift in Sources */,
 				C4B4919420C7C7C500FD565A /* PresetEditorViewController.swift in Sources */,
 				C4B4918620C7C79C00FD565A /* Presets+PresetCellDelegate.swift in Sources */,
@@ -1536,6 +1823,8 @@
 				EA388D0B2106A2E50026C0C0 /* tr */,
 				EA143DCB210A846100543E17 /* pt-BR */,
 				9441B8402126618C003A5163 /* ja */,
+				94F53E4F212F0C4D0012C0DE /* zh-Hant */,
+				94F53E7D212F11620012C0DE /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -1547,6 +1836,8 @@
 				EA143E05210FDA3C00543E17 /* fr */,
 				EA143E29211289E100543E17 /* tr */,
 				9441B84B2126618D003A5163 /* ja */,
+				94F53E5B212F0C4E0012C0DE /* zh-Hant */,
+				94F53E8C212F11A90012C0DE /* zh-Hans */,
 			);
 			name = Dev.strings;
 			path = "AudioKitSynthOne/Developer/pt-BR.lproj";
@@ -1561,6 +1852,8 @@
 				EA388D0C2106A2E50026C0C0 /* tr */,
 				EA143DCC210A846100543E17 /* pt-BR */,
 				9441B8412126618D003A5163 /* ja */,
+				94F53E50212F0C4D0012C0DE /* zh-Hant */,
+				94F53E7E212F11620012C0DE /* zh-Hans */,
 			);
 			name = About.storyboard;
 			sourceTree = "<group>";
@@ -1574,6 +1867,8 @@
 				EA388D122106A2E50026C0C0 /* tr */,
 				EA143DD2210A846100543E17 /* pt-BR */,
 				9441B8472126618D003A5163 /* ja */,
+				94F53E56212F0C4D0012C0DE /* zh-Hant */,
+				94F53E84212F11630012C0DE /* zh-Hans */,
 			);
 			name = Header.storyboard;
 			sourceTree = "<group>";
@@ -1587,6 +1882,8 @@
 				EA388D0F2106A2E50026C0C0 /* tr */,
 				EA143DCF210A846100543E17 /* pt-BR */,
 				9441B8442126618D003A5163 /* ja */,
+				94F53E53212F0C4D0012C0DE /* zh-Hant */,
+				94F53E81212F11620012C0DE /* zh-Hans */,
 			);
 			name = Effects.storyboard;
 			sourceTree = "<group>";
@@ -1600,6 +1897,8 @@
 				EA388D132106A2E60026C0C0 /* tr */,
 				EA143DD3210A846100543E17 /* pt-BR */,
 				9441B83D2126618C003A5163 /* ja */,
+				94F53E57212F0C4D0012C0DE /* zh-Hant */,
+				94F53E85212F11630012C0DE /* zh-Hans */,
 			);
 			name = Presets.storyboard;
 			sourceTree = "<group>";
@@ -1613,6 +1912,8 @@
 				EA388D162106A2E60026C0C0 /* tr */,
 				EA143DD6210A846100543E17 /* pt-BR */,
 				9441B84A2126618D003A5163 /* ja */,
+				94F53E5A212F0C4D0012C0DE /* zh-Hant */,
+				94F53E88212F11630012C0DE /* zh-Hans */,
 			);
 			name = Tunings.storyboard;
 			sourceTree = "<group>";
@@ -1626,6 +1927,8 @@
 				EA388D152106A2E60026C0C0 /* tr */,
 				EA143DD5210A846100543E17 /* pt-BR */,
 				9441B8492126618D003A5163 /* ja */,
+				94F53E59212F0C4D0012C0DE /* zh-Hant */,
+				94F53E87212F11630012C0DE /* zh-Hans */,
 			);
 			name = TouchPad.storyboard;
 			sourceTree = "<group>";
@@ -1639,6 +1942,8 @@
 				EA388D142106A2E60026C0C0 /* tr */,
 				EA143DD4210A846100543E17 /* pt-BR */,
 				9441B8482126618D003A5163 /* ja */,
+				94F53E58212F0C4D0012C0DE /* zh-Hant */,
+				94F53E86212F11630012C0DE /* zh-Hans */,
 			);
 			name = Sequencer.storyboard;
 			sourceTree = "<group>";
@@ -1652,6 +1957,8 @@
 				EA388D102106A2E50026C0C0 /* tr */,
 				EA143DD0210A846100543E17 /* pt-BR */,
 				9441B8452126618D003A5163 /* ja */,
+				94F53E54212F0C4D0012C0DE /* zh-Hant */,
+				94F53E82212F11620012C0DE /* zh-Hans */,
 			);
 			name = Envelopes.storyboard;
 			sourceTree = "<group>";
@@ -1665,6 +1972,8 @@
 				EA388D112106A2E50026C0C0 /* tr */,
 				EA143DD1210A846100543E17 /* pt-BR */,
 				9441B8462126618D003A5163 /* ja */,
+				94F53E55212F0C4D0012C0DE /* zh-Hant */,
+				94F53E83212F11620012C0DE /* zh-Hans */,
 			);
 			name = Generators.storyboard;
 			sourceTree = "<group>";
@@ -1678,6 +1987,8 @@
 				EA2354D1210879AC0018E035 /* en */,
 				EA143DCD210A846100543E17 /* pt-BR */,
 				9441B8422126618D003A5163 /* ja */,
+				94F53E51212F0C4D0012C0DE /* zh-Hant */,
+				94F53E7F212F11620012C0DE /* zh-Hans */,
 			);
 			name = MailingList.storyboard;
 			sourceTree = "<group>";
@@ -1691,6 +2002,8 @@
 				EA2354D2210879DF0018E035 /* en */,
 				EA143DCE210A846100543E17 /* pt-BR */,
 				9441B8432126618D003A5163 /* ja */,
+				94F53E52212F0C4D0012C0DE /* zh-Hant */,
+				94F53E80212F11620012C0DE /* zh-Hans */,
 			);
 			name = Dev.storyboard;
 			path = Base.lproj;
@@ -1705,6 +2018,8 @@
 				EA143DC8210A843500543E17 /* fr */,
 				EA143DD9210A846200543E17 /* pt-BR */,
 				9441B84C2126618E003A5163 /* ja */,
+				94F53E5E212F0C4E0012C0DE /* zh-Hant */,
+				94F53E8B212F11790012C0DE /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -1718,6 +2033,8 @@
 				EA143DCA210A844400543E17 /* fr */,
 				EA143DD8210A846100543E17 /* pt-BR */,
 				9441B83F2126618C003A5163 /* ja */,
+				94F53E5D212F0C4E0012C0DE /* zh-Hant */,
+				94F53E8A212F11790012C0DE /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -1731,6 +2048,8 @@
 				EA2354D421087C500018E035 /* en */,
 				EA143DD7210A846100543E17 /* pt-BR */,
 				9441B83E2126618C003A5163 /* ja */,
+				94F53E5C212F0C4E0012C0DE /* zh-Hant */,
+				94F53E89212F11790012C0DE /* zh-Hans */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -1757,7 +2076,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.audiokitpro.AudioKitSynthOne.OneSignalNotificationServiceExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1781,7 +2100,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.audiokitpro.AudioKitSynthOne.OneSignalNotificationServiceExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -1935,6 +2254,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9W69ZP8S5F;
+				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = AudioKitSynthOne/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1952,7 +2272,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/AudioKitSynthOne/DSP/AudioKitSynthOne-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
@@ -1970,6 +2290,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9W69ZP8S5F;
+				GCC_OPTIMIZATION_LEVEL = fast;
 				INFOPLIST_FILE = AudioKitSynthOne/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1986,7 +2307,7 @@
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/AudioKitSynthOne/DSP/AudioKitSynthOne-Bridging-Header.h";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;

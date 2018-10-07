@@ -98,10 +98,10 @@ public class HeaderViewController: UpdatableViewController {
             let message = NSLocalizedString("DCO 2: \(Int(value)) semitones", comment: "Oscillator 2 semitone offset")
             displayLabel.text = message
         case .morph2Detuning:
-            let message = NSLocalizedString("DCO 2: \(Int(value)) detune", comment: "Oscillator 2 detune")
+            let message = NSLocalizedString("DCO 2: \(value.decimalString) detune", comment: "Oscillator 2 detune")
             displayLabel.text = message
         case .morphBalance:
-            let message = NSLocalizedString("DCO Mix: \(Int(value))", comment: "Oscillator 1 & 2 Mix")
+            let message = NSLocalizedString("DCO Mix: \(value.decimalString)", comment: "Oscillator 1 & 2 Mix")
             displayLabel.text = message
         case .morph1Volume:
             let message = NSLocalizedString("DCO 1 Volume: \(value.percentageString)", comment: "Oscillator 1 Volume")
@@ -285,7 +285,8 @@ public class HeaderViewController: UpdatableViewController {
             let message = NSLocalizedString("Tempo: \(value) BPM", comment: "Tempo (Beats Per Minute)")
             displayLabel.text = message
         case .widen:
-            let message = NSLocalizedString("Widen: \(value.decimalString)", comment: "Stereo Widen")
+            let stateDisplay = value == 1 ? "On" : "Off"
+            let message = NSLocalizedString("Stereo Widen: \(stateDisplay)", comment: "Stereo Widen")
             displayLabel.text = message
 
         // visible on dev panel only
@@ -335,6 +336,17 @@ public class HeaderViewController: UpdatableViewController {
             displayLabel.text = "Master Frequency at A4: \(s.getSynthParameter(.frequencyA4).decimalString)"
         case .portamentoHalfTime:
             displayLabel.text = "Portamento Half-time: \(s.getSynthParameter(.portamentoHalfTime).decimalString)"
+        case .oscBandlimitIndexOverride:
+            let oblio = s.getSynthParameter(.oscBandlimitIndexOverride)
+            if oblio == -1 {
+                displayLabel.text = "oscBandlimitIndexOverride: OFF"
+            } else {
+                displayLabel.text = "oscBandlimitIndexOverride: \(oblio)"
+            }
+        case .oscBandlimitEnable:
+            let obe = s.getSynthParameter(.oscBandlimitEnable) > 0 ? "On" : "Off"
+            displayLabel.text = "Anti-Aliasing: \(obe)"
+
         default:
             _ = 0
             // do nothing

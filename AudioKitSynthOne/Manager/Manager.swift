@@ -26,7 +26,7 @@ public class Manager: UpdatableViewController {
     @IBOutlet weak var midiButton: SynthButton!
     @IBOutlet weak var holdButton: SynthButton!
     @IBOutlet weak var monoButton: SynthButton!
-    @IBOutlet weak var keyboardToggle: SynthButton!
+	@IBOutlet weak var keyboardToggle: SynthButton!
     @IBOutlet weak var octaveStepper: Stepper!
     @IBOutlet weak var configKeyboardButton: SynthButton!
     @IBOutlet weak var bluetoothButton: AKBluetoothMIDIButton!
@@ -123,7 +123,7 @@ public class Manager: UpdatableViewController {
         keyboardView?.polyphonicMode = conductor.synth.getSynthParameter(.isMono) < 1 ? true : false
 
         // Set Header as Delegate
-        if let headerVC = self.childViewControllers.first as? HeaderViewController {
+        if let headerVC = self.children.first as? HeaderViewController {
             headerVC.delegate = self
             headerVC.headerDelegate = self
         }
@@ -192,6 +192,10 @@ public class Manager: UpdatableViewController {
 
         // Setup AudioBus MIDI Input
         setupAudioBusInput()
+		
+		holdButton.accessibilityValue = self.keyboardView.holdMode ? NSLocalizedString("On", comment: "On") : NSLocalizedString("Off", comment: "Off")
+		monoButton.accessibilityValue = self.keyboardView.polyphonicMode ? NSLocalizedString("Off", comment: "Off") : NSLocalizedString("On", comment: "On")
+		
     }
 
     public override func viewDidAppear(_ animated: Bool) {
@@ -206,7 +210,7 @@ public class Manager: UpdatableViewController {
 
         // Set Mailing List Button
         signedMailingList = appSettings.signedMailingList
-        if let headerVC = self.childViewControllers.first as? HeaderViewController {
+        if let headerVC = self.children.first as? HeaderViewController {
             headerVC.updateMailingListButton(appSettings.signedMailingList)
         }
 
@@ -273,7 +277,7 @@ public class Manager: UpdatableViewController {
     }
 
     // Make edge gestures more responsive
-    public override func preferredScreenEdgesDeferringSystemGestures() -> UIRectEdge {
+    public override var preferredScreenEdgesDeferringSystemGestures: UIRectEdge {
         return UIRectEdge.all
     }
 
@@ -300,6 +304,7 @@ public class Manager: UpdatableViewController {
         if isMono != monoButton.value {
             monoButton.value = isMono
             self.keyboardView.polyphonicMode = isMono > 0 ? false : true
+		
         }
 
         if parameter == .cutoff {
