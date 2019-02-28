@@ -8,7 +8,7 @@
 
 #import "S1AudioUnit.h"
 #import "S1DSPKernel.hpp"
-#import "AEMessageQueue.h"
+#import "AKMessageQueue.h"
 #import "AudioKit/BufferedAudioBus.hpp"
 #import <AudioKit/AudioKit-swift.h>
 
@@ -127,7 +127,7 @@
 
 - (void)createParameters {
 
-    _messageQueue = [[AEMessageQueue alloc] init];
+    _messageQueue = [[AKMessageQueue alloc] init];
 
     self.rampDuration = AKSettings.rampDuration;
     self.defaultFormat = [[AVAudioFormat alloc] initStandardFormatWithSampleRate:AKSettings.sampleRate

@@ -14,7 +14,7 @@
 #define S1_MAX_POLYPHONY (6)
 #define S1_NUM_MIDI_NOTES (128)
 
-@class AEMessageQueue;
+@class AKMessageQueue;
 
 // helper for midi/render thread communication: held+playing notes
 typedef struct NoteNumber {
@@ -62,7 +62,7 @@ typedef struct S1ArpBeatCounter {
 @interface S1AudioUnit : AKAudioUnit
 {
     @public
-    AEMessageQueue  *_messageQueue;
+    AKMessageQueue  *_messageQueue;
 }
 
 @property (nonatomic) NSArray *parameters;

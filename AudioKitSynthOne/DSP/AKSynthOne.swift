@@ -261,8 +261,11 @@ import AudioKit
             }
             self?.internalAU?.parameters = self?.parameters
             self?.internalAU?.s1Delegate = self
+            
+            
         }
 
+        
         guard let tree = internalAU?.parameterTree else {
             return
         }

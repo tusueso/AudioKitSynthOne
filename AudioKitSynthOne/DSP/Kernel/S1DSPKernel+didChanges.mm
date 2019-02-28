@@ -8,7 +8,7 @@
 
 #import "S1DSPKernel.hpp"
 #import "AEArray.h"
-#import "AEMessageQueue.h"
+#import "AKMessageQueue.h"
 #import "S1NoteState.hpp"
 
 void S1DSPKernel::dependentParameterDidChange(DependentParameter param) {

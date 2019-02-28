@@ -112,7 +112,7 @@ typedef void (^AEMessageQueueBlock)(void);
  *  Then, use AEMessageQueuePerformSelectorOnMainThread from the audio thread, or
  *  performBlockOnAudioThread: or performBlockOnAudioThread:completionBlock: from the main thread.
  */
-@interface AEMessageQueue : NSObject
+@interface AKMessageQueue : NSObject
 
 /*!
  * Default initializer
@@ -168,7 +168,7 @@ typedef void (^AEMessageQueueBlock)(void);
  * @param arguments List of arguments, terminated by AEArgumentNone
  * @return YES on success, or NO if out of buffer space or not polling
  */
-BOOL AEMessageQueuePerformSelectorOnMainThread(__unsafe_unretained AEMessageQueue * _Nonnull messageQueue,
+BOOL AEMessageQueuePerformSelectorOnMainThread(__unsafe_unretained AKMessageQueue * _Nonnull messageQueue,
                                                __unsafe_unretained id _Nonnull target,
                                                SEL _Nonnull selector,
                                                AEArgument arguments, ...);
@@ -191,7 +191,7 @@ BOOL AEMessageQueuePerformSelectorOnMainThread(__unsafe_unretained AEMessageQueu
  *
  *  Call this periodically from the realtime thread to process pending message blocks.
  */
-void AEMessageQueuePoll(__unsafe_unretained AEMessageQueue * _Nonnull THIS);
+void AEMessageQueuePoll(__unsafe_unretained AKMessageQueue * _Nonnull THIS);
 
 @end
 

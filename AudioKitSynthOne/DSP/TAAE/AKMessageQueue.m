@@ -24,7 +24,7 @@
 //  3. This notice may not be removed or altered from any source distribution.
 //
 
-#import "AEMessageQueue.h"
+#import "AKMessageQueue.h"
 #import "AEMainThreadEndpoint.h"
 #import "AEAudioThreadEndpoint.h"
 
@@ -55,12 +55,12 @@ typedef struct {
     BOOL isValue;  // Whether to pass by value
 } main_thread_message_arg_t; // Data follows
 
-@interface AEMessageQueue ()
+@interface AKMessageQueue ()
 @property (nonatomic, strong) AEMainThreadEndpoint * mainThreadEndpoint;
 @property (nonatomic, strong) AEAudioThreadEndpoint * audioThreadEndpoint;
 @end
 
-@implementation AEMessageQueue
+@implementation AKMessageQueue
 
 - (instancetype)init {
     return [self initWithBufferCapacity:8192+8192+8192+8192];
@@ -152,7 +152,7 @@ typedef struct {
     [self.audioThreadEndpoint sendBytes:&message length:sizeof(message)];
 }
 
-BOOL AEMessageQueuePerformSelectorOnMainThread(__unsafe_unretained AEMessageQueue * THIS,
+BOOL AEMessageQueuePerformSelectorOnMainThread(__unsafe_unretained AKMessageQueue * THIS,
                                                __unsafe_unretained id target,
                                                SEL selector,
                                                AEArgument arguments, ...) {
@@ -227,7 +227,7 @@ BOOL AEMessageQueuePerformSelectorOnMainThread(__unsafe_unretained AEMessageQueu
     [self.audioThreadEndpoint endMessageGroup];
 }
 
-void AEMessageQueuePoll(__unsafe_unretained AEMessageQueue * _Nonnull THIS) {
+void AEMessageQueuePoll(__unsafe_unretained AKMessageQueue * _Nonnull THIS) {
     AEAudioThreadEndpointPoll(THIS->_audioThreadEndpoint);
 }
 
