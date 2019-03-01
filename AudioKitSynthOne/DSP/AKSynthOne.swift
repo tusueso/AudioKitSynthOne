@@ -42,7 +42,7 @@ import AudioKit
         internalAU?.stopAllNotes()
     }
 
-    open func setSynthParameter(_ parameter: S1Parameter, _ value: Double) {
+    @objc open func setSynthParameter(_ parameter: S1Parameter, _ value: Double) {
         internalAU?.setSynthParameter(parameter, value: Float(value))
     }
 
