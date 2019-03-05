@@ -81,6 +81,7 @@ void S1DSPKernel::updatePortamento(float halfTime) {
 void S1DSPKernel::handleTempoSetting(float currentTempo) {
     if (currentTempo != tempo) {
         tempo = currentTempo;
-        // TODO: reset secPerBeat here?
+        setParameter(arpRate, tempo);
+        //// TODO: reset secPerBeat here?
     }
 }
