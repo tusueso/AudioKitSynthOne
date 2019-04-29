@@ -207,6 +207,12 @@ void S1DSPKernel::process(AUAudioFrameCount frameCount, AUAudioFrameCount buffer
                                 std::vector<NoteNumber>::iterator it = sequencerNotes2.begin();
                                 sequencerNotes2.insert(it, *note);
                             }
+                            
+                            std::sort(sequencerNotes2.begin(), sequencerNotes2.end(), [](const NoteNumber& n1, const NoteNumber& n2){
+                                return (n1.noteNumber < n2.noteNumber);
+                            });
+                            
+                            
                             const int heldNotesCount = (int)sequencerNotes2.size();
                             const int arpIntervalUp = p[arpInterval] * npof;
                             const int onOff = 1;
