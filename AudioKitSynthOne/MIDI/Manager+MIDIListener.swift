@@ -6,6 +6,7 @@
 //  Copyright © 2018 AudioKit. All rights reserved.
 //
 
+
 // AKMIDIListener protocol functions
 
 extension Manager: AKMIDIListener {
@@ -13,24 +14,27 @@ extension Manager: AKMIDIListener {
     public func receivedMIDINoteOn(noteNumber: MIDINoteNumber, velocity: MIDIVelocity, channel: MIDIChannel) {
         guard channel == midiChannelIn || omniMode else { return }
         var newVelocity = velocity
+        if (velocity == 0)
+        {
+          receivedMIDINoteOff(noteNumber: noteNumber, velocity: velocity, channel: channel)
+          return
+        }
         if !appSettings.velocitySensitive { newVelocity = 127 }
-
         if !Thread.isMainThread {
             DispatchQueue.main.async {
                 self.keyboardView.pressAdded(noteNumber, velocity: newVelocity)
                 self.notesFromMIDI.insert(noteNumber)
-                AKLog("keybboard:pressAdded: noteNumber: \(noteNumber), velocity:\(velocity) ASYNC")
+                //AKLog("keybboard:pressAdded: noteNumber: \(noteNumber), velocity:\(velocity) ASYNC")
             }
         } else {
             keyboardView.pressAdded(noteNumber, velocity: newVelocity)
             notesFromMIDI.insert(noteNumber)
-            AKLog("keybboard:pressAdded: noteNumber: \(noteNumber), velocity:\(velocity) SYNC")
+            //AKLog("keybboard:pressAdded: noteNumber: \(noteNumber), velocity:\(velocity) SYNC")
         }
     }
 
     public func receivedMIDINoteOff(noteNumber: MIDINoteNumber, velocity: MIDIVelocity, channel: MIDIChannel) {
         guard (channel == midiChannelIn || omniMode) && !keyboardView.holdMode else { return }
-
         DispatchQueue.main.async {
             self.keyboardView.pressRemoved(noteNumber)
             self.notesFromMIDI.remove(noteNumber)
@@ -45,23 +49,22 @@ extension Manager: AKMIDIListener {
         }
     }
 
-    // Assign MIDI CC to active MIDI Learn knobs
-    func assignMIDIControlToKnobs(cc: MIDIByte) {
-        let activeMIDILearnKnobs = midiKnobs.filter { $0.isActive }
-        for knob in  activeMIDILearnKnobs {
-            knob.midiCC = cc
-            knob.isActive = false
+    // Assign MIDI CC to active MIDI Learn Controls
+    func assignMIDIControlToControls(cc: MIDIByte) {
+        let activeMIDILearnControls = midiControls.filter { $0.isActive }
+        for control in activeMIDILearnControls {
+            control.midiCC = cc
+            control.isActive = false
         }
     }
 
     // MIDI Controller input
     public func receivedMIDIController(_ controller: MIDIByte, value: MIDIByte, channel: MIDIChannel) {
         guard channel == midiChannelIn || omniMode else { return }
-        /// AKLog("Channel: \(channel+1) controller: \(controller) value: \(value)")
 
-        // If any MIDI Learn knobs are active, assign the CC
+        // If any MIDI Learn controls are active, assign the CC
         DispatchQueue.main.async {
-            if self.midiLearnToggle.isSelected { self.assignMIDIControlToKnobs(cc: controller) }
+            if self.midiLearnToggle.isSelected { self.assignMIDIControlToControls(cc: controller) }
         }
 
         // Handle MIDI Control Messages
@@ -82,16 +85,19 @@ extension Manager: AKMIDIListener {
                 sustainer.sustain(down: false)
                 sustainMode = false
             }
-            AKLog("value:\(value), sustainMode:\(sustainMode)")
 
+            // TODO: need to replace SDSustain with dsp sustain using this CC
+            //AKLog("REPLACE value:\(value), sustainMode:\(sustainMode)")
+
+        // controllers
         default:
+            AKLog("controller:\(controller), value:\(value), sustainMode:\(sustainMode)")
             break
         }
 
         // Bank Change msb/cc0
         if controller == 0 {
             guard channel == midiChannelIn || omniMode else { return }
-
             if Int(value) != self.presetsViewController.bankIndex {
                 AKLog ("DIFFERENT MSB")
                 DispatchQueue.main.async {
@@ -101,13 +107,13 @@ extension Manager: AKMIDIListener {
 
         }
 
-        // Check for MIDI learn knobs that match controller
-        let matchingKnobs = midiKnobs.filter { $0.midiCC == controller }
+        // Check for MIDI learn controls that match controller
+        let matchingControls = midiControls.filter { $0.midiCC == controller }
 
-        // Set new knob values from MIDI for matching knobs
-        for midiKnob in matchingKnobs {
+        // Set new control values from MIDI for matching controls
+        for midiControl in matchingControls {
             DispatchQueue.main.async {
-                midiKnob.setKnobValueFrom(midiValue: value)
+                midiControl.setControlValueFrom(midiValue: value)
             }
         }
     }
@@ -116,7 +122,6 @@ extension Manager: AKMIDIListener {
     public func receivedMIDIProgramChange(_ program: MIDIByte, channel: MIDIChannel) {
         guard channel == midiChannelIn || omniMode else { return }
         guard !pcJustTriggered else { return }
-
         DispatchQueue.main.async {
             self.presetsViewController.didSelectPreset(index: Int(program))
         }
@@ -136,41 +141,34 @@ extension Manager: AKMIDIListener {
             return
         }
         let val01 = Double(pitchWheelValue).normalized(from: 0...16_383)
-        s.setDependentParameter(.pitchbend, val01, 0)
+
         // UI will be updated by dependentParameterDidChange()
+        s.setDependentParameter(.pitchbend, val01, 0)
     }
 
     // After touch
     public func receivedMIDIAfterTouch(_ pressure: MIDIByte, channel: MIDIChannel) {
         guard channel == midiChannelIn || omniMode else { return }
-        // map to lfo targets
-        //         self.conductor.tremolo.frequency = Double(pressure)/20.0
-        // self.auMainController.tremoloKnob.setKnobValueFrom(midiValue: pressure)
-
-        //verbose logging
-        //AKLog("pressure: \(pressure), channel:\(channel)")
+        //NOP
     }
 
     // MIDI Setup Change
     public func receivedMIDISetupChange() {
         AKLog("midi setup change, midi.inputNames: \(AudioKit.midi.inputNames)")
-
         let midiInputNames = AudioKit.midi.inputNames
         for inputName in midiInputNames {
 
             // check to see if input exists
-            if let index = midiInputs.index(where: { $0.name == inputName }) {
+            if let index = midiInputs.firstIndex(where: { $0.name == inputName }) {
                 midiInputs.remove(at: index)
             }
-
             let newMIDI = MIDIInput(name: inputName, isOpen: true)
             midiInputs.append(newMIDI)
-            AudioKit.midi.openInput(inputName)
+            AudioKit.midi.openInput(name: inputName)
         }
     }
 
     public func receivedMIDISystemCommand(_ data: [MIDIByte]) {
-        // Suppress default logging - too verbose with clock messages
+        //NOP
     }
-
 }

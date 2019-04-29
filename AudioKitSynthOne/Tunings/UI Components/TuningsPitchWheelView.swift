@@ -320,7 +320,7 @@ private extension String {
 ///transparent overlay for tuning view which displays amplitudes of playing notes
 public class TuningsPitchWheelOverlayView: UIView {
 
-// move/share
+// common code between draw and overlay view draw
     func generalLineP(_ context: CGContext, _ p0: CGPoint, _ p1: CGPoint) {
         generalLine(context, p0.x, p0.y, p1.x, p1.y)
     }
@@ -332,8 +332,6 @@ public class TuningsPitchWheelOverlayView: UIView {
         context.strokePath()
     }
 // move
-
-
 
     var pxy = [CGPoint]()
     var px0 = CGPoint()
@@ -369,7 +367,8 @@ public class TuningsPitchWheelOverlayView: UIView {
                       pn.playingNotes.3, pn.playingNotes.4, pn.playingNotes.5]
 
             for playingNote in na where playingNote.noteNumber != -1 {
-                let v = 2 * playingNote.amplitude
+                var v = Double(playingNote.amp)
+                v = pow(2 * v, 0.415926)
                 if v > 0 {
                     var nn = playingNote.noteNumber + playingNote.transpose
                     nn -= Int32(AKPolyphonicNode.tuningTable.middleCNoteNumber)
@@ -382,7 +381,7 @@ public class TuningsPitchWheelOverlayView: UIView {
                     let pitch = masterPitch[Int(nn)]
 
                     // LINE
-                    let vv = powf(playingNote.amplitude, 0.25)
+                    let vv = powf(Float(playingNote.velocity)/127, 0.25)
                     TuningsPitchWheelView.color(forPitch: pitch,
                                                 saturation: 0.36,
                                                 brightness: 1,

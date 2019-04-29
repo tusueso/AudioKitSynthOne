@@ -18,9 +18,9 @@ extension Manager: ABAudiobusControllerStateIODelegate {
             for event in events {
                 guard let channel = event.channel, event.channel == self.midiChannelIn || self.omniMode else { return }
 
-                if event.status == AKMIDIStatus.noteOn {
+                if event.status?.type == AKMIDIStatusType.noteOn {
                     guard let noteNumber = event.noteNumber else { return }
-                    if event.internalData[2] == 0 {
+                    if event.data[2] == 0 {
                         self.sustainer.stop(noteNumber: noteNumber)
                     } else {
                         // Prevent multiple triggers from multiple MIDI inputs
@@ -31,27 +31,27 @@ extension Manager: ABAudiobusControllerStateIODelegate {
 //                            self.notesJustTriggered.remove(event.noteNumber!)
 //                        }
 
-                        self.sustainer.play(noteNumber: noteNumber, velocity: event.internalData[2])
+                        self.sustainer.play(noteNumber: noteNumber, velocity: event.data[2])
                     }
                 }
 
-                if event.status == AKMIDIStatus.noteOff {
+                if event.status?.type == AKMIDIStatusType.noteOff {
                     guard let noteNumber = event.noteNumber else { return }
                     self.sustainer.stop(noteNumber: noteNumber)
                 }
 
-                if event.status == AKMIDIStatus.pitchWheel {
-                    let x = MIDIWord(event.internalData[1])
-                    let y = MIDIWord(event.internalData[2]) << 7
+                if event.status?.type == AKMIDIStatusType.pitchWheel {
+                    let x = MIDIWord(event.data[1])
+                    let y = MIDIWord(event.data[2]) << 7
                     self.receivedMIDIPitchWheel(y + x, channel: channel)
                 }
 
-                if event.status == AKMIDIStatus.programChange {
-                    self.receivedMIDIProgramChange(event.data1, channel: channel)
+                if event.status?.type == AKMIDIStatusType.programChange {
+                    self.receivedMIDIProgramChange(event.data[1], channel: channel)
                 }
 
-                if event.status == AKMIDIStatus.controllerChange {
-                    self.receivedMIDIController(event.data1, value: event.data2, channel: channel)
+                if event.status?.type == AKMIDIStatusType.controllerChange {
+                    self.receivedMIDIController(event.data[2], value: event.data[2], channel: channel)
                 }
             }
         }

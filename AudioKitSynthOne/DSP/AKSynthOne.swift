@@ -157,9 +157,6 @@ import AudioKit
     /// Initialize the synth with defaults
     public convenience override init() {
 
-        let t0 = Date().timeIntervalSinceReferenceDate
-        AKLog("initializing oscillators: \(t0)")
-
         /// read list of bandlimited waveform filenames stored as an array of Strings
         var finalFileNames = [String]()
         if let path = Bundle.main.path(forResource: "bandlimitedWaveforms", ofType: "json") {
@@ -192,12 +189,11 @@ import AudioKit
         for fn in finalFileNames {
             if let path = Bundle.main.path(forResource: fn, ofType: "json") {
                 do {
-                    let tt0 = Date.timeIntervalSinceReferenceDate
+                    //let tt0 = Date.timeIntervalSinceReferenceDate
                     let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
                     let jsonResult = try decoder.decode(AKTable.self, from: data)
                     finalArray.append(jsonResult)
-                    let tt1 = Date.timeIntervalSinceReferenceDate - tt0
-
+                    //let tt1 = Date.timeIntervalSinceReferenceDate - tt0
                     //AKLog("wavetable \(fn) loaded in \(tt1)s")
                 } catch let error as NSError {
                     // FATAL
@@ -226,9 +222,6 @@ import AudioKit
             // FATAL ERROR
             AKLog("Can't locate bandlimited waveform frequencies in the bundle")
         }
-
-        let t1 = Date().timeIntervalSinceReferenceDate - t0
-        AKLog("Initializing #\(finalFileNames.count) wavetables: COMPLETE IN SEC: \(t1)\n")
 
         self.init(waveformArray: finalArray, bandlimitArray: finalFrequencies)
     }
@@ -292,7 +285,7 @@ import AudioKit
     // MARK: - AKPolyphonic
 
     // Function to start, play, or activate the node at frequency
-    open override func play(noteNumber: MIDINoteNumber, velocity: MIDIVelocity, frequency: Double) {
+    open override func play(noteNumber: MIDINoteNumber, velocity: MIDIVelocity, frequency: Double, channel: MIDIChannel) {
         internalAU?.startNote(noteNumber, velocity: velocity, frequency: Float(frequency))
     }
 

@@ -8,17 +8,36 @@
 
 import AudioKit
 
+
 @IBDesignable
 public class MIDIKnob: Knob, MIDILearnable {
 
     var timeSyncMode = false
 
-    // var midiLearnCallback: ()->Void = { }
+    let conductor = Conductor.sharedInstance
+
+    override public func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        if midiLearnMode {
+            isActive = !isActive
+
+            // Update Display label
+            let message = NSLocalizedString("Twist knob on your MIDI Controller", comment: "MIDI Learn Instructions")
+            if isActive {
+                conductor.updateDisplayLabel(message)
+            }
+        }
+
+    }
+
+    //MARK: - MIDILearnable
+    var midiByteRange: ClosedRange<MIDIByte> = 0...127
+
     var hotspotView = UIView()
-    var conductor = Conductor.sharedInstance
 
     var isActive = false {
         didSet {
+
             // toggle the border color if a user touches knob
             hotspotView.layer.borderColor = isActive ? #colorLiteral(red: 0.4549019608, green: 0.6235294118, blue: 0.7254901961, alpha: 1) : #colorLiteral(red: 0.2431372549, green: 0.2431372549, blue: 0.262745098, alpha: 1)
         }
@@ -26,6 +45,7 @@ public class MIDIKnob: Knob, MIDILearnable {
 
     var midiCC: MIDIByte = 255 {
         didSet {
+            
            // toggle color of assigned knobs
            hotspotView.backgroundColor = (midiCC == 255) ? #colorLiteral(red: 0.8705882353, green: 0.9098039216, blue: 0.9176470588, alpha: 0.1977002641) : #colorLiteral(red: 0.8705882353, green: 0.9098039216, blue: 0.9176470588, alpha: 0.5)
         }
@@ -42,23 +62,6 @@ public class MIDIKnob: Knob, MIDILearnable {
         }
     }
 
-    // MIDIKnob
-
-    override public func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesBegan(touches, with: event)
-
-        if midiLearnMode {
-            isActive = !isActive // Toggles knob to be active & ready to receive CC
-
-            // Update Display label
-            let message = NSLocalizedString("Twist knob on your MIDI Controller", comment: "MIDI Learn Instructions")
-            if isActive { conductor.updateDisplayLabel(message) }
-        }
-
-    }
-
-    // UI Helper
-
     func addHotspot() {
         hotspotView = UIView(frame: CGRect(x: 0, y: 0, width: self.bounds.width, height: self.bounds.height))
         hotspotView.backgroundColor = (midiCC == 255) ? #colorLiteral(red: 0.8705882353, green: 0.9098039216, blue: 0.9176470588, alpha: 0.1977002641) : #colorLiteral(red: 0.8705882353, green: 0.9098039216, blue: 0.9176470588, alpha: 0.5)
@@ -66,7 +69,7 @@ public class MIDIKnob: Knob, MIDILearnable {
         hotspotView.layer.borderWidth = 2
         hotspotView.layer.cornerRadius = 10
         hotspotView.isHidden = true
-        self.addSubview(hotspotView)
+        addSubview(hotspotView)
     }
 
     func hideHotspot() {
@@ -77,13 +80,22 @@ public class MIDIKnob: Knob, MIDILearnable {
         hotspotView.isHidden = false
     }
 
-    // Helper Function
-
-    // Linear Scale MIDI 0...127 to 0.0...1.0
-    func setKnobValueFrom(midiValue: MIDIByte) {
-        knobValue = CGFloat(Double(midiValue).normalized(from: 0...127))
-        let newValue = Double(knobValue).denormalized(to: range, taper: taper)
-        callback(newValue)
+    func setControlValueFrom(midiValue: MIDIByte) {
+        let min = Double(midiByteRange.lowerBound)
+        let max = Double(midiByteRange.upperBound)
+        knobValue = CGFloat(Double(midiValue).normalized(from: min...max))
+        let previousValue = value
+        value = Double(knobValue).denormalized(to: range, taper: taper)
+        if previousValue != value {
+            callback(value)
+            setNeedsDisplay()
+        }
     }
 
+    func updateDisplayLabel() {
+        if self.isActive {
+            let message = NSLocalizedString("Twist knob on your MIDI Controller", comment: "MIDI Learn Instructions")
+            conductor.updateDisplayLabel(message)
+        }
+    }
 }

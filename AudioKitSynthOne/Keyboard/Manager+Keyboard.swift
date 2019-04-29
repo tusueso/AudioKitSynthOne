@@ -15,7 +15,6 @@ extension Manager: KeyboardPopOverDelegate {
         keyboardView.labelMode = labelMode
         keyboardView.darkMode = darkMode
         keyboardView.setNeedsDisplay()
-
         saveAppSettingValues()
     }
 }
@@ -29,15 +28,16 @@ extension Manager: AKKeyboardDelegate {
             let title = NSLocalizedString("Too High", comment: "Alert Title: Too High")
             let message = NSLocalizedString("MIDI Note > 127. G8 is the highest playable key. Take it down a notch 😉",
                                             comment: "Alert Message: Too High")
-
             displayAlertController(title, message: message)
             return
         }
-        sustainer.play(noteNumber: note, velocity: velocity)
+        let transformedNoteNumber = appSettings.whiteKeysOnly ? whiteKeysOnlyMap[Int(note)] : note
+        sustainer.play(noteNumber: transformedNoteNumber, velocity: velocity)
     }
 
     public func noteOff(note: MIDINoteNumber) {
         guard note < 128 else { return }
-        sustainer.stop(noteNumber: note)
+        let transformedNoteNumber = appSettings.whiteKeysOnly ? whiteKeysOnlyMap[Int(note)] : note
+        sustainer.stop(noteNumber: transformedNoteNumber)
     }
 }
