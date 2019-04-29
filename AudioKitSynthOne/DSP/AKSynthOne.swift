@@ -46,7 +46,7 @@ import AudioKit
         internalAU?.setSynthParameter(parameter, value: Float(value))
     }
 
-    open func getSynthParameter(_ parameter: S1Parameter) -> Double {
+    @objc open func getSynthParameter(_ parameter: S1Parameter) -> Double {
         return Double(internalAU?.getSynthParameter(parameter) ?? 0)
     }
 
