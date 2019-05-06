@@ -340,7 +340,7 @@ private:
     const float beatsPerBar = 4.f;
     const float bpm_min = 1.f;
     const float bpm_max = 200.f;
-    const float bars_min = 1.f / 64.f / 1.5f;
+    const float bars_min = 1.f / 64.f / 1.5f; // 1/64 triplets
     const float bars_max = 8.f;
     const float rate_min = 1.f / ( (beatsPerBar * bars_max) / (bpm_min * minutesPerSecond) ); //  0.00052 8 bars at 1bpm
     const float rate_max = 1.f / ( (beatsPerBar * bars_min) / (bpm_max * minutesPerSecond) ); // 53.3333

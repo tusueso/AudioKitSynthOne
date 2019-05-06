@@ -8,7 +8,7 @@
 
 #ifndef S1Rate_h
 #define S1Rate_h
-
+#include <string>
 #import "AKSynthOneRate.h"
 
 // helper for main thread communication

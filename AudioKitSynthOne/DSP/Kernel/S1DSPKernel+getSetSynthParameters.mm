@@ -29,7 +29,7 @@ void S1DSPKernel::_setSynthParameter(S1Parameter param, float inputValue) {
 }
 
 void S1DSPKernel::setSynthParameter(S1Parameter param, float inputValue) {
-    _setSynthParameterHelper(param, inputValue, true, 0);
+    _setSynthParameterHelper(param, inputValue, false, 0);
 }
 
 void S1DSPKernel::_rateHelper(S1Parameter parameter, float inputValue, bool notifyMainThread, int payload) {
@@ -63,6 +63,7 @@ void S1DSPKernel::_rateHelper(S1Parameter parameter, float inputValue, bool noti
         // tempo sync
         if (parameter == lfo1Rate || parameter == lfo2Rate || parameter == autoPanFrequency) {
             const float value = clampedValue(parameter, inputValue);
+            
             S1RateArgs syncdValue = _rate.nearestFrequency(value, p[arpRate], minimum(parameter), maximum(parameter));
             _setSynthParameter(parameter, syncdValue.value);
             DependentParameter outputDP = {S1Parameter::S1ParameterCount, 0.f, 0.f, 0};
@@ -70,9 +71,11 @@ void S1DSPKernel::_rateHelper(S1Parameter parameter, float inputValue, bool noti
                 case lfo1Rate:
                     outputDP = _lfo1Rate = {parameter, syncdValue.value01, syncdValue.value, payload};
                     break;
+                    
                 case lfo2Rate:
                     outputDP = _lfo2Rate = {parameter, syncdValue.value01, syncdValue.value, payload};
                     break;
+                    
                 case autoPanFrequency:
                     outputDP = _autoPanRate = {parameter, syncdValue.value01, syncdValue.value, payload};
                     break;
