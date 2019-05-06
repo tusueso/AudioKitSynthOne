@@ -126,11 +126,19 @@ void S1DSPKernel::_rateHelper(S1Parameter parameter, float inputValue, bool noti
 
 void S1DSPKernel::_setSynthParameterHelper(S1Parameter parameter, float inputValue, bool notifyMainThread, int payload) {
     if (parameter == tempoSyncToArpRate || parameter == arpRate) {
+        
+        bool tempoSync = getSynthParameter(tempoSyncToArpRate) > 0.0f;
+        
+        double oldTempo = getSynthParameter(parameter);
+        double to_new_frequency_factor = tempoSync ? inputValue/oldTempo : 1.0;
+        double to_new_time_factor = tempoSync ? 1.0/to_new_frequency_factor : 1.0;
+        
         _setSynthParameter(parameter, inputValue);
-        _rateHelper(lfo1Rate, getSynthParameter(lfo1Rate), notifyMainThread, payload);
-        _rateHelper(lfo2Rate, getSynthParameter(lfo2Rate), notifyMainThread, payload);
-        _rateHelper(autoPanFrequency, getSynthParameter(autoPanFrequency), notifyMainThread, payload);
-        _rateHelper(delayTime, getSynthParameter(delayTime), notifyMainThread, payload);
+        _rateHelper(lfo1Rate, getSynthParameter(lfo1Rate)*to_new_frequency_factor, notifyMainThread, payload);
+        _rateHelper(lfo2Rate, getSynthParameter(lfo2Rate)*to_new_frequency_factor, notifyMainThread, payload);
+        _rateHelper(autoPanFrequency, getSynthParameter(autoPanFrequency)*to_new_frequency_factor, notifyMainThread, payload);
+        _rateHelper(delayTime, getSynthParameter(delayTime)*to_new_time_factor, notifyMainThread, payload);
+        
     } else if (parameter == lfo1Rate ||
                parameter == lfo2Rate ||
                parameter == autoPanFrequency ||
