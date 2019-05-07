@@ -71,8 +71,14 @@ struct S1NoteState {
     void clear();
 
     void startNoteHelper(int noteNumber, int velocity, float frequency);
+    
 
     void run(int frameIndex, float *outL, float *outR);
+    
+private:
+
+    void resetAdsrs();
+    
 };
 
 #endif

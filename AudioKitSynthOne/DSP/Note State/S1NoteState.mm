@@ -112,6 +112,9 @@ void S1NoteState::clear() {
 
 // helper...supports initialization of playing note for both mono and poly
 void S1NoteState::startNoteHelper(int noteNumber, int velocity, float frequency) {
+    
+    resetAdsrs(); // this is needed in case a note is stopped and started immediately within one render cycle. In these cases, the note state is not processed (/run() is called) between stop and start so that adsr's internal values are not updated for the note's stopping, resulting in adsr_compute... failing to go to attack mode as needed for a starting note.
+    
     oscmorph1->freq = frequency;
     oscmorph2->freq = frequency;
     subOsc->freq = frequency;
@@ -130,9 +133,15 @@ void S1NoteState::startNoteHelper(int noteNumber, int velocity, float frequency)
     transpose = getParam(S1Parameter::transpose);
 }
 
+void S1NoteState::resetAdsrs() {
+    
+    sp_adsr_init(kernel->spp(), adsr);
+    sp_adsr_init(kernel->spp(), fadsr);
+}
+
 //called at SampleRate for each S1NoteState.  Polyphony of 6 = 264,000 times per second
 void S1NoteState::run(int frameIndex, float *outL, float *outR) {
-    
+
     // isMono
     const bool isMonoMode = getParam(isMono) > 0.f;
     
