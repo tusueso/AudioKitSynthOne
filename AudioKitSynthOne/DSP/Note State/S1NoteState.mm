@@ -135,8 +135,9 @@ void S1NoteState::startNoteHelper(int noteNumber, int velocity, float frequency)
 
 void S1NoteState::resetAdsrs() {
     
-    sp_adsr_init(kernel->spp(), adsr);
-    sp_adsr_init(kernel->spp(), fadsr);
+    float dummy1, dummy2;
+    sp_adsr_compute(kernel->spp(), adsr, &dummy1, &dummy2);
+    sp_adsr_compute(kernel->spp(), fadsr, &dummy1, &dummy2);
 }
 
 //called at SampleRate for each S1NoteState.  Polyphony of 6 = 264,000 times per second
