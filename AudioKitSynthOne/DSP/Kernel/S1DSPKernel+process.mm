@@ -356,6 +356,10 @@ void S1DSPKernel::process(AUAudioFrameCount frameCount, AUAudioFrameCount buffer
         bitcrushSrate = exp2(bitcrushSrate);
         bitcrushSrate = clampedValue(bitCrushSampleRate, bitcrushSrate); // clamp
 
+        if (std::fabs(bitcrushSrate - sampleRate()) < 20) {
+            bitcrushSrate = sampleRate();
+        }
+        
         ///BITCRUSH
         float bitCrushOut = synthOut;
         bitcrushIncr = sampleRate() / bitcrushSrate; //TODO:use live sample rate, not hard-coded
