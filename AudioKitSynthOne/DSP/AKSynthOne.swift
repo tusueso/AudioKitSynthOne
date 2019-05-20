@@ -154,83 +154,93 @@ import AudioKit
 
     // MARK: - Initialization
 
+    static var wavetables = [AKTable]()
+    static var bandlimitedFrequencies = [Float]()
+    
     /// Initialize the synth with defaults
     public convenience override init() {
-
-        let t0 = Date().timeIntervalSinceReferenceDate
-        AKLog("initializing oscillators: \(t0)")
-
-        /// read list of bandlimited waveform filenames stored as an array of Strings
-        var finalFileNames = [String]()
-        if let path = Bundle.main.path(forResource: "bandlimitedWaveforms", ofType: "json") {
-            do {
-                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
-                let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
-
-                if let jsonResult = jsonResult as? [String] {
-                    for s in jsonResult {
-                        finalFileNames.append(s)
-                    }
-                } else {
-                    // FATAL
-                    AKLog("Can't decode bandlimited waveform filenames into array of strings")
-                }
-            } catch let error as NSError {
-                // FATAL
-                AKLog("Can't read bandlimited waveform filenames: error: \(error)")
-            }
-        } else {
-            // FATAL
-            AKLog("Can't find bandlimitedWaveforms.json in bundle")
-        }
-
-        //TODO: change this from json to code
         
-        // load wavetables
-        let decoder = JSONDecoder()
-        var finalArray = [AKTable]()
-        for fn in finalFileNames {
-            if let path = Bundle.main.path(forResource: fn, ofType: "json") {
+        if AKSynthOne.wavetables.isEmpty {
+            
+            let t0 = Date().timeIntervalSinceReferenceDate
+            AKLog("initializing oscillators: \(t0)")
+            
+            /// read list of bandlimited waveform filenames stored as an array of Strings
+            var finalFileNames = [String]()
+            if let path = Bundle.main.path(forResource: "bandlimitedWaveforms", ofType: "json") {
                 do {
-                    let tt0 = Date.timeIntervalSinceReferenceDate
                     let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
-                    let jsonResult = try decoder.decode(AKTable.self, from: data)
-                    finalArray.append(jsonResult)
-                    let tt1 = Date.timeIntervalSinceReferenceDate - tt0
-
-                    //AKLog("wavetable \(fn) loaded in \(tt1)s")
+                    let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
+                    
+                    if let jsonResult = jsonResult as? [String] {
+                        for s in jsonResult {
+                            finalFileNames.append(s)
+                        }
+                    } else {
+                        // FATAL
+                        AKLog("Can't decode bandlimited waveform filenames into array of strings")
+                    }
                 } catch let error as NSError {
                     // FATAL
-                    AKLog("Can't read bandlimited waveform into AKTable: \(fn), error:\(error)")
+                    AKLog("Can't read bandlimited waveform filenames: error: \(error)")
+                }
+            } else {
+                // FATAL
+                AKLog("Can't find bandlimitedWaveforms.json in bundle")
+            }
+            
+            //TODO: change this from json to code
+            
+            // load wavetables
+            let decoder = JSONDecoder()
+            var finalArray = [AKTable]()
+            for fn in finalFileNames {
+                if let path = Bundle.main.path(forResource: fn, ofType: "json") {
+                    do {
+                        let tt0 = Date.timeIntervalSinceReferenceDate
+                        let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+                        let jsonResult = try decoder.decode(AKTable.self, from: data)
+                        finalArray.append(jsonResult)
+                        let tt1 = Date.timeIntervalSinceReferenceDate - tt0
+                        
+                        //AKLog("wavetable \(fn) loaded in \(tt1)s")
+                    } catch let error as NSError {
+                        // FATAL
+                        AKLog("Can't read bandlimited waveform into AKTable: \(fn), error:\(error)")
+                    }
+                } else {
+                    // FATAL ERROR
+                    AKLog("Can't find bandlimited waveform file in bundle: \(fn)")
+                }
+            }
+            
+            /// read bandlimited waveform frequencies stored as an AKTable
+            var finalFrequencies = [Float]()
+            if let path = Bundle.main.path(forResource: "bandlimitedWaveformFrequencies", ofType: "json") {
+                do {
+                    let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+                    let jsonResult = try decoder.decode(AKTable.self, from: data)
+                    for f in jsonResult {
+                        finalFrequencies.append(f)
+                    }
+                } catch let error as NSError {
+                    // FATAL
+                    AKLog("Can't decode bandlimited waveform frequencies into AKTable: error:\(error)")
                 }
             } else {
                 // FATAL ERROR
-                AKLog("Can't find bandlimited waveform file in bundle: \(fn)")
+                AKLog("Can't locate bandlimited waveform frequencies in the bundle")
             }
+            
+            let t1 = Date().timeIntervalSinceReferenceDate - t0
+            AKLog("Initializing #\(finalFileNames.count) wavetables: COMPLETE IN SEC: \(t1)\n")
+            
+            AKSynthOne.wavetables = finalArray
+            AKSynthOne.bandlimitedFrequencies = finalFrequencies
         }
-
-        /// read bandlimited waveform frequencies stored as an AKTable
-        var finalFrequencies = [Float]()
-        if let path = Bundle.main.path(forResource: "bandlimitedWaveformFrequencies", ofType: "json") {
-            do {
-                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
-                let jsonResult = try decoder.decode(AKTable.self, from: data)
-                for f in jsonResult {
-                    finalFrequencies.append(f)
-                }
-            } catch let error as NSError {
-                // FATAL
-                AKLog("Can't decode bandlimited waveform frequencies into AKTable: error:\(error)")
-            }
-        } else {
-            // FATAL ERROR
-            AKLog("Can't locate bandlimited waveform frequencies in the bundle")
-        }
-
-        let t1 = Date().timeIntervalSinceReferenceDate - t0
-        AKLog("Initializing #\(finalFileNames.count) wavetables: COMPLETE IN SEC: \(t1)\n")
-
-        self.init(waveformArray: finalArray, bandlimitArray: finalFrequencies)
+        
+        self.init(waveformArray: AKSynthOne.wavetables,
+                  bandlimitArray: AKSynthOne.bandlimitedFrequencies)
     }
 
     /// Initialize this synth
