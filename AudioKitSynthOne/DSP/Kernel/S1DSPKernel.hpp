@@ -174,7 +174,7 @@ public:
     float taper(float inputValue01, float min, float max, float taper);
     float taperInverse(float inputValue01, float min, float max, float taper);
 
-    S1AudioUnit* audioUnit;
+    __weak S1AudioUnit* audioUnit;
     
     bool resetted = false;
     
