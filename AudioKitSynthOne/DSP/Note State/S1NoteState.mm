@@ -135,7 +135,9 @@ void S1NoteState::startNoteHelper(int noteNumber, int velocity, float frequency)
 
 void S1NoteState::resetAdsrs() {
     
-    float dummy1, dummy2;
+    float dummy1 = 0.0f;
+    float dummy2 = 0.0f;
+    
     sp_adsr_compute(kernel->spp(), adsr, &dummy1, &dummy2);
     sp_adsr_compute(kernel->spp(), fadsr, &dummy1, &dummy2);
 }
